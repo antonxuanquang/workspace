@@ -1,0 +1,26 @@
+<resources>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="tbar">#373737</color>
+    <color name="tbar_press">#362121</color>
+    <color name="listview">#eeeeee</color>
+    <color name="menu">#303030</color>
+    <color name="menu_press">#202020</color>
+    <color name="red_btn">#923F1D</color>
+    <color name="red_btn_press">#6F2C10</color>
+    <color name="green_btn">#52B841</color>
+    <color name="green_btn_press">#3C7C32</color>
+    <color name="blue_btn">#59AFF2</color>
+    <color name="blue_btn_press">#4589BD</color>
+    <color name="gray_btn">#cccccc</color>
+    <color name="gray_btn_press">#aaaaaa</color>
+    <color name="yellow_btn">#F9B168</color>
+    <color name="yellow_btn_press">#CC843B</color>
+    <color name="grid_item">#ffffff</color>
+    <color name="grid_item_press">#eeeeee</color>
+    
+    <color name="tab_txt_no">#5D646F</color>
+    <color name="tab_txt_nm">#FF5001</color>
+
+</resources>

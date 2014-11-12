@@ -1,0 +1,258 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/activity"
+    tools:context=".MainActivity" >
+
+    <!-- 首页 -->
+
+    <LinearLayout
+        android:id="@+id/tab_index"
+        style="@style/main_tab_content" >
+
+        <LinearLayout style="@style/toolbar" >
+
+            <ImageView style="@style/input_search_icon" />
+
+            <EditText
+                android:id="@+id/index_search"
+                style="@style/input_search"
+                android:hint="输入宝贝关键字, 搜索所有包邮宝贝" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/main_tab_body"
+            android:layout_height="wrap_content" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/flash_page"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:fadingEdge="none"
+                android:scrollbars="none" />
+
+            <com.viewpagerindicator.LinePageIndicator
+                android:id="@+id/indicator"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/main_tab_body"
+            android:layout_height="wrap_content" >
+
+            <GridView
+                android:id="@+id/gridview_channel"
+                style="@style/common_gridview"
+                android:numColumns="4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 9.9包邮 -->
+
+    <LinearLayout
+        android:id="@+id/tab_baoyou"
+        style="@style/main_tab_content" >
+
+        <LinearLayout style="@style/toolbar" >
+
+            <ImageView style="@style/input_search_icon" />
+
+            <EditText
+                android:id="@+id/baoyou_search"
+                style="@style/input_search"
+                android:hint="输入宝贝关键字, 搜索所有包邮宝贝" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_dark_gray" />
+
+        <LinearLayout style="@style/main_tab_body" >
+
+            <com.handmark.pulltorefresh.library.PullToRefreshListView
+                android:id="@+id/baoyou_goodlist"
+                style="@style/common_listview" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 精品服饰 -->
+
+    <LinearLayout
+        android:id="@+id/tab_closth"
+        style="@style/main_tab_content" >
+
+        <LinearLayout style="@style/toolbar" >
+
+            <ImageView style="@style/input_search_icon" />
+
+            <EditText
+                android:id="@+id/closth_search"
+                style="@style/input_search"
+                android:hint="输入宝贝关键字, 搜索所有服饰" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_dark_gray" />
+
+        <LinearLayout style="@style/main_tab_body" >
+
+            <com.handmark.pulltorefresh.library.PullToRefreshListView
+                android:id="@+id/closth_goodlist"
+                style="@style/common_listview" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 活动 -->
+
+    <LinearLayout
+        android:id="@+id/tab_active"
+        style="@style/main_tab_content" >
+
+        <LinearLayout style="@style/toolbar" >
+
+            <TextView
+                style="@style/toolbar_title"
+                android:text="淘宝促销活动" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_dark_gray" />
+
+        <LinearLayout
+            style="@style/main_tab_body"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingTop="4dp" >
+
+            <GridView
+                android:id="@+id/gridview_active"
+                style="@style/common_gridview"
+                android:numColumns="2" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 我的 -->
+
+    <LinearLayout
+        android:id="@+id/tab_me"
+        style="@style/main_tab_content" >
+
+        <LinearLayout style="@style/toolbar" >
+
+            <TextView
+                style="@style/toolbar_title"
+                android:text="我的爱购igo" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_dark_gray" />
+
+        <TextView
+            android:id="@+id/me_profile"
+            style="@style/main_tab_list_item"
+            android:drawableLeft="@drawable/info"
+            android:text="我的资料" />
+
+        <LinearLayout style="@style/line_gray" />
+
+        <TextView
+            android:id="@+id/me_earn"
+            style="@style/main_tab_list_item"
+            android:drawableLeft="@drawable/mycollect"
+            android:text="金币赚钱" />
+
+        <LinearLayout style="@style/line_gray" />
+
+        <TextView
+            android:id="@+id/me_setting"
+            style="@style/main_tab_list_item"
+            android:drawableLeft="@drawable/setting"
+            android:text="设置" />
+
+        <LinearLayout style="@style/line_gray" />
+    </LinearLayout>
+
+    <!-- 选项卡按钮组 -->
+
+    <LinearLayout
+        style="@style/line_dark_gray"
+        android:layout_above="@+id/bbar" />
+
+    <LinearLayout
+        android:id="@+id/bbar"
+        style="@style/main_tab" >
+
+        <LinearLayout
+            android:id="@+id/tab_index_btn"
+            style="@style/main_tab_btn"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/tab_index_img"
+                style="@style/main_tab_img"
+                android:src="@drawable/guide_home_nm" />
+
+            <TextView
+                android:id="@+id/tab_index_txt"
+                style="@style/main_tab_text"
+                android:text="首页" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_baoyou_btn"
+            style="@style/main_tab_btn" >
+
+            <ImageView
+                android:id="@+id/tab_baoyou_img"
+                style="@style/main_tab_img"
+                android:src="@drawable/guide_nearby_nm" />
+
+            <TextView
+                android:id="@+id/tab_baoyou_txt"
+                style="@style/main_tab_text"
+                android:text="9.9包邮" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_active_btn"
+            style="@style/main_tab_btn" >
+
+            <ImageView
+                android:id="@+id/tab_active_img"
+                style="@style/main_tab_img"
+                android:src="@drawable/guide_tfaccount_nm" />
+
+            <TextView
+                android:id="@+id/tab_active_txt"
+                style="@style/main_tab_text"
+                android:text="活动ing" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_closth_btn"
+            style="@style/main_tab_btn" >
+
+            <ImageView
+                android:id="@+id/tab_closth_img"
+                style="@style/main_tab_img"
+                android:src="@drawable/guide_cart_nm" />
+
+            <TextView
+                android:id="@+id/tab_closth_txt"
+                style="@style/main_tab_text"
+                android:text="服饰" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_me_btn"
+            style="@style/main_tab_btn" >
+
+            <ImageView
+                android:id="@+id/tab_me_img"
+                style="@style/main_tab_img"
+                android:src="@drawable/guide_account_nm" />
+
+            <TextView
+                android:id="@+id/tab_me_txt"
+                style="@style/main_tab_text"
+                android:text="我的igo" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

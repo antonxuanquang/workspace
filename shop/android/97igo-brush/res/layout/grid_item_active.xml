@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:paddingBottom="4dp"
+    android:paddingRight="4dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/grid_item_selector"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/activeImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/test" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/activeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:lines="2"
+            android:paddingTop="4dp"
+            android:text="校园双十一强烈促销活动,强势来袭"
+            android:textColor="#756053"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/activeDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="2014-1-1到2014-2-1"
+            android:textColor="#B9C7C9"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/activity"
+    android:background="#ffffff" >
+
+    <LinearLayout style="@style/toolbar" >
+
+        <ImageView
+            android:id="@+id/back"
+            style="@style/toolbar_back" />
+
+        <EditText
+            android:id="@+id/search"
+            style="@style/input_search"
+            android:focusable="true"
+            android:hint="输入宝贝关键字, 搜索所有宝贝" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/line_dark_gray" />
+
+    <LinearLayout
+        style="@style/main_tab_body"
+        android:paddingBottom="4dp"
+        android:paddingLeft="4dp"
+        android:paddingTop="4dp" >
+
+        <GridView
+            android:id="@+id/gridview_hotworld"
+            style="@style/common_gridview"
+            android:numColumns="3" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/activity" >
+
+    <LinearLayout style="@style/toolbar" >
+
+        <ImageView
+            android:id="@+id/back"
+            style="@style/toolbar_back" />
+
+        <TextView
+            style="@style/toolbar_title"
+            android:text="获取金币" />
+    </LinearLayout>
+    
+    <LinearLayout style="@style/line_dark_gray" />
+
+    <LinearLayout style="@style/activity_content" >
+
+        <LinearLayout style="@style/list_item" >
+
+            <TextView
+                style="@style/list_key"
+                android:text="当前金币(200金币=1元)" />
+
+            <TextView
+                android:id="@+id/money"
+                style="@style/list_value"
+                android:text="0金币"
+                android:textColor="#F95C27"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_gray" />
+
+        <LinearLayout style="@style/list_item" >
+
+            <TextView
+                style="@style/list_key"
+                android:text="支付宝帐号" />
+
+            <TextView
+                android:id="@+id/zfb_user"
+                style="@style/list_value"
+                android:text="xxx" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_gray" />
+
+        <LinearLayout style="@style/list_item" >
+
+            <TextView
+                style="@style/list_key"
+                android:text="支付宝姓名" />
+
+            <TextView
+                android:id="@+id/zfb_name"
+                style="@style/list_value"
+                android:text="xxx" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_gray" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/btn_cash"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="金币兑换(50元)" />
+
+            <TextView
+                android:id="@+id/btn_refresh"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="刷新信息" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/btn_bind"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="绑定支付宝" />
+
+            <TextView
+                android:id="@+id/btn_earn"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="开始赚钱" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

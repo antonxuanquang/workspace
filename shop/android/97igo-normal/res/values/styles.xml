@@ -1,0 +1,266 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 基础activity -->
+    <style name="activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- 基础activity content -->
+    <style name="activity_content">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <!-- 标题栏 -->
+    <style name="toolbar">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:background">#F7F7F7</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <!-- 标题栏文本 -->
+    <style name="toolbar_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">#5D646F</item>
+    </style>
+
+    <!-- 标题栏返回 -->
+    <style name="toolbar_back">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:src">@drawable/tb_icon_actionbar_back</item>
+        <item name="android:id">@+id/back</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <!-- 标准按钮 -->
+    <style name="common_btn">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <!-- 搜索输入框 -->
+    <style name="input_search">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_weight">10</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/input_selector</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:focusable">false</item>
+        <item name="android:imeOptions">actionSearch</item>
+    </style>
+
+    <!-- 搜索输入框图标 -->
+    <style name="input_search_icon">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:src">@drawable/search_icon</item>
+    </style>
+
+    <!-- 标准listview -->
+    <style name="common_listview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:divider">#eeeeee</item>
+        <item name="android:dividerHeight">1px</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:footerDividersEnabled">false</item>
+        <item name="android:headerDividersEnabled">false</item>
+    </style>
+
+    <!-- 标准gridview -->
+    <style name="common_gridview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:footerDividersEnabled">false</item>
+        <item name="android:headerDividersEnabled">false</item>
+        <item name="android:stretchMode">columnWidth</item>
+        <item name="android:listSelector">@null</item>
+        <item name="android:horizontalSpacing">0dp</item>
+        <item name="android:verticalSpacing">0dp</item>
+    </style>
+
+    <!-- 列表的item -->
+    <style name="list_item">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:background">@drawable/list_item_selector</item>
+    </style>
+
+    <!-- 列表的key -->
+    <style name="list_key">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">100</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- 列表的value -->
+    <style name="list_value">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">#aaaaaa</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <!-- pop -->
+    <style name="pop">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/pop</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- popmenu_item -->
+    <style name="popmenu_item">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/menu_btn_selector</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- pop_btn -->
+    <style name="pop_btn">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/menu_btn_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- 首页选项卡按钮 -->
+    <style name="main_tab">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">#F7F7F7</item>
+    </style>
+
+    <!-- 首页选项卡按钮 -->
+    <style name="main_tab_btn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- 首页选项卡文字 -->
+    <style name="main_tab_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#5D646F</item>
+        <item name="android:textSize">9sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- 首页选项卡图片 -->
+    <style name="main_tab_img">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+    </style>
+
+    <!-- 首页选项卡内容 -->
+    <style name="main_tab_content">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <!-- 首页选项卡body -->
+    <style name="main_tab_body">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- 首页选项卡选项 -->
+    <style name="main_tab_list_item">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/list_item_selector</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- 线 -->
+    <style name="line_gray">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">#dddddd</item>
+    </style>
+
+    <!-- 线 -->
+    <style name="line_dark_gray">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">#74B5BB</item>
+    </style>
+
+    <!-- 线 -->
+    <style name="line_black">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">#302222</item>
+    </style>
+
+</resources>

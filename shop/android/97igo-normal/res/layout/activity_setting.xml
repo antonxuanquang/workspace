@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/activity" >
+
+    <LinearLayout style="@style/toolbar" >
+
+        <TextView
+            android:id="@+id/back"
+            style="@style/toolbar_back" />
+
+        <TextView
+            style="@style/toolbar_title"
+            android:text="设置" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/activity_content" >
+
+        <LinearLayout style="@style/list_item" >
+
+            <TextView
+                style="@style/list_key"
+                android:text="当前版本" />
+
+            <TextView
+                android:id="@+id/version"
+                style="@style/list_value"
+                android:text="1.0" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_gray" />
+
+        <LinearLayout
+            android:id="@+id/check_update"
+            style="@style/list_item" >
+
+            <TextView
+                style="@style/list_key"
+                android:background="@drawable/list_item_selector"
+                android:text="检查更新" />
+
+            <TextView
+                android:id="@+id/latest_version_val"
+                style="@style/list_value"
+                android:text="当前已是最新版" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_gray" />
+
+        <LinearLayout
+            android:id="@+id/clear_cache"
+            style="@style/list_item" >
+
+            <TextView
+                style="@style/list_key"
+                android:background="@drawable/list_item_selector"
+                android:text="清空本地缓存" />
+
+            <TextView
+                android:id="@+id/clear_cache_val"
+                style="@style/list_value"
+                android:text="0M" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_gray" />
+
+        <LinearLayout
+            android:id="@+id/play_interval"
+            style="@style/list_item"
+            android:visibility="gone" >
+
+            <TextView
+                style="@style/list_key"
+                android:background="@drawable/list_item_selector"
+                android:text="自动播放时间间隔" />
+
+            <TextView
+                android:id="@+id/play_interval_val"
+                style="@style/list_value"
+                android:text="5秒" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/line_gray"
+            android:visibility="gone" />
+
+        <LinearLayout style="@style/list_item" >
+
+            <TextView
+                style="@style/list_key"
+                android:text="官方地址" />
+
+            <TextView
+                android:id="@+id/official"
+                style="@style/list_value"
+                android:text="http://www.bigcodebang.com" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_gray" />
+
+        <LinearLayout style="@style/list_item" >
+
+            <TextView
+                style="@style/list_key"
+                android:text="官方邮箱" />
+
+            <TextView
+                android:id="@+id/email"
+                style="@style/list_value"
+                android:text="bigcodebang@163.com" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/line_gray" />
+    </LinearLayout>
+
+</LinearLayout>
