@@ -1,0 +1,26 @@
+deviceId :			c
+imei :				N
+nettype : {wifi, mobile}
+mac :				read from SDKUtils
+deviceName : 
+model				t
+brand				C
+
+
+imei  getDeviceId
+
+imsi  getSubscriberId
+
+序列号
+String serialnum =null;                                                                                                                               
+try {                                                           
+ Class<?> c = Class.forName("android.os.SystemProperties"); 
+ Method get = c.getMethod("get", String.class, String.class );     
+ serialnum = (String)(   get.invoke(c, "ro.serialno", "unknown" )  );   
+}                                                                                
+catch (Exception ignored)                                                        
+{                              
+}
+
+android_id
+String androidId = Settings.Secure.getString(getContentResolver(),Settings.Secure.ANDROID_ID);

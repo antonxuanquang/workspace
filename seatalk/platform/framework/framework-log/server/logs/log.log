@@ -1,0 +1,56 @@
+INFO 2013-01-16 17:56:39 org.apache.log4j.net.SocketServer
+Message: Listening on port 12345 
+INFO 2013-01-16 17:56:39 org.apache.log4j.net.SocketServer
+Message: Waiting to accept a new client. 
+INFO 2013-01-16 17:56:51 org.apache.log4j.net.SocketServer
+Message: Connected to client at /127.0.0.1 
+INFO 2013-01-16 17:56:51 org.apache.log4j.net.SocketServer
+Message: Locating configuration file for /127.0.0.1 
+WARN 2013-01-16 17:56:51 org.apache.log4j.net.SocketServer
+Message: Could not find config file [./.lcf]. 
+WARN 2013-01-16 17:56:51 org.apache.log4j.net.SocketServer
+Message: Could not find config file [./generic.lcf]. Will use the default hierarchy. 
+INFO 2013-01-16 17:56:51 org.apache.log4j.net.SocketServer
+Message: Starting new socket node. 
+INFO 2013-01-16 17:56:52 org.apache.log4j.net.SocketServer
+Message: Waiting to accept a new client. 
+DEBUG 2013-01-16 17:56:52 com.sean.log.test.MyApp
+Message: debug 
+INFO 2013-01-16 17:56:52 com.sean.log.test.MyApp
+Message: info 
+WARN 2013-01-16 17:56:52 com.sean.log.test.MyApp
+Message: warn 
+ERROR 2013-01-16 17:56:52 com.sean.log.test.MyApp
+Message: error 
+FATAL 2013-01-16 17:56:52 com.sean.log.test.MyApp
+Message: fatal 
+INFO 2013-01-16 17:56:52 org.apache.log4j.net.SocketNode
+Message: Caught java.io.EOFException closing conneciton. 
+INFO 2013-01-16 17:57:12 org.apache.log4j.net.SocketServer
+Message: Listening on port 12345 
+INFO 2013-01-16 17:57:12 org.apache.log4j.net.SocketServer
+Message: Waiting to accept a new client. 
+INFO 2013-01-16 17:57:17 org.apache.log4j.net.SocketServer
+Message: Connected to client at /127.0.0.1 
+INFO 2013-01-16 17:57:17 org.apache.log4j.net.SocketServer
+Message: Locating configuration file for /127.0.0.1 
+WARN 2013-01-16 17:57:17 org.apache.log4j.net.SocketServer
+Message: Could not find config file [./.lcf]. 
+WARN 2013-01-16 17:57:17 org.apache.log4j.net.SocketServer
+Message: Could not find config file [./generic.lcf]. Will use the default hierarchy. 
+INFO 2013-01-16 17:57:17 org.apache.log4j.net.SocketServer
+Message: Starting new socket node. 
+INFO 2013-01-16 17:57:17 org.apache.log4j.net.SocketServer
+Message: Waiting to accept a new client. 
+DEBUG 2013-01-16 17:57:17 com.sean.log.test.MyApp
+Message: debug 
+INFO 2013-01-16 17:57:17 com.sean.log.test.MyApp
+Message: info 
+WARN 2013-01-16 17:57:17 com.sean.log.test.MyApp
+Message: warn 
+ERROR 2013-01-16 17:57:17 com.sean.log.test.MyApp
+Message: error 
+FATAL 2013-01-16 17:57:17 com.sean.log.test.MyApp
+Message: fatal 
+INFO 2013-01-16 17:57:17 org.apache.log4j.net.SocketNode
+Message: Caught java.io.EOFException closing conneciton. 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+	<body style="padding: 4px;">
+		<form role="form">
+			<div class="form-group">
+				<label for="name">商品名称</label>
+				<input type="text" class="form-control" id="goodName" placeholder="请输入商品名称">
+			</div>
+			<div class="form-group">
+				<label for="name">搜索关键字</label>
+				<input type="text" class="form-control" id="keyword" placeholder="请输入搜索关键字, 建议至少保留商品名称, 添加其他可以被搜索到的关键字">
+			</div>
+			<div class="form-group">
+				<label for="name">图片地址</label>
+				<input type="text" class="form-control" id="imageUrl" placeholder="请输入图片地址, 在淘宝商品详细页面随便找一张图片">
+			</div>
+			<div class="form-group">
+				<label for="name">淘宝连接地址</label>
+				<input type="text" class="form-control" id="goodUrl" placeholder="请输入淘宝的连接">
+			</div>
+			<div class="form-group">
+				<label for="name">价格</label>
+				<input type="text" class="form-control" id="price" placeholder="请输入商品价格">
+			</div>
+			<div class="form-group">
+				<label for="name">渠道</label>
+				<select id="channel" class="form-control">
+					<option value="1">9.9包邮</option>
+					<option value="2">精品服饰</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="name">排名因子</label>
+				<input type="text" value="1" class="form-control" id="boost" placeholder="用于搜索引擎默认排名的乘机因子, 默认为1.0, 越大排名越前面">
+			</div>
+			<div class="form-group">
+				<label for="name">30天销量</label>
+				<input type="text" value="0" class="form-control" id="saleCount" placeholder="啊里妈妈30天的销量">
+			</div>
+		</form>
+		<button id="addgood" class="btn btn-default">提交</button>
+	</body>
+</html>
+
+<script src="../script/lib.js" id="seajsnode"></script>
+<script>
+	seajs.use("./script/goodmanager");
+</script>

@@ -1,0 +1,13 @@
+元报表:
+{_id:reportId_type, c:createrId,t:createTime,  }
+{reportId, type, createTime, title,xAxis, yAxis, conditions }
+
+报表类型:
+1.单值型: 每次执行结果只有一个数值, 利用多天构成单条曲线报表, y轴数值, x轴日期
+	{_id:reportId_exucuteTime, result:123456}
+
+2.数值型: 每次执行结果是一个列表, 只有两列, 第一列为数值, 第二列为说明, y轴数值, x轴说明, 每天构成单条曲线报表, 多天构成曲线对比报表
+	{_id:reportId_exucuteTime, result:[{k:f1, v:1123}, {k:f1, v:1123}]}
+
+3.列表型: 每次执行结果是一个列表, 有多列, 第一列为数值, 其余为条件, y轴数值, x轴日期(取一周), 每天每个条件构成单条曲线报表, 不同条件构成曲线对比报表
+	{_id:reportId_exucuteTime, result:[{v:123,c:[{c:c1}, {c:c2}]},{v:123,c:[{c:c1}, {c:c2}]}]}

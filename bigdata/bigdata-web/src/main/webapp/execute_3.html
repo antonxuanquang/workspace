@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BigData-大数据报表</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+
+	<body>
+		<!-- header -->
+		<iframe frameborder="0" src="header.html" style="width: 100%; height: 50px; overflow: hidden"></iframe>
+		
+		<!-- 右边 -->
+		<div id="right" style="position: fixed; top: 50px; right: 0px; bottom: 0px; width: 250px; border-left: solid 1px #c1c1c1; overflow-y: auto">
+		</div>
+		
+		<!-- 上边 -->
+		<div style="position: fixed; left: 0px; top: 50px; right: 250px; bottom: 200px; border-bottom: solid 1px #c1c1c1">
+			<div id="report"></div>
+		</div>
+		
+		<!-- 下边 -->
+		<div id="bottom" style="position: fixed;left:0px; right: 250px; bottom: 0px; height: 200px; border-left: solid 1px #c1c1c1; overflow-y: auto">
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript" src="./script/lib.js"></script>
+<script type="text/javascript" src="./script/base/highcharts/js/highcharts.js"></script>
+
+<script id="tpl_timeSelect" type="text/template">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>
+					<input type="checkbox" checked="true"/>
+				</th>
+				<th>
+					<div class="btn-group">
+						<button id="selectYear" time="${thisYear}" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+							${thisYear} <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							{@each years as it,index}
+							<li value="${it}">
+								<a href="#">${it}</a>
+							</li>
+							{@/each}
+						</ul>
+					</div>
+					<div class="btn-group">
+						<button id="selectMonth" time="${thisMonth}" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+							${thisMonth}月 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							{@each months as it,index}
+							<li value="${it}">
+								<a href="#">${it}月</a>
+							</li>
+							{@/each}
+						</ul>
+					</div>
+				</th>
+				<th>统计日期</th>
+			</tr>
+		</thead>
+		<tbody id="tbody">
+		</tbody>
+	</table>
+</script>
+
+<script id="tpl_executeList" type="text/template">
+	{@each executeList as it,index}
+	{@if index<=9}
+		<tr result="${it.result}" style="cursor: pointer">
+			<td>
+				<input type="checkbox" checked="true"/>
+			</td>
+	{@else}
+		<tr result="${it.result}" visible="-1" style="cursor: pointer">
+			<td>
+				<input type="checkbox"/>
+			</td>
+	{@/if}
+			<td>${it.executeTime}</td>
+			<td>
+				{@if it.success===1}
+					<span class="label label-success">成功</span>
+				{@else}
+					<span class="label label-danger">失败</span>
+				{@/if}
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+	{@/each}
+</script>
+
+<script id="tpl_condList" type="text/template">
+	<table class="table table-hover">
+		<thead>
+			<tr id="thread">
+				<th>&nbsp;</th>
+				{@each condAxis as it,index}
+					<th>${it.axis}</th>
+				{@/each}
+			</tr>
+		</thead>
+		<tbody id="cond_tbody">
+			{@each condList as it,index}
+			{@if index==0}
+				<tr result="${it.v}" style="cursor: pointer">
+					<td>
+						<input type="checkbox" checked="true"/>
+					</td>
+			{@else}
+				<tr result="${it.v}" style="cursor: pointer">
+					<td>
+						<input type="checkbox"/>
+					</td>
+			{@/if}
+					{@each it.c as it1,index1}
+						<td>${it1.c}</td>
+					{@/each}
+				</tr>
+			{@/each}
+		</tbody>
+	</table>
+</script>
+
+<script>
+    var Sys = {};
+    var ua = navigator.userAgent.toLowerCase();
+    var s;
+    (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
+    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+    
+    var version = parseFloat(Sys.ie);
+    if (Sys.ie <= 8.0) 
+    {
+		var r = confirm("亲, 您怎么还在用石器时代的浏览器? 下载现代浏览器吗?")
+		if (r == true)
+		{
+			location = "http://112.90.6.247/tech.down.sina.com.cn/20141008/7bc27741/40.0.2181.0_chrome_installer.exe?fn=&ssig=ecZM4ttCZj&Expires=1412938167&KID=sae,230kw3wk15&ip=1412858967,220.250.21.82&corp=1";
+		}
+    }
+    
+	seajs.use("./script/execute_3", function()
+	{
+		T.execute_3.init();
+	});
+</script>

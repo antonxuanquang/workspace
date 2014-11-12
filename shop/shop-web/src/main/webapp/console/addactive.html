@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+	<body style="padding: 4px;">
+		<form role="form">
+			<div class="form-group">
+				<label for="name">活动名称</label>
+				<input type="text" class="form-control" id="activeName" placeholder="请输入活动名称">
+			</div>
+			<div class="form-group">
+				<label for="name">图片地址</label>
+				<input type="text" class="form-control" id="imageUrl" placeholder="请输入图片地址, 在淘宝活动详细页面随便找一张图片">
+			</div>
+			<div class="form-group">
+				<label for="name">活动连接地址</label>
+				<input type="text" class="form-control" id="activeUrl" placeholder="请输入淘宝活动的连接">
+			</div>
+			<div class="form-group">
+				<label for="name">活动开始时间</label>
+				<input type="text" class="form-control" id="startDate" placeholder="格式必须yyyyMMdd, 例:20140101">
+			</div>
+			<div class="form-group">
+				<label for="name">活动结束时间</label>
+				<input type="text" class="form-control" id="endDate" placeholder="格式必须yyyyMMdd, 例:20140101">
+			</div>
+			<div class="form-group">
+				<label for="name">活动渠道</label>
+				<select id="activeChannel" class="form-control">
+					<option value="1">PC</option>
+					<option value="2">mobile</option>
+				</select>
+			</div>
+		</form>
+		<button id="addactive" class="btn btn-default">提交</button>
+	</body>
+</html>
+
+<script src="../script/lib.js" id="seajsnode"></script>
+<script>
+	seajs.use("./script/activemanager");
+</script>

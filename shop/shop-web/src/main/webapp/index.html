@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>97爱购网 , 就去爱购, 轻松购物 愉快购物</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+		<style>
+			@font-face 
+			{
+				font-family: 'category';
+				src:url('http://seanzwx.github.io/97igo/font/category.woff') format('woff');
+			}
+			
+			.category{
+				border-radius: 25px;
+				font-family: 'category';
+				font-size : 25px;
+				padding : 10px;
+				width : 50px;
+				height : 50px;
+				color: #ffffff;
+				margin: 12px 12px 6px 12px;
+				float: left;
+				cursor: pointer;
+			}
+			
+			.category_txt{
+				font-size: 12px;
+				text-align: center;
+			}
+			
+			.panel_title{
+				font-size: 13px;
+				color: white;
+				text-align: left;
+				font-weight: bold;
+			}
+			
+			.panel_body{
+				padding:4px 0px 0px 0px;
+				width: 446px;
+				margin: 0px;
+				height: 220px;
+				color: #000000;
+			}
+			
+			.category_group{
+				text-align: left;
+				padding:0px;
+				margin:0px;
+			}
+			
+			.category_groupitem{
+				padding : 4px;
+				font-size: 12px;
+				text-align: left;
+			}
+			
+			.category_link{
+				color: #745151;
+				text-decoration: none;
+				cursor: pointer;
+			}
+		</style>
+		
+    	<!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+    	<![endif]-->
+	</head>
+
+	<body>
+		<!-- header -->
+		<iframe frameborder="0" src="header.html" style="width: 100%; height: 50px; overflow: hidden"></iframe>
+
+		<!-- 搜索栏目 -->
+		<div align="center">
+			<div align="left" style="width: 1210px; height: 78px;">
+				<!-- logo -->
+				<div style="width: 200px; float: left;">
+					<img src="http://seanzwx.github.io/97igo/image/logo.png" width="180" height="54"/>
+					<div style="text-align: center; color:#D9534F">www.97igo.com</div>
+				</div>		
+				<!-- 搜索框 -->		
+				<div style="width: 800px; float: left;">
+					<!-- 搜索框 -->
+					<div class="row">
+						<form class="bs-example bs-example-form" role="form">
+							<div class="col-lg-6" style="padding: 0px;">
+								<div class="input-group">
+									<div class="input-group-btn">
+										<button id="channel_dropbox_btn" channel="-1" type="button" class="btn btn-default dropdown-toggle" style="height: 44px;" data-toggle="dropdown">全部 <span class="caret"></span></button>
+										<ul id="channel_dropbox" class="dropdown-menu">
+											<li channel="-1">
+												<a href="javascript:void(0)">全部 </a>
+											</li>
+											<li channel="1">
+												<a href="javascript:void(0)">9.9包邮 </a>
+											</li>
+											<li channel="2">
+												<a href="javascript:void(0)">精品服饰 </a>
+											</li>
+										</ul>
+									</div>
+									<input id="query" type="text" class="form-control typeahead" style="width: 650px;height: 44px;" placeholder="输入商品关键字,50万商品任你搜">
+									<span class="input-group-btn">
+										<button id="search" class="btn btn-default" type="button" style="height: 44px;">搜索商品</button> 
+									</span>
+								</div>
+							</div>
+						</form>						
+					</div>
+					<!-- 热门搜索词 -->
+					<div class="row">
+						<h4 id="hotword" style="width: 800px;"></h4>
+					</div>
+				</div>
+				<!-- 二维码 -->
+				<div style="float: right">
+					<a href="download.html" target="_blank">
+						<img src="http://seanzwx.github.io/97igo/image/app.png" width="60" height="60" />
+						<div style="text-align: center; color:#D9534F; font-size: 12px;">手机爱购</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!--内容-->
+		<div align="center" style="margin-top: 4px;">
+			<div style="width: 1210px;">
+				<div class="clearfix">
+					<div class="pull-left" style="background:white; width: 900px; margin-right: 8px;">
+						
+						<!--第一块信息-->
+						<div align="left" style="height: 350px;">
+							<!-- 顶级分类 -->
+							<div id="root_category" class="pull-left" style="background:white; width: 224px; text-align: center">
+							</div>
+							
+							<!-- 轮播 -->
+							<div id="carousel" class="pull-right" style="background:white; width: 676px;">
+							</div>
+						</div>
+						
+						<!-- 分类面板 -->
+						<div id="categoryPanels" style="width: 900px;"></div>
+					</div>
+					
+					<div class="pull-right" style="background: white;width: 300px;overflow: hidden;">
+						<iframe src="right.html" frameborder="0" style="width: 100%; height: 880px; overflow: hidden"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 火箭 -->
+		<div style="z-index: 1000; position: fixed; right: 10px; bottom: 10px;" title="回顶部">
+			<a id="rocket" href="javascript:void(0)">
+				<img src="http://seanzwx.github.io/97igo/image/rocket.png" />
+			</a>
+		</div>
+		
+		<!-- footer -->
+		<iframe frameborder="0" src="footer.html" style="width: 100%; height: 130px; overflow: hidden; margin-top: 8px;"></iframe>
+	</body>
+</html>
+
+<script src="http://seanzwx.github.io/97igo/script/lib.js" id="seajsnode"></script>
+<script>
+    var Sys = {};
+    var ua = navigator.userAgent.toLowerCase();
+    var s;
+    (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
+    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+    
+    var version = parseFloat(Sys.ie);
+    if (Sys.ie <= 8.0) 
+    {
+		var r = confirm("亲, 您怎么还在用石器时代的浏览器? 下载现代浏览器吗?")
+		if (r == true)
+		{
+			location = "http://112.90.6.247/tech.down.sina.com.cn/20141008/7bc27741/40.0.2181.0_chrome_installer.exe?fn=&ssig=ecZM4ttCZj&Expires=1412938167&KID=sae,230kw3wk15&ip=1412858967,220.250.21.82&corp=1";
+		}
+    }
+
+	seajs.use("./script/index", function()
+	{
+		T.index.init();
+	});
+</script>
+
+<!-- 热词 -->
+<script id="tpl_hotword" type="text/template">
+	{@each hotwordList as it,index}
+		<span class="label ${it.color}" style="cursor: pointer">${it.hotword}</span>
+	{@/each}
+</script>
+
+<!-- 顶级分类 -->
+<script id="tpl_root_category" type="text/template">
+	{@each categoryList as it,index}
+		<div style="float: left; width: 74px; height: 85px; text-align: center">
+			<a href="category.html?cid=${it.id}" class="category" style="background-color: ${it.color}" target="_blank">${it.span}</a>
+			<div class="category_txt">${it.name}</div>
+		</div>
+	{@/each}
+</script>
+
+<!-- 轮播 -->
+<script id="tpl_carousel" type="text/template">
+	<div id="myCarousel" class="carousel slide">
+		<ol class="carousel-indicators">
+			{@each carouselList as it ,index}
+			{@if index==0}
+				<li data-target="#myCarousel" data-slide-to="${index}" class="active"></li>
+			{@else}
+				<li data-target="#myCarousel" data-slide-to="${index}"></li>
+			{@/if}
+		    {@/each}
+		</ol>   
+		<div class="carousel-inner">
+			{@each carouselList as it ,index}
+			{@if index==0}
+				<div class="item active">
+					<a href="${it.url}" target="_blank">
+						<img src="${it.image}" style=" width: 676px; height: 345px;">
+					</a>
+				</div>
+			{@else}
+				<div class="item">
+					<a href="${it.url}" target="_blank">
+						<img src="${it.image}" style=" width: 676px; height: 345px;">
+					</a>
+				</div>
+			{@/if}
+		    {@/each}
+		</div>
+	</div>
+</script>
+
+<!-- 分类面板模板 -->
+<script id="tpl_category" type="text/template">
+	{@each categoryList as it, index}
+		<div class="col-md-6 panel_body" style="${it.style}">
+			<div class="panel panel-danger">
+				<div class="panel-heading" style="background-color: ${it.color}; padding: 6px;">
+					<h3 class="panel-title panel_title">
+						<span cid="${it.id}">${it.name}</span>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<table style="width:100%; height:100%">
+						{@each it.child as it1, index}
+							<tr>
+								<td class="category_groupitem" style="font-weight: bold">
+									<span class="category_link">${it1.name}</span>
+								</td>
+								{@each it1.child as it2, index}
+									<td class="category_groupitem">
+										<a href="market.html?categoryId=${it.id}&q=${it1.keyword}${it2.name}" class="category_link" target="_blank">${it2.name}</a>
+									</td>
+								{@/each}
+							</tr>
+						{@/each}
+					</table>
+				</div>
+			</div>
+		</div>
+	{@/each}
+</script>
+
+<!-- banner广告 -->
+<script id="tpl_ad" type="text/template">
+	<div>
+		<a href="${url}" target="_blank">
+			<img src="${image}" style="width: 900px; height: 80px;margin-bottom: 4px;"/>
+		</a>
+	</div>
+</script>

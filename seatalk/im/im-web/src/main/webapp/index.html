@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Seatalk管理后台</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="script/base/jqplot/jquery.jqplot.min.css" />
+	</head>
+	<body>
+	   <!--头部-->
+		<div class="header">
+			<table>
+				<tr>
+					<td width="10">&nbsp;</td>
+					<td width="*">
+						<span class="logo">Seatalk管理后台</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<!--中间-->
+		<div class="section">
+			<table>
+				<tr>
+					<!--左边-->
+					<td class="section_left" width="200" valign="top">
+						<div id="menu_scroll" style="overflow: auto;display: none">
+							<div class="menu_title">用户管理</div>
+							<div>
+								<div id="index_userlist" class="menu_item">用户列表</div>
+							</div>
+							<div class="menu_title">广告管理</div>
+							<div>
+								<div id="index_ad_chatform" class="menu_item">聊天窗体广告</div>
+								<div id="index_icon" class="menu_item">首页图标</div>
+							</div>
+						</div>
+					</td>
+					
+					<!--中间-->
+					<td id="center_content" class="section_center" width="*" height="100%" valign="top">
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<!--底部-->
+		<div class="footer">
+			<table><tr><td>Seatalk管理后台</td></tr></table>
+		</div>
+		
+		<!--弹窗-->
+		<div id="pop" style="display: none;">&nbsp;</div>
+		
+		<!--模板模块定义-->
+		<div style="display: none">
+			<iframe id="frame_index" src="html/ui.html">&nbsp;</iframe>
+			<iframe id="frame_im" src="html/im.html">&nbsp;</iframe>
+		</div>
+		
+		<!-- 垃圾桶 -->
+		<div id="garbage"></div>
+	</body>
+</html>
+
+<script src="script/base/lib.js" id="seajsnode"></script>
+<script> 
+	seajs.use("./script/index"); 
+</script>
+
+<!-- 登录 -->
+<script id="tpl_login" type="text/template">
+	<div style="padding: 20px 0px 0px 0px">
+		<table style="border-spacing: 10px;">
+			<tr align="center">
+				<td width="50">帐 号: </td>
+				<td>
+					<input id="login_username" tabindex="1" value=""/>
+				</td>
+				<td width="60">&nbsp;</td>
+			</tr>
+			<tr align="center">
+				<td>密 码: </td>
+				<td>
+					<input id="login_password" tabindex="2" type="password" value=""/>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr align="center">
+				<td>&nbsp;</td>
+				<td>
+					<div id="login_btn" class="button" style="margin: 0px;">登   录</div>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr align="center">
+				<td>&nbsp;</td>
+				<td>
+					<div id="login_info" style="color: red; padding: 6px;"></div>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+	</div>
+</script>

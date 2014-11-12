@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div style="position: fixed; left: 0px; top: 0px; bottom: 40px; right: 0px;overflow-y: auto">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>重建ID</th>
+						<th>索引类型</th>
+						<th>重建开始时间</th>
+						<th>重建结束时间</th>
+						<th>重建结果</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="buildList">
+				</tbody>
+			</table>
+		</div>
+		
+		<div align="center" style="position: fixed; left: 0px; bottom: 0px; right: 0px;height: 54px;">
+			<ul id="pages" class="pagination pagination-sm">
+			</ul>
+		</div>
+	</body>
+</html>
+
+<script src="../script/lib.js" id="seajsnode"></script>
+<script>
+	seajs.use("./script/searchmanager.js");
+</script>
+
+<!-- 索引重建日志列表 -->
+<script id="tpl_buildList" type="text/template">
+	{@each buildList as it,index}
+	<tr>
+		<td>${it.buildId}</td>
+		{@if it.type==1}
+			<td>商品索引</td>
+		{@else}
+			<td>搜索词索引</td>
+		{@/if}		
+		<td>${it.startTime}</td>
+		<td>${it.endTime}</td>
+		{@if it.buildResult==1}
+			<td>成功</td>
+		{@else}
+			<td>失败</td>
+		{@/if}
+		<td>
+			<button buildId=${it.buildId} type="button" class="btn btn-danger btn-xs">删除</button>
+		</td>
+	</tr>
+	{@/each}
+</script>
+
+<!-- 分页 -->	
+<script id="tpl_page" type="text/template">
+	<li pageNo="1" title="首页"><a href="javascript:void(0)"><</a></li>
+	<li pageNo="${previous}" title="上一页"><a href="javascript:void(0)"><<</a></li>
+	{@each pages as it,index}
+	    {@if index%10000000===0}
+			<li pageNo="${it.pageNo}" class="active"><a href="javascript:void(0)">${it.pageNo}</a></li>
+		{@else}
+			<li pageNo="${it.pageNo}"><a href="javascript:void(0)">${it.pageNo}</a></li>
+		{@/if}
+	{@/each}
+	<li pageNo="${next}" title="下一页"><a href="javascript:void(0)">>></a></li>
+	<li pageNo="${last}" title="尾页"><a href="javascript:void(0)">></a></li>
+</script>

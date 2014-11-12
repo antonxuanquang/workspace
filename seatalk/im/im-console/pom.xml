@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>im</artifactId>
+		<groupId>com.sean</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>im-console</artifactId>
+
+	<!-- mvn assembly:assembly -->
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>com.sean.im.console.main.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.sean</groupId>
+			<artifactId>framework-commom</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sean</groupId>
+			<artifactId>im-commom</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sean</groupId>
+			<artifactId>im-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.seaglasslookandfeel</groupId>
+			<artifactId>seaglasslookandfeel</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

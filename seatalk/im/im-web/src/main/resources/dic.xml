@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dic>
+	<country>
+		<item id="1">Afghanistan</item>
+		<item id="2">Albania</item>
+		<item id="3">Algeria</item>
+		<item id="4">American Samoa</item>
+		<item id="5">Andorra</item>
+		<item id="6">Angola</item>
+		<item id="7">Anguilla</item>
+		<item id="8">Antarctica</item>
+		<item id="9">Antigua And Barbuda</item>
+		<item id="10">Argentina</item>
+		<item id="11">Armenia</item>
+		<item id="12">Aruba</item>
+		<item id="13">Australia</item>
+		<item id="14">Austria</item>
+		<item id="15">Azerbaijan</item>
+		<item id="16">Bahamas</item>
+		<item id="17">Bahrain</item>
+		<item id="18">Bangladesh</item>
+		<item id="19">Barbados</item>
+		<item id="20">Belarus</item>
+		<item id="21">Belgium</item>
+		<item id="22">Belize</item>
+		<item id="23">Benin</item>
+		<item id="24">Bermuda</item>
+		<item id="25">Bhutan</item>
+		<item id="26">Bolivia</item>
+		<item id="27">Bosnia And Herzegovina</item>
+		<item id="28">Botswana</item>
+		<item id="29">Bouvet Island</item>
+		<item id="30">Brazil</item>
+		<item id="31">British Indian Ocean Territory</item>
+		<item id="32">Brunei Darussalam</item>
+		<item id="33">Bulgaria</item>
+		<item id="34">Burkina Faso</item>
+		<item id="35">Burundi</item>
+		<item id="36">Cambodia</item>
+		<item id="37">Cameroon</item>
+		<item id="38">Canada</item>
+		<item id="39">Cape Verde</item>
+		<item id="40">Cayman Islands</item>
+		<item id="41">Central African Republic</item>
+		<item id="42">Chad</item>
+		<item id="43">Chile</item>
+		<item id="44">中国</item>
+		<item id="45">Christmas Island</item>
+		<item id="46">Cocos (Keeling) Islands</item>
+		<item id="47">Colombia</item>
+		<item id="48">Comorian</item>
+		<item id="49">Congo</item>
+		<item id="50">Congo (Democratic Republic)</item>
+		<item id="51">Cook Islands</item>
+		<item id="52">Costa Rica</item>
+		<item id="53">Cote D`lvoire</item>
+		<item id="54">Croatia</item>
+		<item id="55">Cyprus</item>
+		<item id="56">Czech Republic</item>
+		<item id="57">Denmark</item>
+		<item id="58">Djibouti</item>
+		<item id="59">Dominica</item>
+		<item id="60">Dominican Republic</item>
+		<item id="61">East Timor</item>
+		<item id="62">Ecuador</item>
+		<item id="63">Egypt</item>
+		<item id="64">El Salvador</item>
+		<item id="65">Equatorial Guinea</item>
+		<item id="66">Eritrea</item>
+		<item id="67">Estonia</item>
+		<item id="68">Ethiopia</item>
+		<item id="69">Falkland Islands (Malvinas)</item>
+		<item id="70">Faroe Islands</item>
+		<item id="71">Fiji</item>
+		<item id="72">Finland</item>
+		<item id="73">France</item>
+		<item id="74">French Guiana</item>
+		<item id="75">French Polynesia</item>
+		<item id="76">French Southern Territories</item>
+		<item id="77">Gabon</item>
+		<item id="78">Gambia</item>
+		<item id="79">Georgia, Republic of</item>
+		<item id="80">Germany</item>
+		<item id="81">Ghana</item>
+		<item id="82">Gibraltar</item>
+		<item id="83">Greece</item>
+		<item id="84">Greenland</item>
+		<item id="85">Grenada</item>
+		<item id="86">Guadeloupe</item>
+		<item id="87">Guam</item>
+		<item id="88">Guatemala</item>
+		<item id="89">Guinea</item>
+		<item id="90">Guinea-Bissau</item>
+		<item id="91">Guyana</item>
+		<item id="92">Haiti</item>
+		<item id="93">Heard And Mc Donald Islands</item>
+		<item id="94">Honduras</item>
+		<item id="95">中國香港</item>
+		<item id="96">Hungary</item>
+		<item id="97">Iceland</item>
+		<item id="98">India</item>
+		<item id="99">Indonesia</item>
+		<item id="100">Iraq</item>
+		<item id="101">Ireland</item>
+		<item id="102">Israel</item>
+		<item id="103">Italy</item>
+		<item id="104">Jamaica</item>
+		<item id="105">Japan</item>
+		<item id="106">Jordan</item>
+		<item id="107">Kazakhstan</item>
+		<item id="108">Kenya</item>
+		<item id="109">Kiribati</item>
+		<item id="110">Korea, Republic Of</item>
+		<item id="111">Kuwait</item>
+		<item id="112">Kyrgyzstan</item>
+		<item id="113">Lao People`S Democratic R. Of</item>
+		<item id="114">Latvia</item>
+		<item id="115">Lebanon</item>
+		<item id="116">Lesotho</item>
+		<item id="117">Liberia</item>
+		<item id="118">Liechtenstein</item>
+		<item id="119">Lithuania</item>
+		<item id="120">Luxembourg</item>
+		<item id="121">中国澳门</item>
+		<item id="122">Macedonia</item>
+		<item id="123">Madagascar</item>
+		<item id="124">Malawi</item>
+		<item id="125">Malaysia</item>
+		<item id="126">Maldives</item>
+		<item id="127">Mali</item>
+		<item id="128">Malta</item>
+		<item id="129">Marshall Islands</item>
+		<item id="130">Martinique</item>
+		<item id="131">Mauritania</item>
+		<item id="132">Mauritius</item>
+		<item id="133">Mayotte</item>
+		<item id="134">Mexico</item>
+		<item id="135">Micronesia</item>
+		<item id="136">Moldova, Republic of</item>
+		<item id="137">Monaco</item>
+		<item id="138">Mongolia</item>
+		<item id="139">Montserrat</item>
+		<item id="140">Morocco</item>
+		<item id="141">Mozambique</item>
+		<item id="142">Myanmar</item>
+		<item id="143">Namibia</item>
+		<item id="144">Nauru</item>
+		<item id="145">Nepal</item>
+		<item id="146">Netherlands</item>
+		<item id="147">Netherlands Antilles</item>
+		<item id="148">New Caledonia</item>
+		<item id="149">New Zealand</item>
+		<item id="150">Nicaragua</item>
+		<item id="151">Niger</item>
+		<item id="152">Nigeria</item>
+		<item id="153">Niue</item>
+		<item id="154">Norfolk Island</item>
+		<item id="155">Northern Mariana Islands</item>
+		<item id="156">Norway</item>
+		<item id="157">Oman</item>
+		<item id="158">Pakistan</item>
+		<item id="159">Palau</item>
+		<item id="160">Palestinian Territory</item>
+		<item id="161">Panama</item>
+		<item id="162">Papua New Guinea</item>
+		<item id="163">Paraguay</item>
+		<item id="164">Peru</item>
+		<item id="165">Philippines</item>
+		<item id="166">Pitcairn</item>
+		<item id="167">Poland</item>
+		<item id="168">Portugal</item>
+		<item id="169">Puerto Rico</item>
+		<item id="170">Qatar</item>
+		<item id="171">Reunion</item>
+		<item id="172">Romania</item>
+		<item id="173">Russian Federation</item>
+		<item id="174">Rwanda</item>
+		<item id="175">S Georgia The S SandwichIsl</item>
+		<item id="176">Saint Kitts And Nevis</item>
+		<item id="177">Saint Lucia</item>
+		<item id="178">Saint Vincent The Grenadines</item>
+		<item id="179">San Marino</item>
+		<item id="180">Sao Tome And Principe</item>
+		<item id="181">Saudi Arabia</item>
+		<item id="182">Senegal</item>
+		<item id="183">Serbia</item>
+		<item id="184">Seychelles</item>
+		<item id="185">Sierra Leone</item>
+		<item id="186">Singapore</item>
+		<item id="187">Slovakia</item>
+		<item id="188">Slovenia</item>
+		<item id="189">Solomon Islands</item>
+		<item id="190">Somalia</item>
+		<item id="191">South Africa</item>
+		<item id="192">Spain</item>
+		<item id="193">Sri Lanka</item>
+		<item id="194">St. Helena</item>
+		<item id="195">St. Pierre And Miquelon</item>
+		<item id="196">Suriname</item>
+		<item id="197">Svalbard And Jan Mayen Islands</item>
+		<item id="198">Swaziland</item>
+		<item id="199">Sweden</item>
+		<item id="200">Switzerland</item>
+		<item id="201">中國台灣</item>
+		<item id="202">Tajikistan</item>
+		<item id="203">Tanzania, United Republic Of</item>
+		<item id="204">Thailand</item>
+		<item id="205">Togo</item>
+		<item id="206">Tokelau</item>
+		<item id="207">Tonga</item>
+		<item id="208">Trinidad And Tobago</item>
+		<item id="209">Tunisia</item>
+		<item id="210">Turkey</item>
+		<item id="211">Turkmenistan</item>
+		<item id="212">Turks And Caicos Islands</item>
+		<item id="213">Tuvalu</item>
+		<item id="214">Uganda</item>
+		<item id="215">Ukraine</item>
+		<item id="216">United States</item>
+		<item id="217">United Arab Emirates</item>
+		<item id="218">United Kingdom</item>
+		<item id="219">United States Minor Outlying</item>
+		<item id="220">Uruguay</item>
+		<item id="221">Uzbekistan</item>
+		<item id="222">Vanuatu</item>
+		<item id="223">Vatican City State (Holy See)</item>
+		<item id="224">Venezuela</item>
+		<item id="225">Viet Nam</item>
+		<item id="226">Virgin Islands (British)</item>
+		<item id="227">Virgin Islands (U.S.)</item>
+		<item id="228">Wallis And Futuna Islands</item>
+		<item id="229">Western Sahara</item>
+		<item id="230">Yemen</item>
+		<item id="231">Zambia</item>
+		<item id="232">Zimbabwe</item>
+	</country>
+	<language>
+		<item id="1">Bahasa Indonesia - Indonesian</item>
+		<item id="2">Bahasa Melayu - Malay</item>
+		<item id="3">Català - Catala</item>
+		<item id="4">Čeština - Czech</item>
+		<item id="5">Dansk - Danish</item>
+		<item id="6">Deutsch - German</item>
+		<item id="7">Deutsch (Schweiz) - German (Switzerland)</item>
+		<item id="8">English (UK) - English (UK)</item>
+		<item id="9">English (US) - English (US)</item>
+		<item id="10">EspaÑol - Spanish</item>
+		<item id="11">EspaÑol (Latinoamérica) - Spanish (Latin America)</item>
+		<item id="12">Français - French</item>
+		<item id="13">Français (Canada) - French (Canada)</item>
+		<item id="14">Hrvatski - Croatian</item>
+		<item id="15">Italiano - Italian</item>
+		<item id="16">Magyar - Hungarian</item>
+		<item id="17">Nederlands - Dutch</item>
+		<item id="18">Norsk - Norwegian</item>
+		<item id="19">Polski - Polish</item>
+		<item id="20">Português (Brasil) - Portuguese (Brazil)</item>
+		<item id="21">Português (Portugal) - Portuguese (Portugal)</item>
+		<item id="22">Română - Romanian</item>
+		<item id="23">Slovenčina - Slovak</item>
+		<item id="24">Suomi - Finnish</item>
+		<item id="25">Svenska - Swedish</item>
+		<item id="26">Tiếng Việt - Vietnamese</item>
+		<item id="27">Türkçe - Turkish</item>
+		<item id="28">Greek</item>
+		<item id="29">Русский - Russian</item>
+		<item id="30">Українська - Ukrainian</item>
+		<item id="31">עברית - Hebrew</item>
+		<item id="32">العربيه - Arabic</item>
+		<item id="33">ภาษาไทย - Thai</item>
+		<item id="34">한국어 - Korean</item>
+		<item id="35">日本語 - Japanese</item>
+		<item id="36">简体中文 - Chinese (Simplified)</item>
+		<item id="37">繁體中文 - Chinese</item>
+	</language>
+	<gender>
+		<item id="1">secrecy</item>
+		<item id="2">male</item>
+		<item id="3">female</item>
+	</gender>
+	<age>
+		<item>8</item>
+		<item>9</item>
+		<item>10</item>
+		<item>11</item>
+		<item>12</item>
+		<item>13</item>
+		<item>14</item>
+		<item>15</item>
+		<item>16</item>
+		<item>17</item>
+		<item>18</item>
+		<item>19</item>
+		<item>20</item>
+		<item>21</item>
+		<item>22</item>
+		<item>23</item>
+		<item>24</item>
+		<item>25</item>
+		<item>26</item>
+		<item>27</item>
+		<item>28</item>
+		<item>29</item>
+		<item>30</item>
+		<item>31</item>
+		<item>32</item>
+		<item>33</item>
+		<item>34</item>
+		<item>35</item>
+		<item>36</item>
+		<item>37</item>
+		<item>38</item>
+		<item>39</item>
+		<item>40</item>
+		<item>41</item>
+		<item>42</item>
+		<item>43</item>
+		<item>44</item>
+		<item>45</item>
+		<item>46</item>
+		<item>47</item>
+		<item>48</item>
+		<item>49</item>
+		<item>50</item>
+		<item>51</item>
+		<item>52</item>
+		<item>53</item>
+		<item>54</item>
+		<item>55</item>
+		<item>56</item>
+		<item>57</item>
+		<item>58</item>
+		<item>59</item>
+		<item>60</item>
+		<item>61</item>
+		<item>62</item>
+		<item>63</item>
+		<item>64</item>
+		<item>65</item>
+		<item>66</item>
+		<item>67</item>
+		<item>68</item>
+		<item>69</item>
+		<item>70</item>
+		<item>71</item>
+		<item>72</item>
+		<item>73</item>
+		<item>74</item>
+		<item>75</item>
+		<item>76</item>
+		<item>77</item>
+		<item>78</item>
+		<item>79</item>
+		<item>80</item>
+	</age>
+</dic>
+

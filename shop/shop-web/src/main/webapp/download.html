@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>97爱购网 , 就去爱购, 轻松购物 愉快购物</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+		<!--[if lt IE 9]>
+		<script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+		<script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body style="background-color: #F3F4F4">
+		<!-- header -->
+		<iframe frameborder="0" src="header.html" style="width: 100%; height: 50px; overflow: hidden"></iframe>
+
+		<!--内容-->
+		<div align="center" style="margin-top: 8px;">
+			<div style="width: 1210px;">
+				<div class="clearfix">
+					<div class="pull-left" style="background:white; width: 884px; margin-right: 8px;padding-top: 8px;">
+
+						<!-- 分类导航元素 -->
+						<div class="container" style="width: 884px; margin-top: 8px;">
+							<table class="table table-hover">
+								<caption>更多app下载</caption>
+								<thead>
+									<tr>
+										<th>游戏图标</th>
+										<th>游戏名称</th>
+										<th>游戏类型</th>
+										<th>游戏平台</th>
+										<th>游戏包大小</th>
+										<th>下载</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><img style="width: 32px; height: 32px;" src="http://img.wanpu.com//upload/2013/10/1383637977588.png" /></td>
+										<td>欲仙</td>
+										<td>角色扮演</td>
+										<td>android</td>
+										<td>110MB</td>
+										<td>
+											<a href="http://www.wanpu.com/game/detail?id=5278a5f10cf25bd0a667f77c">
+												<button type="button" class="btn btn-primary btn-xs">下载</button> 
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td><img style="width: 32px; height: 32px;" src="http://img.wanpu.com//upload/2013/7/1376013809423.png" /></td>
+										<td>时空猎人</td>
+										<td>格斗</td>
+										<td>android</td>
+										<td>100MB</td>
+										<td>
+											<a href="http://www.wanpu.com/game/detail?id=52032a2f0cf26585caac0067">
+												<button type="button" class="btn btn-primary btn-xs">下载</button> 
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td><img style="width: 32px; height: 32px;" src="http://img.wanpu.com//upload/2013/7/1376013712888.png" /></td>
+										<td>王者之剑</td>
+										<td>格斗</td>
+										<td>android</td>
+										<td>69.5MB</td>
+										<td>
+											<a href="http://www.wanpu.com/game/detail?id=5137f6af0cf2cb12a4c4c5f1">
+												<button type="button" class="btn btn-primary btn-xs">下载</button> 
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="pull-right" style="background: white;width: 316px;padding: 8px; overflow: hidden">
+						<!-- 下载 -->
+						<div style="margin-bottom: 6px;">
+							<a href="http://seanzwx.github.io/97igo/download/97igo.apk" target="_blank" style="text-decoration: none">
+								<button type="button" class="btn btn-danger btn-lg btn-block">下载爱购到本地电脑</button> 
+							</a>
+						</div>
+						<iframe src="right.html" frameborder="0" style="width: 100%; height: 880px; overflow: hidden"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- footer -->
+		<iframe frameborder="0" src="footer.html" width="100%" height="130"></iframe>
+	</body>
+</html>
+
+<script>
+    var Sys = {};
+    var ua = navigator.userAgent.toLowerCase();
+    var s;
+    (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
+    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+    
+    var version = parseFloat(Sys.ie);
+    if (Sys.ie <= 8.0) 
+    {
+		var r = confirm("亲, 您怎么还在用石器时代的浏览器? 下载现代浏览器吗?")
+		if (r == true)
+		{
+			location = "http://112.90.6.247/tech.down.sina.com.cn/20141008/7bc27741/40.0.2181.0_chrome_installer.exe?fn=&ssig=ecZM4ttCZj&Expires=1412938167&KID=sae,230kw3wk15&ip=1412858967,220.250.21.82&corp=1";
+		}
+    }
+</script>

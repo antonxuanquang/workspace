@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>97爱购网管理后台</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+		<style>
+.top{
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	height: 40px;
+	background-color: #428BCA;
+	padding: 4px;
+}
+.left{
+	position: fixed;
+	left: 0px;
+	top: 40px;
+	bottom: 20px;
+	width: 200px;
+	padding: 4px;
+}
+.right{
+	position: fixed;
+	left: 200px;
+	top: 40px;
+	bottom: 20px;
+	right: 0px;
+}
+.bottom{
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: #428BCA; 
+	font-size: 13px;
+	color: white;
+	text-align: center;
+}
+		</style>
+	</head>
+	<body>
+		<div class="top">
+			<span style="font-size: 24px;color: white">97爱购网后台管理</span>
+		</div>
+		
+		<div id="menu" class="left" style="overflow-x: auto">
+			<!-- 菜单 -->
+			<div class="panel-group" id="menu">
+			   <div class="panel panel-info">
+			      <div class="panel-heading">
+			         <h4 class="panel-title">
+			            <a data-toggle="collapse" data-parent="#menu" href="#menuitem1">商品管理</a>
+			         </h4>
+			      </div>
+			      <div id="menuitem1" class="panel-collapse collapse in">
+			         <div class="panel-body" style="padding: 4px;">
+						<ul class="nav nav-pills nav-stacked">
+						   <li class="active"><a href="goodlist.html" target="content">商品列表</a></li>
+						   <li><a href="addgood.html" target="content">新增商品</a></li>
+						   <li><a href="goodfeedback.html" target="content">商品反馈<span class="badge pull-right">3</span></a></li>
+						</ul>
+			         </div>
+			      </div>
+			   </div>
+			   <div class="panel panel-info">
+			      <div class="panel-heading">
+			         <h4 class="panel-title">
+			            <a data-toggle="collapse" data-parent="#menu" href="#menuitem2">淘宝活动管理</a>
+			         </h4>
+			      </div>
+			      <div id="menuitem2" class="panel-collapse collapse in">
+			         <div class="panel-body" style="padding: 4px;">
+						<ul class="nav nav-pills nav-stacked">
+						   <li><a href="activelist.html" target="content">活动列表</a></li>
+						   <li><a href="addactive.html" target="content">发布活动</a></li>
+						</ul>
+			         </div>
+			      </div>
+			   </div>
+			   <div class="panel panel-info">
+			      <div class="panel-heading">
+			         <h4 class="panel-title">
+			            <a data-toggle="collapse" data-parent="#menu" href="#menuitem3">搜索引擎管理</a>
+			         </h4>
+			      </div>
+			      <div id="menuitem3" class="panel-collapse collapse in">
+			         <div class="panel-body" style="padding: 4px;">
+						<ul class="nav nav-pills nav-stacked">
+						   <li><a href="indexlist.html" target="content">索引日志</a></li>
+						   <li><a href="javascript:void(0)" target="content">重建商品索引</a></li>
+						   <li><a href="javascript:void(0)" target="content">重建搜索词索引</a></li>
+						   <li><a href="javascript:void(0)" target="content">计算搜索热词</a></li>
+						</ul>
+			         </div>
+			      </div>
+			   </div>
+			</div>	
+		</div>
+		
+		<div class="right">
+			<iframe name="content" src="goodlist.html" frameborder="0" width="100%" height="100%"></iframe>					
+		</div>
+		
+		<div class="bottom">版权所有 sean_zwx@163.com</div>
+	</body>
+</html>
+
+<script src="../script/lib.js" id="seajsnode"></script>
+<script>
+	seajs.use("../script/common");
+	$('#menu a[target=content]').bind('click', function()
+	{
+		$('#menu li').attr('class', '');
+		$(this).parent().attr('class', 'active');
+		
+		if($(this).html() == "重建商品索引")
+		{
+			var r = confirm("确定要重建商品索引吗?")
+			if (r == true)
+			{
+				var params = 
+				{
+					password : '97igo',
+					indexType : 1,
+				};
+				T.common.ajax.requestBlock('BuildIndexAction', params, false, function()
+				{
+					alert("后台开始重建...");
+				});
+			}
+		}
+		if($(this).html() == "重建搜索词索引")
+		{
+			var r = confirm("确定要重建搜索词索引吗?")
+			if (r == true)
+			{
+				var params = 
+				{
+					password : '97igo',
+					indexType : 2,
+				};
+				T.common.ajax.requestBlock('BuildIndexAction', params, false, function()
+				{
+					alert("后台开始重建...");
+				});
+			}
+		}
+		if($(this).html() == "计算搜索热词")
+		{
+			var r = confirm("确定要重新计算搜索热词吗?")
+			if (r == true)
+			{
+				var params = 
+				{
+					password : '97igo',
+				};
+				T.common.ajax.requestBlock('UpdateHotwordAction', params, false, function()
+				{
+					alert("后台开始计算...");
+				});
+			}
+		}
+		
+	});
+	
+	if(localStorage.getItem("sid") == null)
+	{
+		location = "login.html";
+	}
+</script>

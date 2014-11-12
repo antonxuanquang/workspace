@@ -1,0 +1,117 @@
+<!-- 共享UI.提示信息 -->
+<script id="tpl_index_toast" type="text/template">
+	<div class="toast">
+		<table>
+			<tr>
+				<td align="center">${msg}</td>
+			</tr>
+		</table>
+	</div>
+</script>
+
+<!-- 共享UI.等待 -->
+<script id="tpl_index_wait" type="text/template">
+	<table id="load" class="load">
+		<tr>
+			<td>waiting...</td>
+			<td width="70" style="border-left: solid 1px;cursor: pointer;" onclick="T.common.ui.mask.hide()">X</td>
+		</tr>
+	</table>
+</script>
+
+<!-- 共享UI.确认信息 -->
+<script id="tpl_index_confirm" type="text/template">
+   <div class="confirm">
+      <table>
+         <tr style="background-color: white;">
+            <td align="center" style="height: 100px;width: 250px;font-size: 14px;">${msg}</td>
+         </tr>
+         <tr>
+            <td style="border-top: solid 1px #c1c1c1; text-align: center; height: 35px;">
+               <span class="button" id="index_confirm_ok">确定</span>
+               <span class="button" id="index_confirm_cancel">取消</span>
+            </td>
+         </tr>
+      </table>
+   </div>
+</script>
+
+<!-- 共享UI.分页控件 -->
+<script id="tpl_index_page" type="text/template">
+	<span page="1" class="page_btn" title="第一页"><<</span>
+	<span page="${previous}" class="page_btn" title="上一页"><</span>
+	{@each pages as it,index}
+	{@if it.pageNo===pageNo}
+		<span page="${it.pageNo}" class="page_btn_curr">${it.pageNo}</span>
+	{@else}
+		<span page="${it.pageNo}" class="page_btn">${it.pageNo}</span>
+	{@/if}
+	{@/each}
+	<span page="${next}" class="page_btn" title="下一页">></span>
+	<span id="index_page_totalPages" class="page_btn" style="cursor: default">共${totalPages}页</span>
+	<span>&nbsp;跳转</span>
+	<input id="index_page_pageNo" style="width: 20px; height: 13px;text-align: center" value="${pageNo}"/>
+	<span id="index_page_go" class="page_btn">go</span>
+</script>
+
+<!-- 共享UI.下拉列表 -->
+<script id="tpl_index_select" type="text/template">
+	<table class="select">
+		<tr>
+			<td id="${id}_select" width="*" style="padding-left: 10px;" value="${def.value}">${def.name}</td>
+			<td width="20">
+				<div style=" width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 10px solid white;">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+	<div id="${id}_select_body" style="display: none;">
+		<div align="right" style="padding-right: 10px;">
+			<div style="width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 10px solid #34495E;">&nbsp;</div>
+		</div>
+		<div style="padding: 3px;background-color: #34495E">
+			<div id="${id}_select_scroll" style="max-height: 300px;overflow: auto">
+				{@each items as it,index}
+					<div val="${it.value}" class="selectitem">${it.name}</div>
+				{@/each}
+			</div>
+		</div>
+	</div>
+</script>
+
+<!--共享UI.滚动条-->
+<script id="tpl_index_scroll" type="text/template">
+   <div style="float: left;width: 100%; margin-right: -3px;">
+      <div id="${target}_scroll_body">
+         <!--内容将会被加到这里-->
+      </div>
+   </div>
+   <div style="float: right;width: 3px;">
+      <div id="${target}_scrollbar_wrap" style="display: none">
+         <div id="${target}_scrollbar" style="background-color: #4C6A88;">&nbsp;</div>
+      </div>
+   </div>
+</script>
+
+<!--共享UI.文件上传-->
+<script id="tpl_index_upload" type="text/template">
+   <table>
+      <tr>
+         <td id="${target}_files" valign="top">
+         </td>
+         <td id="${target}_queue" width="250" valign="top">
+         </td>
+      </tr>
+   </table>
+</script>
+
+<!--共享UI.上传附件-->
+<script id="tpl_index_attach" type="text/template">
+	<div url="${url}" class="attach" title="点击删除附件" onclick="$(this).remove()">${filename}</div>
+</script>
+
+<!--共享UI.下载附件-->
+<script id="tpl_index_attach4down" type="text/template">
+   {@each attachment as it}
+      <a class="attach" title="点击下载附件" target="_blank" href="${it.url}">${it.filename}</a>
+   {@/each}
+</script>

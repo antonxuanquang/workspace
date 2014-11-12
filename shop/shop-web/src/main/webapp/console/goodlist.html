@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div style="position: fixed; left: 0px; top: 0px; bottom: 40px; right: 0px;overflow-y: auto">
+			<div style="padding: 4px 0px 0px 0px;">
+				<form class="form-inline" role="form">
+					<div class="form-group">
+						<input id="keyword" type="text" class="form-control" id="name" placeholder="商品关键字">
+					</div>
+					<div class="form-group">
+						<select id="channel" class="form-control">
+							<option value="-1">全部</option>
+							<option value="1">9.9包邮</option>
+							<option value="2">精品服饰</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select id="status" class="form-control">
+							<option value="-1">全部</option>
+							<option value="1">上架</option>
+							<option value="2">下架</option>
+						</select>
+					</div>
+					<button id="search" class="btn btn-default">搜索</button>
+				</form>
+			</div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>商品ID</th>
+						<th>商品名称</th>
+						<th>价格</th>
+						<th>渠道</th>
+						<th>分类</th>
+						<th>展示次数</th>
+						<th>30天销量</th>
+						<th>排名因子</th>
+						<th>状态</th>
+						<th>创建时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="goodList">
+				</tbody>
+			</table>
+		</div>
+		
+		<!-- 分页 -->
+		<div align="center" style="position: fixed; left: 0px; bottom: 0px; right: 0px;height: 54px;">
+			<ul id="pages" class="pagination pagination-sm">
+			</ul>
+		</div>
+	</body>
+</html>
+
+<script src="../script/lib.js" id="seajsnode"></script>
+<script>
+	seajs.use("./script/goodmanager");
+</script>
+
+<!-- 商品列表 -->
+<script id="tpl_goodList" type="text/template">
+	{@each goodList as it,index}
+	<tr title="${it.goodName}">
+		<td>${it.goodId}</td>
+		<td>${it.name}</td>
+		<td>${it.price}</td>
+		{@if it.channel==1}
+			<td>9.9包邮</td>
+		{@else}
+			<td>精品服饰</td>
+		{@/if}
+		<td>${it.category}</td>
+		<td>${it.showTimes}</td>
+		<td>${it.saleCount}</td>
+		<td>${it.boost}</td>
+		{@if it.status==1}
+			<td>上架</td>
+		{@else}
+			<td>下架</td>
+		{@/if}
+		<td>${it.createTime}</td>
+		<td>
+			<button url=${it.goodUrl} type="button" class="btn btn-info btn-xs">查看</button>
+			{@if it.status==1}
+				<button goodId=${it.goodId} type="button" class="btn btn-warning btn-xs">下架</button>
+			{@else}
+				<button goodId=${it.goodId} type="button" class="btn btn-warning btn-xs">上架</button>
+			{@/if}
+			<button goodId=${it.goodId} type="button" class="btn btn-success btn-xs">修改</button>
+			<button goodId=${it.goodId} type="button" class="btn btn-danger btn-xs">删除</button>
+		</td>
+	</tr>
+	{@/each}
+</script>
+
+<!-- 分页 -->	
+<script id="tpl_page" type="text/template">
+	<li pageNo="1" title="首页"><a href="javascript:void(0)"><</a></li>
+	<li pageNo="${previous}" title="上一页"><a href="javascript:void(0)"><<</a></li>
+	{@each pages as it,index}
+	    {@if index%10000000===0}
+			<li pageNo="${it.pageNo}" class="active"><a href="javascript:void(0)">${it.pageNo}</a></li>
+		{@else}
+			<li pageNo="${it.pageNo}"><a href="javascript:void(0)">${it.pageNo}</a></li>
+		{@/if}
+	{@/each}
+	<li pageNo="${next}" title="下一页"><a href="javascript:void(0)">>></a></li>
+	<li pageNo="${last}" title="尾页"><a href="javascript:void(0)">></a></li>
+</script>

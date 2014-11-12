@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MicroTask</title>
+	</head>
+	<body onload="init()">
+	</body>
+</html>
+<script>
+	function getParameter(name)
+	{
+		if (location.href.indexOf("?") == -1 || location.href.indexOf(name + '=') == -1)
+		{
+			return null;
+		}
+		var queryString = decodeURI(location.href.substring(location.href.indexOf("?") + 1));
+		var parameters = queryString.split("&");
+
+		var pos, paraName, paraValue;
+		for (var i = 0; i < parameters.length; i++)
+		{
+			pos = parameters[i].indexOf('=');
+			if (pos == -1)
+			{
+				continue;
+			}
+			paraName = parameters[i].substring(0, pos);
+			paraValue = parameters[i].substring(pos + 1);
+			if (paraName == name)
+			{
+				return unescape(paraValue.replace(/\+/g, " "));
+			}
+		}
+		return null;
+	}
+
+	function init()
+	{
+		var params =
+		{
+			sid : getParameter("sid"),
+			encryptKey : getParameter("encryptKey"),
+			isAdmin : getParameter("isAdmin"),
+			userId : getParameter("userId"),
+			json : getParameter("json"),
+		};
+		localStorage.setItem("sid", params.sid);
+		localStorage.setItem("encryptKey", params.encryptKey);
+		localStorage.setItem("isAdmin", params.isAdmin);
+		localStorage.setItem("userId", params.userId);
+		localStorage.setItem("json", params.json);
+		location = "/";
+	}
+</script>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="win32" basedir="./">
+
+	<!--构建客户端client-->
+	<target name="build_client">
+		<delete dir="${basedir}/im_install/win32/client/" />
+		<copydir dest="${basedir}/im_install/win32/client/config" src="${basedir}/im-client-branch/config" />
+		<copydir dest="${basedir}/im_install/win32/client/resource" src="${basedir}/im-client-branch/resource/" />
+		<copydir dest="${basedir}/im_install/win32/client/runtime" src="${basedir}/im_install/win32/launch/runtime" />
+		<copy tofile="${basedir}/im_install/win32/client/client.jar" file="${basedir}/im-client-branch/target/im-client-branch-1.0-jar-with-dependencies.jar" />
+		<delete file="${basedir}/im_install/win32/client/config/setting" />
+		<copy tofile="${basedir}/im_install/win32/client/win32_client.exe" file="${basedir}/im_install/win32/launch/win32_client.exe" />
+	</target>
+
+	<!--构建控制台console-->
+	<!--
+	<target name="build_console" depends="build_client">
+		<delete dir="${basedir}/im_install/win32/console/" />
+		<copydir dest="${basedir}/im_install/win32/console/config" src="${basedir}/im-console/config" />
+		<copydir dest="${basedir}/im_install/win32/console/runtime" src="${basedir}/im_install/win32/launch/runtime" />
+		<copy tofile="${basedir}/im_install/win32/console/console.jar" file="${basedir}/im-console/target/im-console-1.0-jar-with-dependencies.jar" />
+		<copy tofile="${basedir}/im_install/win32/console/win32_console.exe" file="${basedir}/im_install/win32/launch/win32_console.exe" />
+	</target>
+	-->
+
+	<!--运行-->
+	<target name="run" depends="build_client">
+	</target>
+
+</project>

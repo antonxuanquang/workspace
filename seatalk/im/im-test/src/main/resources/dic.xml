@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dic>
+	<country>
+		<item id="1">中国</item>
+		<item id="2">美国</item>
+		<item id="3">日本</item>
+	</country>
+	<language>
+		<item id="1">汉语</item>
+		<item id="2">英语</item>
+		<item id="3">法语</item>
+	</language>
+	<gender>
+		<item id="1">男</item>
+		<item id="0">女</item>
+	</gender>
+	<age>
+		<item>20</item>
+		<item>21</item>
+	</age>
+</dic>

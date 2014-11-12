@@ -1,0 +1,1 @@
+java -cp ... com.sean.bigdata.util.HDFSImportor -hdfs hdfs://master:8020 -file /tmp/text -split '\t' -reportId 10080 -userKey kjdslfkjsdfsdfsdfsdfsdf

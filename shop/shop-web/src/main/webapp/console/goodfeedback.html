@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div style="position: fixed; left: 0px; top: 0px; bottom: 40px; right: 0px;overflow-y: auto">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>商品ID</th>
+						<th>商品名称</th>
+						<th>渠道</th>
+						<th>展示次数</th>
+						<th>反馈异常</th>
+						<th>反馈时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="feedbackList">
+				</tbody>
+			</table>
+		</div>
+		
+		<div align="center" style="position: fixed; left: 0px; bottom: 0px; right: 0px;height: 54px;">
+			<ul id="pages" class="pagination pagination-sm">
+			</ul>
+		</div>
+	</body>
+</html>
+
+<script src="../script/lib.js" id="seajsnode"></script>
+<script>
+	seajs.use("./script/goodmanager");
+</script>
+
+<!-- 反馈列表 -->
+<script id="tpl_feedbackList" type="text/template">
+	{@each feedbackList as it,index}
+	<tr title="${it.goodName}">
+		<td>${it.goodId}</td>
+		<td>${it.name}</td>
+		{@if it.channel==1}
+			<td>9.9包邮</td>
+		{@else}
+			<th>精品服饰</th>
+		{@/if}
+		<td>${it.showTimes}</td>
+		<td>淘宝已下架</td>
+		<td>${it.feedbackTime}</td>
+		<td>
+			<button url=${it.goodUrl} type="button" class="btn btn-info btn-xs">查看</button>
+			<button goodId=${it.goodId} type="button" class="btn btn-warning btn-xs">下架</button>
+			<button feedbackId=${it.feedbackId} type="button" class="btn btn-danger btn-xs">删除反馈</button>
+			<button goodId=${it.goodId} type="button" class="btn btn-danger btn-xs">删除商品</button>
+		</td>
+	</tr>
+	{@/each}
+</script>
+
+<!-- 分页 -->	
+<script id="tpl_page" type="text/template">
+	<li pageNo="1" title="首页"><a href="javascript:void(0)"><</a></li>
+	<li pageNo="${previous}" title="上一页"><a href="javascript:void(0)"><<</a></li>
+	{@each pages as it,index}
+	    {@if index%10000000===0}
+			<li pageNo="${it.pageNo}" class="active"><a href="javascript:void(0)">${it.pageNo}</a></li>
+		{@else}
+			<li pageNo="${it.pageNo}"><a href="javascript:void(0)">${it.pageNo}</a></li>
+		{@/if}
+	{@/each}
+	<li pageNo="${next}" title="下一页"><a href="javascript:void(0)">>></a></li>
+	<li pageNo="${last}" title="尾页"><a href="javascript:void(0)">></a></li>
+</script>
