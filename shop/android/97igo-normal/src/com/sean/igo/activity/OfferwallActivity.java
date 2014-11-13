@@ -63,7 +63,7 @@ public class OfferwallActivity extends FragmentActivity implements OnClickListen
 		this.clearCache();
 
 		// 初始化积分墙
-		app = AppConnect.getInstance("dd0d7365834f5d60efb0f12873b8d4ee", "waps", this);
+		app = AppConnect.getInstance("b04222c03b0afea639a9ff345d73ee27", "waps", this);
 	}
 
 	public void clearCache()
