@@ -178,7 +178,7 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		clearCache();
 
 		// 初始化统计器，并通过代码设置APP_ID, APP_PID
-		app = AppConnect.getInstance("ba4081c04f252e19f34ef3b06b6dc20d", "waps", this);	
+		app = AppConnect.getInstance("b04222c03b0afea639a9ff345d73ee27", "waps", this);	
 		app.cleanCache();
 
 		// 注入数据
