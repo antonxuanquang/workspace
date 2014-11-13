@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -39,6 +41,7 @@ public class HDFSImportor
 		options.addOption("split", true, "记录的分割字符");
 		options.addOption("reportId", true, "导入报表系统的报表ID");
 		options.addOption("userKey", true, "报表归属用户的key");
+		options.addOption("time", true, "执行时间, 格式: yyyyMMddHHmmss");
 
 		CommandLineParser parser = new PosixParser();
 		CommandLine cmd = parser.parse(options, args);
@@ -47,29 +50,48 @@ public class HDFSImportor
 		String file = cmd.getOptionValue("file");
 		String split = cmd.getOptionValue("split");
 		long reportId = Long.parseLong(cmd.getOptionValue("reportId"));
+		long time = Long.parseLong(cmd.getOptionValue("time"));
 		String userKey = cmd.getOptionValue("userKey");
+
+		Map<String, String> params = new HashMap<>();
+		params.put("hdfs", hdfs);
+		params.put("file", file);
+		params.put("split", split);
+		params.put("reportId", reportId + "");
+		params.put("time", time + "");
+		params.put("userKey", userKey);
+		logger.info("参数列表: " + params);
 
 		// 启动持久层框架
 		Config.readConfiguration();
 		PersistLaucher.getInstance().launch(new String[] { "com.sean.bigdata" });
 
-		ReportEntity report1 = checkReport(1);
-		List<String> data1 = getHdfsData("hdfs://master:8020", "/tmp/viewlog/count/value_1");
-		String json1 = checkData(report1, data1, "\t");
-		System.out.println(json1);
-		insert(report1, json1, 20141101);
+		ReportEntity report = checkReport(reportId);
+		List<String> data = getHdfsData(hdfs, file);
+		String json = checkData(report, data, split);
+		logger.info("生成json: " + json);
+		insert(report, json, time);
 
-		ReportEntity report2 = checkReport(2);
-		List<String> data2 = getHdfsData("hdfs://master:8020", "/tmp/viewlog/count/value_2");
-		String json2 = checkData(report2, data2, "\t");
-		System.out.println(json2);
-		insert(report2, json2, 20141101);
+		// ReportEntity report1 = checkReport(1);
+		// List<String> data1 = getHdfsData("hdfs://master:8020",
+		// "/tmp/viewlog/count/value_1");
+		// String json1 = checkData(report1, data1, "\t");
+		// System.out.println(json1);
+		// insert(report1, json1, 20141101000000L);
 
-		ReportEntity report3 = checkReport(3);
-		List<String> data3 = getHdfsData("hdfs://master:8020", "/tmp/viewlog/count/value_3");
-		String json3 = checkData(report3, data3, "\t");
-		System.out.println(json3);
-		insert(report3, json3, 20141101);
+		// ReportEntity report2 = checkReport(2);
+		// List<String> data2 = getHdfsData("hdfs://master:8020",
+		// "/tmp/viewlog/count/value_2");
+		// String json2 = checkData(report2, data2, "\t");
+		// System.out.println(json2);
+		// insert(report2, json2, 20141101000000L);
+		//
+		// ReportEntity report3 = checkReport(3);
+		// List<String> data3 = getHdfsData("hdfs://master:8020",
+		// "/tmp/viewlog/count/value_3");
+		// String json3 = checkData(report3, data3, "\t");
+		// System.out.println(json3);
+		// insert(report3, json3, 20141101000000L);
 	}
 
 	private static ReportEntity checkReport(long reportId)
@@ -252,7 +274,9 @@ public class HDFSImportor
 			ee.executeTime = time;
 			ee.reportId = report.reportId;
 			ee.result = json;
+
 			Dao.persist(ExecuteEntity.class, ee);
+			logger.info("成功导入执行结果:" + ee.getValues());
 		}
 		catch (Exception e)
 		{
