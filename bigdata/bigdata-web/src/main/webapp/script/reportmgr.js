@@ -7,29 +7,29 @@ define(function(require, exports, module)
 
 	require('./common');
 
-	var myreport =
+	var reportmgr =
 	{
 		pageNo : 1, // 当前页码
 
 		// 初始化
 		init : function()
 		{
-			T.common.user.checkLogin();
-			myreport.getReportList();
+			T.common.user.checkAdmin();
+			reportmgr.getReportList();
 		},
 
 		// 读取报表列表
 		getReportList : function()
 		{
-			var pageNo = myreport.pageNo;
+			var pageNo = reportmgr.pageNo;
 			$('#listwrap').html('<div align="center"><img src="http://seanzwx.github.io/97igo/image/loading.gif"/></div>');
 
 			// 读取报表列表
 			var params =
 			{
-				pageNo : myreport.pageNo,
+				pageNo : reportmgr.pageNo,
 			};
-			T.common.ajax.requestBlock("InquireMyReportListAction", params, false, function(jsonstr, data, code, msg)
+			T.common.ajax.requestBlock("InquireReportListAction", params, false, function(jsonstr, data, code, msg)
 			{
 				var tplData =
 				{
@@ -38,15 +38,23 @@ define(function(require, exports, module)
 				var tpl = $('#tpl_reportList').html();
 				var html = juicer(tpl, tplData);
 				$('#listwrap').html(html);
-				
+
 				$('#listwrap button').bind('click', function()
 				{
 					var reportId = $(this).attr("reportId");
 					var btn = $(this).html();
-					if(btn == "查看")
+					if (btn == "查看")
 					{
 						var type = $(this).attr('reportType');
 						window.open("./execute_" + type + ".html?reportId=" + reportId);
+					}
+					else if (btn == '删除')
+					{
+
+					}
+					else if (btn == "授权")
+					{
+
 					}
 				});
 
@@ -75,8 +83,8 @@ define(function(require, exports, module)
 				$('#pages li').bind('click', function()
 				{
 					var pageNo = $(this).attr("pageNo");
-					myreport.pageNo = pageNo;
-					myreport.getReportList();
+					reportmgr.pageNo = pageNo;
+					reportmgr.getReportList();
 				});
 			});
 		},
@@ -84,9 +92,9 @@ define(function(require, exports, module)
 
 	var api =
 	{
-		init : myreport.init,
+		init : reportmgr.init,
 	};
 
-	exports.myreport = api;
-	T.myreport = api;
+	exports.reportmgr = api;
+	T.reportmgr = api;
 });

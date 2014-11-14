@@ -10,7 +10,6 @@ import com.sean.bigdata.constant.P;
 import com.sean.bigdata.entity.AclEntity;
 import com.sean.bigdata.entity.UserEntity;
 import com.sean.common.enums.AppServerType;
-import com.sean.common.util.SecurityUtil;
 import com.sean.log.core.LogFactory;
 import com.sean.persist.core.Dao;
 import com.sean.persist.ext.Condition;
@@ -70,7 +69,7 @@ public class BDContext extends FrameworkSpi
 	@Override
 	public String getEncryptKey(String sid)
 	{
-		return SecurityUtil.desEncrypt(sid, "bigdata");
+		return "27819cfe72583a34d13a40bb74154c91";
 	}
 
 	@Override

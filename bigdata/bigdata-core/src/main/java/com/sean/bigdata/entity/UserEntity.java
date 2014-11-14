@@ -24,6 +24,8 @@ public class UserEntity extends Entity implements Serializable
 	public String name;
 	@ColumnConfig(descr = "角色, 1-管理员, 2-普通用户")
 	public byte role;
+	@ColumnConfig(descr = "用户加密key")
+	public String encryptKey;
 
 	@Override
 	public Object getKey()
@@ -40,12 +42,13 @@ public class UserEntity extends Entity implements Serializable
 	@Override
 	public Map<String, Object> getValues()
 	{
-		Map<String, Object> map = new HashMap<>(5);
+		Map<String, Object> map = new HashMap<>(6);
 		map.put("userId", userId);
 		map.put("username", username);
 		map.put("password", password);
 		map.put("name", name);
 		map.put("role", role);
+		map.put("encryptKey", encryptKey);
 		return map;
 	}
 
@@ -57,6 +60,7 @@ public class UserEntity extends Entity implements Serializable
 		this.password = vals.getString("password");
 		this.name = vals.getString("name");
 		this.role = vals.getByte("role");
+		this.encryptKey = vals.getString("encryptKey");
 	}
 
 	public static void main(String[] args)

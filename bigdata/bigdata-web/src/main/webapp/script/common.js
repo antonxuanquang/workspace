@@ -13,7 +13,7 @@ define(function(require, exports, module)
 		config :
 		{
 			// 请求地址
-			requestUrl : ["http://192.168.253.81:8080/bigdata-web/api/v1/", "http://seanzwx.github.io/97igo/json/"],
+			requestUrl : ["http://localhost:8080/bigdata-web/api/v1/", "http://seanzwx.github.io/97igo/json/"],
 
 			// 用户开放接口
 			api :
@@ -43,6 +43,25 @@ define(function(require, exports, module)
 				getEncryptKey : function()
 				{
 					return localStorage.getItem("encryptKey");
+				},
+				
+				// 验证登录
+				checkLogin : function()
+				{
+					if(common.user.api.getSid() == null)
+					{
+						location = "login.html?link=" + location.href;
+					}
+				},
+				
+				// 验证登录
+				checkAdmin : function()
+				{
+					common.user.api.checkLogin();
+					if(localStorage.getItem("isAdmin") != 1)
+					{
+						location = "login.html?link=" + location.href;
+					}
 				},
 			},
 		},
@@ -163,9 +182,14 @@ define(function(require, exports, module)
 									}
 								}
 								// 其他异常
-								else
+								else if(state == "Denied")
 								{
 									alert(msg);
+									location = "login.html?link=" + location.href;
+								}
+								else
+								{
+									alert(msg);	
 								}
 							}
 							catch (error)

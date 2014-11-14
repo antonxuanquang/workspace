@@ -16,7 +16,7 @@ import com.sean.service.core.Session;
 
 @ActionConfig(module = M.class, authenticate = false)
 @MustParamsConfig({ P.password, P.username })
-@ReturnParamsConfig({ R.sid, R.encryptKey })
+@ReturnParamsConfig({ R.sid, R.encryptKey, R.isAdmin })
 @DescriptConfig("登录")
 public class LoginAction extends Action
 {
@@ -29,11 +29,15 @@ public class LoginAction extends Action
 		UserEntity user = Dao.loadByColumn(UserEntity.class, "username", username);
 		if (user != null && user.password.equals(password))
 		{
-			String sid = SecurityUtil.desEncrypt(String.valueOf(user.userId), "bigdata");
+			String sid = SecurityUtil.desEncrypt(String.valueOf(user.userId), "27819cfe72583a34d13a40bb74154c91");
 			session.setReturnAttribute(R.sid, sid);
-			session.setReturnAttribute(R.encryptKey, SecurityUtil.desEncrypt(sid, "bigdata"));
+			session.setReturnAttribute(R.encryptKey, "27819cfe72583a34d13a40bb74154c91");
+			session.setReturnAttribute(R.isAdmin, user.role == 1 ? 1 : 0);
 			session.success();
 		}
-		throw new BusinessException("密码错误", 1);
+		else
+		{
+			throw new BusinessException("用户名或密码错误", 1);
+		}
 	}
 }

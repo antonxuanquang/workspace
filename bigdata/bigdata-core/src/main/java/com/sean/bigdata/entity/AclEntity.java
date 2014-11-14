@@ -17,9 +17,9 @@ public class AclEntity extends Entity implements Serializable
 	@ColumnConfig(primaryKey = true, descr = "用户ID")
 	public long aclId;
 	@ColumnConfig(descr = "帐号")
-	public String userId;
+	public long userId;
 	@ColumnConfig(descr = "密码")
-	public String reportId;
+	public long reportId;
 	@ColumnConfig(descr = "角色, 1-管理员, 2-普通用户")
 	public long authTime;
 
@@ -50,8 +50,8 @@ public class AclEntity extends Entity implements Serializable
 	public void setValues(EntityValue vals)
 	{
 		this.aclId = vals.getLong("aclId");
-		this.userId = vals.getString("userId");
-		this.reportId = vals.getString("reportId");
+		this.userId = vals.getLong("userId");
+		this.reportId = vals.getLong("reportId");
 		this.authTime = vals.getLong("authTime");
 	}
 

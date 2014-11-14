@@ -14,6 +14,11 @@
 		<!-- 内容 -->
 		<div id="listwrap" align="center">
 		</div>
+		
+		<div class="container" align="center" style="margin-top: -30px;">
+			<ul id="pages" class="pagination">
+			</ul>
+		</div>	
 	</body>
 </html>
 
@@ -39,9 +44,9 @@
 		}
     }
 
-	seajs.use("./script/myreport", function()
+	seajs.use("./script/reportmgr", function()
 	{
-		T.myreport.init();
+		T.reportmgr.init();
 	});
 </script>
 

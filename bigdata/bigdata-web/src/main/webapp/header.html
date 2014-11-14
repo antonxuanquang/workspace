@@ -21,16 +21,28 @@
 				<li>
 					<a href="myreport.html" class="nav_li" target="_parent">我的报表</a>
 				</li>
-				<li>
+				<li style="display: none">
 					<a href="create.html" class="nav_li" target="_parent">创建报表</a>
 				</li>
-				<li>
+				<li style="display: none">
 					<a href="reportmgr.html" class="nav_li" target="_parent">报表管理</a>
 				</li>
-				<li>
+				<li style="display: none">
 					<a href="create.html" class="nav_li" target="_parent">用户管理</a>
 				</li>
 			</ul>
 		</div>
 	</body>
 </html>
+
+<script>
+	var isAdmin = localStorage.getItem("isAdmin");
+	if(isAdmin == 1)
+	{
+		var list = document.getElementsByTagName('li');
+		for(var i = 0 ; i < list.length; i++)
+		{
+			list[i].style.display = 'block';
+		}
+	}
+</script>

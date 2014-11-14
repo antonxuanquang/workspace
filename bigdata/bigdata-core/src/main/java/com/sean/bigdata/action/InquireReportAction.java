@@ -1,6 +1,7 @@
 package com.sean.bigdata.action;
 
 import com.sean.bigdata.bean.ReportBean;
+import com.sean.bigdata.constant.A;
 import com.sean.bigdata.constant.M;
 import com.sean.bigdata.constant.P;
 import com.sean.bigdata.constant.R;
@@ -12,7 +13,7 @@ import com.sean.service.annotation.ReturnParamsConfig;
 import com.sean.service.core.Action;
 import com.sean.service.core.Session;
 
-@ActionConfig(module = M.class, authenticate = false)
+@ActionConfig(module = M.class, permission = A.Admin | A.ReportACL)
 @MustParamsConfig({ P.reportId })
 @ReturnParamsConfig({ R.reportDetail })
 @DescriptConfig("查询报表")

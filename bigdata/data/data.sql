@@ -71,12 +71,12 @@ insert into t_execute values(58, 6, 20140801000000, '[{"v":"17", "c":[{"c":"1800
 insert into t_execute values(59, 6, 20140901000000, '[{"v":"18", "c":[{"c":"1800"}, {"c":"1"}]}, {"v":"8", "c":[{"c":"1800"}, {"c":"4"}]}, {"v":"9", "c":[{"c":"2000"}, {"c":"1"}]}, {"v":"19", "c":[{"c":"2000"}, {"c":"4"}]}]');
 
 
-insert into t_user values(1, '546806', '123456', '张伟旭', 1);
-insert into t_user values(2, '130519', '123456', '张海', 2);
+insert into t_user values(1, '546806', '123456', '张伟旭', 1, 'bigdata-sean');
+insert into t_user values(2, '130519', '123456', '张海', 2, 'bigdata-sea');
 
 insert into t_acl values(1, 1, 1, 20141101000000);
-insert into t_acl values(1, 1, 2, 20141101000000);
-insert into t_acl values(1, 1, 3, 20141101000000);
-insert into t_acl values(1, 1, 4, 20141101000000);
-insert into t_acl values(1, 1, 5, 20141101000000);
-insert into t_acl values(1, 1, 6, 20141101000000);
+insert into t_acl values(2, 1, 2, 20141101000000);
+insert into t_acl values(3, 1, 3, 20141101000000);
+insert into t_acl values(4, 1, 4, 20141101000000);
+insert into t_acl values(5, 1, 5, 20141101000000);
+insert into t_acl values(6, 1, 6, 20141101000000);

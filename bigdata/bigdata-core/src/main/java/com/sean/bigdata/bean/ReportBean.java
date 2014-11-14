@@ -1,5 +1,9 @@
 package com.sean.bigdata.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.sean.bigdata.entity.AclEntity;
 import com.sean.bigdata.entity.ReportEntity;
 import com.sean.common.ioc.BeanConfig;
 import com.sean.persist.core.Dao;
@@ -11,6 +15,16 @@ import com.sean.persist.ext.Order;
 @BeanConfig("")
 public class ReportBean
 {
+	public List<ReportEntity> getReportList(List<AclEntity> aclList)
+	{
+		List<Object> ids = new ArrayList<>(aclList.size());
+		for (AclEntity it : aclList)
+		{
+			ids.add(it.reportId);
+		}
+		return Dao.loadByIds(ReportEntity.class, ids);
+	}
+
 	public PageData<ReportEntity> getReportList(long creater, int pageNo, int pageSize)
 	{
 		return Dao.getListByPage(ReportEntity.class, new Condition("creater", creater), new Order("reportId", OrderEnum.Desc), pageNo, pageSize, -1);

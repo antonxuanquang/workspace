@@ -18,6 +18,9 @@ public class R
 
 	@ReturnParameterConfig(format = Format.String, descr = "encryptKey")
 	public static final String encryptKey = "encryptKey";
+	
+	@ReturnParameterConfig(format = Format.Numeric, descr = "isAdmin")
+	public static final String isAdmin = "isAdmin";
 
 	@ReturnParameterConfig(descr = "报表列表", format = Format.EntityList, entity = ReportEntity.class)
 	@FieldsConfig("*")

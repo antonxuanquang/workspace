@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>bigdata-大数据报表登录</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" style="width: 360px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">BigData报表 - 登录</h4>
+					</div>
+					<div class="modal-body">
+						<form role="form">
+							<div class="form-group">
+								<label for="name">帐 号</label>
+								<input value="546806" class="form-control" id="username" placeholder="请输入密码">
+							</div>
+							<div class="form-group">
+								<label for="name">密 码</label>
+								<input type="password" value="123456" class="form-control" id="password" placeholder="请输入密码">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button id="login" type="button" class="btn btn-primary btn-lg btn-block">登 录</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="../script/lib.js" id="seajsnode"></script>
+<script>
+	$('#myModal').modal();
+	seajs.use("./script/common"); 
+	$('#login').bind('click', function()
+	{
+		var params = 
+		{
+			username : $('#username').val(),
+			password : $('#password').val()
+		};
+		T.common.ajax.requestBlock("LoginAction", params, false , function(jsonstr, data, code, msg)
+		{
+			localStorage.setItem("sid", data.sid);
+			localStorage.setItem("encryptKey", data.encryptKey);
+			localStorage.setItem("isAdmin", data.isAdmin);
+			
+			var link = T.common.util.getParameter('link');
+			if(link != null && link != '')
+			{
+				location = link;
+			}
+			else
+			{
+				location = "myreport.html";
+			}
+		});
+	});
+</script>
