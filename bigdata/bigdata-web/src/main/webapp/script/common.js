@@ -13,7 +13,7 @@ define(function(require, exports, module)
 		config :
 		{
 			// 请求地址
-			requestUrl : ["http://localhost:8080/bigdata-web/api/v1/", "http://seanzwx.github.io/97igo/json/"],
+			requestUrl : ["http://192.168.253.81:8080/bigdata-web/api/v1/", "http://seanzwx.github.io/97igo/json/"],
 
 			// 用户开放接口
 			api :

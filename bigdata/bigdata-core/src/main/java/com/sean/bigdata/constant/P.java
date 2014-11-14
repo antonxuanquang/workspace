@@ -15,4 +15,10 @@ public class P
 	
 	@ParameterConfig(dataType = DataType.Long, descr = "年份或者月份, yyyyMM, yyyy")
 	public static final String yearOrMonth = "yearOrMonth";
+	
+	@ParameterConfig(dataType = DataType.String, descr = "帐号")
+	public static final String username = "username";
+	
+	@ParameterConfig(dataType = DataType.String, descr = "密码")
+	public static final String password = "password";
 }

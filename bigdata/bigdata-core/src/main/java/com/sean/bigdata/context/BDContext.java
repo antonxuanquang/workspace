@@ -1,11 +1,22 @@
 package com.sean.bigdata.context;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
+import com.sean.bigdata.constant.A;
+import com.sean.bigdata.constant.P;
+import com.sean.bigdata.entity.AclEntity;
+import com.sean.bigdata.entity.UserEntity;
 import com.sean.common.enums.AppServerType;
+import com.sean.common.util.SecurityUtil;
 import com.sean.log.core.LogFactory;
+import com.sean.persist.core.Dao;
+import com.sean.persist.ext.Condition;
 import com.sean.service.annotation.ApplicationContextConfig;
 import com.sean.service.core.FrameworkSpi;
+import com.sean.service.core.PermissionProvider;
 import com.sean.service.core.Session;
 import com.sean.service.entity.ActionEntity;
 
@@ -23,13 +34,43 @@ public class BDContext extends FrameworkSpi
 	@Override
 	public boolean checkPermission(Session session, int permissionId)
 	{
+		if (permissionId != PermissionProvider.None)
+		{
+			// 需要管理员权限
+			if ((permissionId & A.Admin) != 0)
+			{
+				long userId = session.getUserId();
+				UserEntity user = Dao.loadById(UserEntity.class, userId);
+				if (user != null && user.role == 1)
+				{
+					return true;
+				}
+			}
+
+			// 需要报表访问权限
+			if ((permissionId & A.ReportACL) != 0)
+			{
+				long userId = session.getUserId();
+				long reportId = session.getLongParameter(P.reportId);
+
+				List<Condition> conds = new ArrayList<>();
+				conds.add(new Condition("userId", userId));
+				conds.add(new Condition("reportId", reportId));
+				AclEntity acl = Dao.loadByCond(AclEntity.class, conds);
+				if (acl != null)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String getEncryptKey(String sid)
 	{
-		return "bigdata";
+		return SecurityUtil.desEncrypt(sid, "bigdata");
 	}
 
 	@Override

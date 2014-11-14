@@ -25,3 +25,22 @@ create table t_execute
     result   varchar(255)   comment "执行结果json",
     constraint t_execute_pk primary key (executeId)
 ) engine=myisam comment "执行实体";
+
+create table t_user
+(
+    userId   bigint   comment "用户ID",
+    username   varchar(255)   comment "帐号",
+    password   varchar(255)   comment "密码",
+    name   varchar(255)   comment "姓名",
+    role   tinyint   comment "角色, 1-管理员, 2-普通用户",
+    constraint t_user_pk primary key (userId)
+) engine=myisam comment "用户实体";
+
+create table t_acl
+(
+    aclId   bigint   comment "用户ID",
+    userId   varchar(255)   comment "帐号",
+    reportId   varchar(255)   comment "密码",
+    authTime   bigint   comment "角色, 1-管理员, 2-普通用户",
+    constraint t_acl_pk primary key (aclId)
+) engine=myisam comment "报表访问实体";

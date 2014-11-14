@@ -13,10 +13,16 @@ public class R
 	@ReturnParameterConfig(format = Format.Numeric, descr = "报表ID")
 	public static final String reportId = "reportId";
 
+	@ReturnParameterConfig(format = Format.String, descr = "sid")
+	public static final String sid = "sid";
+
+	@ReturnParameterConfig(format = Format.String, descr = "encryptKey")
+	public static final String encryptKey = "encryptKey";
+
 	@ReturnParameterConfig(descr = "报表列表", format = Format.EntityList, entity = ReportEntity.class)
 	@FieldsConfig("*")
 	public static final String reportList = "reportList";
-	
+
 	@ReturnParameterConfig(descr = "报表", format = Format.Entity, entity = ReportEntity.class)
 	@FieldsConfig("*")
 	public static final String reportDetail = "reportDetail";
