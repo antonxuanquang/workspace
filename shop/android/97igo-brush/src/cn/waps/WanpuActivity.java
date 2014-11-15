@@ -178,8 +178,11 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		clearCache();
 
 		// 初始化统计器，并通过代码设置APP_ID, APP_PID
-		app = AppConnect.getInstance("b04222c03b0afea639a9ff345d73ee27", "waps", this);	
-		app.cleanCache();
+		if (app == null)
+		{
+			app = AppConnect.getInstance("b04222c03b0afea639a9ff345d73ee27", "waps", this);	
+			app.cleanCache();	
+		}
 
 		// 注入数据
 		StringBuilder sb = new StringBuilder("\n注入SDK数据:\n");
@@ -210,6 +213,12 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		tvSDK.setText(sb.toString());
 
 		SDKUtils.showUrl(app, this);
+		
+		// 注入SDK
+		SDKUtils.setUser(user);
+		clearCache();
+		app = AppConnect.getInstance("b04222c03b0afea639a9ff345d73ee27", "waps", this);	
+		app.cleanCache();	
 	}
 
 	@Override
