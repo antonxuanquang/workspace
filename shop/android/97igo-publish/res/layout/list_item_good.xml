@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/grid_item_selector"
+    android:orientation="horizontal"
+    android:padding="6dp" >
+
+    <ImageView
+        android:id="@+id/goodImage"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginRight="6dp"
+        android:src="@drawable/test" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/goodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:text="雅圣利2014秋季新款男士毛衣圆领套头男"
+            android:textColor="#756053"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goodName"
+            android:layout_marginTop="4dp"
+            android:text="¥ 6.99"
+            android:textColor="#E2691B"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/signal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/price"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/price"
+            android:background="#F56427"
+            android:padding="3dp"
+            android:text="包邮"
+            android:textColor="#ffffff"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/saleCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textColor="#B9C7C9"
+            android:text="30天售出1700件"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -67,6 +67,21 @@ public class UserHouse
 			}
 		}
 	}
+	
+	public static User getTestUser() throws Exception
+	{
+		// 861466010216571	460030938312273	0a:cd:54:d8:c3:5f	2.3.6	G12	480	800	htc
+		User user = new User();
+		user.imei = "861466010216571";
+		user.imsi = "460030938312273";
+		user.mac = "0a:cd:54:d8:c3:5f";
+		user.brand = "htc";
+		user.model = "G12";
+		user.version = "2.3.6";
+		user.screenHeight = "800";
+		user.screenWidth = "480";
+		return user;
+	}
 
 	/**
 	 * 从part2 / part3 随机读取用户
