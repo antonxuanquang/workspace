@@ -161,6 +161,14 @@
 
         <LinearLayout style="@style/line_gray" />
 
+        <TextView
+            android:id="@+id/me_duomeng"
+            style="@style/main_tab_list_item"
+            android:drawableLeft="@drawable/mycollect"
+            android:text="必备软件推荐" />
+
+        <LinearLayout style="@style/line_gray" />
+
         <!--
         <TextView
             android:id="@+id/me_setting"
