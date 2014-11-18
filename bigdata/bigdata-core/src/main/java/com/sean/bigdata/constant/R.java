@@ -1,7 +1,9 @@
 package com.sean.bigdata.constant;
 
+import com.sean.bigdata.entity.AclEntity;
 import com.sean.bigdata.entity.ExecuteEntity;
 import com.sean.bigdata.entity.ReportEntity;
+import com.sean.bigdata.entity.UserEntity;
 import com.sean.service.annotation.FieldsConfig;
 import com.sean.service.annotation.ReturnParameterConfig;
 import com.sean.service.annotation.ReturnParameterProviderConfig;
@@ -18,7 +20,7 @@ public class R
 
 	@ReturnParameterConfig(format = Format.String, descr = "encryptKey")
 	public static final String encryptKey = "encryptKey";
-	
+
 	@ReturnParameterConfig(format = Format.Numeric, descr = "isAdmin")
 	public static final String isAdmin = "isAdmin";
 
@@ -36,4 +38,12 @@ public class R
 
 	@ReturnParameterConfig(format = Format.Numeric, descr = "总记录数")
 	public static final String totalrecord = "totalrecord";
+
+	@ReturnParameterConfig(descr = "用户列表", format = Format.EntityList, entity = UserEntity.class)
+	@FieldsConfig("*")
+	public static final String userList = "userList";
+
+	@ReturnParameterConfig(descr = "报表权限列表", format = Format.EntityList, entity = AclEntity.class)
+	@FieldsConfig("*")
+	public static final String aclList = "aclList";
 }

@@ -54,7 +54,28 @@ define(function(require, exports, module)
 					}
 					else if (btn == "授权")
 					{
-
+						// 读取用户列表
+						T.common.ajax.requestBlock("InquireUserListAction", null, false, function(jsonstr, data, code, msg)
+						{
+							var tplData =
+							{
+								userList : data.userList
+							};
+							var tpl = $('#tpl_userList').html();
+							var html = juicer(tpl, tplData);
+							$('#userList_table').html(html);
+							$('#userlist_modal').modal();
+							
+							// 读取访问权限列表
+							T.common.ajax.requestBlock("InquireAclListAction", {reportId : reportId}, false, function(jsonstr, data, code, msg)
+							{
+								for(var i = 0; i < data.aclList.length; i++)
+								{
+									var it = data.aclList[i];
+									$('#userList_table input[userId='+ it.userId +']').prop('checked', true);
+								}
+							});
+						});
 					}
 				});
 

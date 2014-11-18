@@ -19,6 +19,22 @@
 			<ul id="pages" class="pagination">
 			</ul>
 		</div>	
+		
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="userlist_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		   <div class="modal-dialog">
+		      <div class="modal-content">
+		         <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		            <h4 class="modal-title" id="myModalLabel">报表授权</h4>
+		         </div>
+		         <div id="userList_table" class="modal-body">
+		         </div>
+		         <div class="modal-footer">
+		            <button type="button" class="btn btn-primary">保存授权</button>
+		         </div>
+		      </div>
+		</div>
 	</body>
 </html>
 
@@ -96,4 +112,35 @@
 	{@/each}
 	<li pageNo="${next}" title="下一页"><a href="javascript:void(0)">>></a></li>
 	<li pageNo="${last}" title="尾页"><a href="javascript:void(0)">></a></li>
+</script>
+
+<script id="tpl_userList" type="text/template">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>
+					<input type="checkbox" />
+				</th>
+				<th>用户ID</th>
+				<th>姓名</th>
+				<th>帐号</th>
+				<th>角色</th>
+				<th>密钥</th>
+			</tr>
+		</thead>
+		<tbody>
+			{@each userList as it,index}
+			<tr>
+				<td>
+					<input userId="${it.userId}" type="checkbox" />
+				</td>
+				<td>${it.userId}</td>
+				<td>${it.name}</td>
+				<td>${it.username}</td>
+				<td>${it.role}</td>
+				<td>${it.encryptKey}</td>
+			</tr>
+			{@/each}
+		</tbody>
+	</table>
 </script>
