@@ -3,6 +3,7 @@ package cn.waps;
 import java.lang.reflect.Field;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -17,6 +18,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import cn.domob.data.OErrorInfo;
+import cn.domob.data.OManager;
+import cn.domob.data.SqlLiteUtil;
 
 import com.sean.igou.R;
 
@@ -27,10 +31,12 @@ import com.sean.igou.R;
 public class WanpuActivity extends FragmentActivity implements OnClickListener
 {
 	private ImageView btnBack;
-	private TextView btnEarn, btnInit, btnClear, btnChangeUser, tvUserHouse, tvUser, tvSDK, btnChengguolv, btnDailyClear;
+	private TextView btnEarn, btnInit, btnClear, btnChangeUser, tvUserHouse, tvUser, tvSDK, btnChengguolv,
+			btnDailyClear, btnDuomeng, btnDuomengjifen;
 	private EditText etTimes, etTime;
 
 	private static AppConnect app;
+	private OManager mDomobOfferWallManager;
 
 	Handler handler = new Handler(new Callback()
 	{
@@ -90,6 +96,8 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		etTimes = (EditText) findViewById(R.id.btn_times);
 		etTime = (EditText) findViewById(R.id.btn_time);
 		btnDailyClear = (TextView) findViewById(R.id.btn_daily_clear);
+		btnDuomeng = (TextView) findViewById(R.id.btn_duomeng);
+		btnDuomengjifen = (TextView) findViewById(R.id.btn_duomeng_jifen);
 
 		tvUserHouse = (TextView) findViewById(R.id.tv_userhouse);
 		tvUser = (TextView) findViewById(R.id.tv_user);
@@ -102,6 +110,8 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		btnClear.setOnClickListener(this);
 		btnChengguolv.setOnClickListener(this);
 		btnDailyClear.setOnClickListener(this);
+		btnDuomeng.setOnClickListener(this);
+		btnDuomengjifen.setOnClickListener(this);
 
 		clearCache();
 
@@ -180,8 +190,8 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		// 初始化统计器，并通过代码设置APP_ID, APP_PID
 		if (app == null)
 		{
-			app = AppConnect.getInstance("b04222c03b0afea639a9ff345d73ee27", "waps", this);	
-			app.cleanCache();	
+			app = AppConnect.getInstance("b04222c03b0afea639a9ff345d73ee27", "waps", this);
+			app.cleanCache();
 		}
 
 		// 注入数据
@@ -213,12 +223,12 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		tvSDK.setText(sb.toString());
 
 		SDKUtils.showUrl(app, this);
-		
+
 		// 注入SDK
 		SDKUtils.setUser(user);
 		clearCache();
-		app = AppConnect.getInstance("b04222c03b0afea639a9ff345d73ee27", "waps", this);	
-		app.cleanCache();	
+		app = AppConnect.getInstance("b04222c03b0afea639a9ff345d73ee27", "waps", this);
+		app.cleanCache();
 	}
 
 	@Override
@@ -267,7 +277,7 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 				app.cleanCache();
 			}
 		}
-		else if(v == btnDailyClear)
+		else if (v == btnDailyClear)
 		{
 			try
 			{
@@ -330,6 +340,52 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 				}
 			});
 			t.start();
+		}
+		else if (v == btnDuomeng)
+		{
+			// 清空sharepreference
+			String[] cache = new String[] { "idpkg", "idname", "RP" };
+			for (int i = 0; i < cache.length; i++)
+			{
+				SharedPreferences props = this.getSharedPreferences(cache[i], Context.MODE_PRIVATE);
+				Editor editor = props.edit();
+				editor.clear();
+				editor.commit();
+			}
+
+			// 清除数据库
+			new SqlLiteUtil(this).clear();
+			
+			mDomobOfferWallManager = new OManager(this, "96ZJ1/5AzeGQbwTCmq");
+			mDomobOfferWallManager.loadOfferWall();
+			// 检查积分
+			mDomobOfferWallManager.setCheckPointsListener(new OManager.CheckPointsListener()
+			{
+				@Override
+				public void onCheckPointsSucess(final int point, final int consumed)
+				{
+					((Activity) WanpuActivity.this).runOnUiThread(new Runnable()
+					{
+						@Override
+						public void run()
+						{
+							Toast.makeText(WanpuActivity.this, "当前积分:" + point, Toast.LENGTH_LONG).show();
+						}
+					});
+				}
+
+				@Override
+				public void onCheckPointsFailed(final OErrorInfo e)
+				{
+				}
+			});
+		}
+		else if (v == btnDuomengjifen)
+		{
+			if (mDomobOfferWallManager != null)
+			{
+				mDomobOfferWallManager.checkPoints();	
+			}
 		}
 	}
 }

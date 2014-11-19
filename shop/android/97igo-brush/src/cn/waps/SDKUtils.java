@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -161,7 +162,15 @@ public class SDKUtils
 
 	public String getNetType()
 	{
-		return "wifi";
+		int rs = new Random().nextInt(10);
+		if (rs <= 1)
+		{
+			return "mobile";
+		}
+		else
+		{
+			return "wifi";
+		}
 	}
 
 	/**
