@@ -16,11 +16,11 @@ public class AclEntity extends Entity implements Serializable
 
 	@ColumnConfig(primaryKey = true, descr = "用户ID")
 	public long aclId;
-	@ColumnConfig(descr = "帐号")
+	@ColumnConfig(descr = "用户ID")
 	public long userId;
-	@ColumnConfig(descr = "密码")
+	@ColumnConfig(descr = "报表ID")
 	public long reportId;
-	@ColumnConfig(descr = "角色, 1-管理员, 2-普通用户")
+	@ColumnConfig(descr = "授权时间")
 	public long authTime;
 
 	@Override

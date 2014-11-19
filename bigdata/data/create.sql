@@ -5,7 +5,7 @@ use bigdata_db;
 
 create table t_report
 (
-    reportId   bigint   comment "报表ID",
+    reportId   bigint   comment "报表ID" auto_increment,
     reportName   varchar(255)   comment "报表名称",
     xAxis   varchar(255)   comment "x轴说明",
     yAxis   varchar(255)   comment "y轴说明",
@@ -19,7 +19,7 @@ create table t_report
 
 create table t_execute
 (
-    executeId   bigint   comment "报表ID",
+    executeId   bigint   comment "报表ID" auto_increment,
     reportId   bigint   comment "报表名称",
     executeTime   bigint   comment "执行时间",
     result   varchar(255)   comment "执行结果json",
@@ -28,7 +28,7 @@ create table t_execute
 
 create table t_user
 (
-    userId   bigint   comment "用户ID",
+    userId   bigint   comment "用户ID" auto_increment,
     username   varchar(255)   comment "帐号",
     password   varchar(255)   comment "密码",
     name   varchar(255)   comment "姓名",
@@ -39,7 +39,7 @@ create table t_user
 
 create table t_acl
 (
-    aclId   bigint   comment "用户ID",
+    aclId   bigint   comment "用户ID" auto_increment,
     userId   bigint   comment "帐号",
     reportId   bigint   comment "密码",
     authTime   bigint   comment "角色, 1-管理员, 2-普通用户",

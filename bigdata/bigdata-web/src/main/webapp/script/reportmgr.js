@@ -74,6 +74,35 @@ define(function(require, exports, module)
 									var it = data.aclList[i];
 									$('#userList_table input[userId='+ it.userId +']').prop('checked', true);
 								}
+								
+								$('#auth_select_all').bind('click', function()
+								{
+									$('#auth_user_list input[type=checkbox]').prop('checked', $(this).prop('checked'));
+								});
+								
+								$('#btn_save_auth').bind('click', function()
+								{
+									var input = $('#auth_user_list input[type=checkbox]');
+									var userList = new Array();
+									for(var i = 0; i < input.length; i++)
+									{
+										var ck = $(input[i]);
+										if(ck.prop('checked'))
+										{
+											userList[userList.length] = $(input[i]).attr('userId');
+										}
+									}
+									
+									var p = 
+									{
+										reportId : reportId,
+										userList : userList,
+									};
+									T.common.ajax.requestBlock('UpdateAclListAction', p, false, function()
+									{
+										$('#userlist_modal').modal('hide');
+									});
+								});
 							});
 						});
 					}
