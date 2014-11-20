@@ -50,7 +50,17 @@ define(function(require, exports, module)
 					}
 					else if (btn == '删除')
 					{
-
+						if (confirm("确认要删除?"))
+						{
+							var p = 
+							{
+								reportId : reportId,
+							};
+							T.common.ajax.requestBlock('DeleteReportAction', p, false, function()
+							{
+								location = location;
+							});
+						}
 					}
 					else if (btn == "授权")
 					{

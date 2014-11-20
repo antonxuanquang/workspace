@@ -11,26 +11,45 @@
                 background-color: #52525E;
                 font-size: 16px;
                 font-weight: bold;
+                text-decoration: none;
+            }
+            
+            .nav_item{
+            	width: 90px;
+            	height: 50px;
+            	padding: 16px 6px 16px 6px;
+            	float: left;
+            	text-align: center;
+            }
+            
+            .nav_item:hover{
+            	background-color: #47474E;
+            }
+            
+            a:hover{
+            	  color: white;
+            	  text-decoration: none;
             }
 		</style>
 	</head>
 
 	<body>
-		<div style="position: fixed; left: 0px; top: 0px; width:100%;background-color: #52525E;z-index: 100000" align="center">
-			<ul class="nav navbar-nav">
-				<li>
-					<a href="myreport.html" class="nav_li" target="_parent">我的报表</a>
-				</li>
-				<li style="display: none">
-					<a href="create.html" class="nav_li" target="_parent">创建报表</a>
-				</li>
-				<li style="display: none">
-					<a href="reportmgr.html" class="nav_li" target="_parent">报表管理</a>
-				</li>
-				<li style="display: none">
-					<a href="create.html" class="nav_li" target="_parent">用户管理</a>
-				</li>
-			</ul>
+		<div id="toolbar" style="position: fixed; left: 0px; top: 0px; width:100%;background-color: #52525E;">
+			<div class="nav_item" style="padding: 4px; width: 120px;">
+				<span class="nav_li" style="font-size: 28px;">BigData</span>
+			</div>
+			<div class="nav_item">
+				<a href="myreport.html" class="nav_li" target="_parent">我的报表</a>
+			</div>
+			<div class="nav_item" style="display: none">
+				<a href="create.html" class="nav_li" target="_parent">创建报表</a>
+			</div>
+			<div class="nav_item" style="display: none">
+				<a href="reportmgr.html" class="nav_li" target="_parent">报表管理</a>
+			</div>
+			<div class="nav_item" style="display: none">
+				<a href="usermgr.html" class="nav_li" target="_parent">用户管理</a>
+			</div>
 		</div>
 	</body>
 </html>
@@ -39,7 +58,7 @@
 	var isAdmin = localStorage.getItem("isAdmin");
 	if(isAdmin == 1)
 	{
-		var list = document.getElementsByTagName('li');
+		var list = document.getElementById('toolbar').children;
 		for(var i = 0 ; i < list.length; i++)
 		{
 			list[i].style.display = 'block';

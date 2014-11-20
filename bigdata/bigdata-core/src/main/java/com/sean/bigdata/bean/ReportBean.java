@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sean.bigdata.entity.AclEntity;
+import com.sean.bigdata.entity.ExecuteEntity;
 import com.sean.bigdata.entity.ReportEntity;
 import com.sean.common.ioc.BeanConfig;
 import com.sean.persist.core.Dao;
@@ -33,5 +34,12 @@ public class ReportBean
 	public ReportEntity getReportById(long reportId)
 	{
 		return Dao.loadById(ReportEntity.class, reportId);
+	}
+
+	public void deleteReport(long reportId)
+	{
+		Dao.remove(AclEntity.class, "reportId", reportId);
+		Dao.remove(ExecuteEntity.class, "reportId", reportId);
+		Dao.remove(ReportEntity.class, reportId);
 	}
 }
