@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -31,8 +32,8 @@ import com.sean.igou.R;
 public class WanpuActivity extends FragmentActivity implements OnClickListener
 {
 	private ImageView btnBack;
-	private TextView btnEarn, btnInit, btnClear, btnChangeUser, tvUserHouse, tvUser, tvSDK, btnChengguolv,
-			btnDailyClear, btnDuomeng, btnDuomengjifen;
+	private TextView btnEarn, btnInit, btnClear, btnChangeUser, tvUserHouse, tvUser, tvSDK, tvNet, btnChengguolv, btnDailyClear, btnDuomeng,
+			btnDuomengjifen, btnChangeIP;
 	private EditText etTimes, etTime;
 
 	private static AppConnect app;
@@ -98,10 +99,12 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		btnDailyClear = (TextView) findViewById(R.id.btn_daily_clear);
 		btnDuomeng = (TextView) findViewById(R.id.btn_duomeng);
 		btnDuomengjifen = (TextView) findViewById(R.id.btn_duomeng_jifen);
+		btnChangeIP = (TextView) findViewById(R.id.btn_change_ip);
 
 		tvUserHouse = (TextView) findViewById(R.id.tv_userhouse);
 		tvUser = (TextView) findViewById(R.id.tv_user);
 		tvSDK = (TextView) findViewById(R.id.tv_sdk);
+		tvNet = (TextView) findViewById(R.id.tv_net);
 
 		btnBack.setOnClickListener(this);
 		btnEarn.setOnClickListener(this);
@@ -112,6 +115,7 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		btnDailyClear.setOnClickListener(this);
 		btnDuomeng.setOnClickListener(this);
 		btnDuomengjifen.setOnClickListener(this);
+		btnChangeIP.setOnClickListener(this);
 
 		clearCache();
 
@@ -231,6 +235,8 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		app.cleanCache();
 	}
 
+	@SuppressWarnings("deprecation")
+	@SuppressLint({ "NewApi", "ShowToast" })
 	@Override
 	public void onClick(View v)
 	{
@@ -277,6 +283,7 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 				app.cleanCache();
 			}
 		}
+		// 每日清除
 		else if (v == btnDailyClear)
 		{
 			try
@@ -341,6 +348,7 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 			});
 			t.start();
 		}
+		// 多盟
 		else if (v == btnDuomeng)
 		{
 			// 清空sharepreference
@@ -355,7 +363,7 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 
 			// 清除数据库
 			new SqlLiteUtil(this).clear();
-			
+
 			mDomobOfferWallManager = new OManager(this, "96ZJ1/5AzeGQbwTCmq");
 			mDomobOfferWallManager.loadOfferWall();
 			// 检查积分
@@ -380,11 +388,36 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 				}
 			});
 		}
+		// 查看多盟积分
 		else if (v == btnDuomengjifen)
 		{
 			if (mDomobOfferWallManager != null)
 			{
-				mDomobOfferWallManager.checkPoints();	
+				mDomobOfferWallManager.checkPoints();
+			}
+		}
+		// 更改IP
+		else if (v == btnChangeIP)
+		{
+			String ip = UserHouse.getIP();
+			if (ip != null)
+			{
+				ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+				String[] tmp = ip.split(":");
+				clipboard.setText(tmp[0]);
+				
+				StringBuilder txt = new StringBuilder();
+				txt.append("网络信息:\n");
+				txt.append("IP : ").append(tmp[0]).append("\n");
+				txt.append("端口 : ").append(tmp[1]).append("\n");
+				txt.append("网络延迟 : ").append("未测试");
+				tvNet.setText(txt.toString());
+
+				Toast.makeText(this, "新IP已经复制到剪贴板, 请记住端口", Toast.LENGTH_SHORT);
+			}
+			else
+			{
+				Toast.makeText(this, "已经没有IP", Toast.LENGTH_SHORT);
 			}
 		}
 	}

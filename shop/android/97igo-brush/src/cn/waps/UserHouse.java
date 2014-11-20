@@ -2,6 +2,7 @@ package cn.waps;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class UserHouse
 	 * part3.剩余用户库
 	 */
 	public static List<User> part1, part2, part3;
+	public static List<String> ipList;
 	public static final Random random = new Random();
 
 	public static final String RootDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/97igo/";
@@ -66,8 +68,11 @@ public class UserHouse
 				part2 = JSON.parseArray(part2Json, User.class);
 			}
 		}
+
+		// 读取IP列表
+		ipList = FileUtils.readLines(new File(RootDir + "ip.txt"), "utf-8");
 	}
-	
+
 	public static User getTestUser() throws Exception
 	{
 		// 861466010216571	460030938312273	0a:cd:54:d8:c3:5f	2.3.6	G12	480	800	htc
@@ -90,23 +95,23 @@ public class UserHouse
 	 */
 	public static User getUser4Brush() throws Exception
 	{
-//		int part = random.nextInt(2);
-//		// 随机返回part2用户
-//		if (part == 0)
-//		{
-//			return part2.get(random.nextInt(part2.size()));
-//		}
-//		// 随机返回part3用户, 并将part3用户移到part2用户群中
-//		else
-//		{
-//			User user = part3.remove(0);
-//			part2.add(user);
-//
-//			// 写入磁盘序列化文件
-//			write();
-//			return user;
-//		}
-		
+		//		int part = random.nextInt(2);
+		//		// 随机返回part2用户
+		//		if (part == 0)
+		//		{
+		//			return part2.get(random.nextInt(part2.size()));
+		//		}
+		//		// 随机返回part3用户, 并将part3用户移到part2用户群中
+		//		else
+		//		{
+		//			User user = part3.remove(0);
+		//			part2.add(user);
+		//
+		//			// 写入磁盘序列化文件
+		//			write();
+		//			return user;
+		//		}
+
 		User user = part3.remove(random.nextInt(part3.size()));
 		part2.add(user);
 
@@ -121,21 +126,45 @@ public class UserHouse
 	 */
 	public static User getUser4Increment()
 	{
-//		int part = random.nextInt(2);
-//		// 随机返回part1用户
-//		if (part == 0)
-//		{
-//			return part1.get(random.nextInt(part1.size()));
-//		}
-//		// 随机返回part2用户
-//		else
-//		{
-//			return part2.get(random.nextInt(part2.size()));
-//		}
-		
+		//		int part = random.nextInt(2);
+		//		// 随机返回part1用户
+		//		if (part == 0)
+		//		{
+		//			return part1.get(random.nextInt(part1.size()));
+		//		}
+		//		// 随机返回part2用户
+		//		else
+		//		{
+		//			return part2.get(random.nextInt(part2.size()));
+		//		}
+
 		return part1.get(random.nextInt(part1.size()));
 	}
-	
+
+	public static String getIP()
+	{
+		if (!ipList.isEmpty())
+		{
+			String ip = ipList.remove(0);
+			StringBuilder buf = new StringBuilder();
+			// 覆盖ip列表
+			for (String it : ipList)
+			{
+				buf.append(it).append("\n");
+			}
+			try
+			{
+				FileUtils.writeStringToFile(new File(RootDir + "ip.txt"), buf.toString(), false);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			return ip;
+		}
+		return null;
+	}
+
 	public static void resetPart2() throws Exception
 	{
 		part3.addAll(part2);

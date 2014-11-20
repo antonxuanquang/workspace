@@ -94,7 +94,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_blue_selector"
                 android:text="多盟平台" />
-            
+
             <TextView
                 android:id="@+id/btn_duomeng_jifen"
                 style="@style/common_btn"
@@ -103,6 +103,15 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_blue_selector"
                 android:text="查看多盟积分" />
+
+            <TextView
+                android:id="@+id/btn_change_ip"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="更换IP" />
         </LinearLayout>
 
         <LinearLayout
@@ -128,6 +137,15 @@
                 android:hint="间隔/默认5秒"
                 android:textSize="13sp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_net"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:text="网络信息:"
+            android:textColor="@color/red_btn" />
 
         <TextView
             android:id="@+id/tv_userhouse"
