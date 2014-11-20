@@ -52,7 +52,7 @@ define(function(require, exports, module)
 
 				// 计算分页
 				var totalrecords = data.totalrecord;
-				var totalpages = totalrecords % 25 == 0? parseInt(totalrecords / 24): parseInt(totalrecords / 25) + 1;
+				var totalpages = totalrecords % 25 == 0? parseInt(totalrecords / 25): parseInt(totalrecords / 25) + 1;
 
 				var pages = new Array();
 				for (var i = pageNo; i <= totalpages && pages.length < 10; i++)
