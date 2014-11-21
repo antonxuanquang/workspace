@@ -7,7 +7,7 @@ define(function(require, exports, module)
 
 	require('./common');
 
-	var myreport =
+	var index =
 	{
 		pageNo : 1, // 当前页码
 
@@ -15,19 +15,19 @@ define(function(require, exports, module)
 		init : function()
 		{
 			T.common.user.checkLogin();
-			myreport.getReportList();
+			index.getReportList();
 		},
 
 		// 读取报表列表
 		getReportList : function()
 		{
-			var pageNo = myreport.pageNo;
+			var pageNo = index.pageNo;
 			$('#listwrap').html('<div align="center"><img src="http://seanzwx.github.io/97igo/image/loading.gif"/></div>');
 
 			// 读取报表列表
 			var params =
 			{
-				pageNo : myreport.pageNo,
+				pageNo : index.pageNo,
 			};
 			T.common.ajax.requestBlock("InquireMyReportListAction", params, false, function(jsonstr, data, code, msg)
 			{
@@ -75,8 +75,8 @@ define(function(require, exports, module)
 				$('#pages li').bind('click', function()
 				{
 					var pageNo = $(this).attr("pageNo");
-					myreport.pageNo = pageNo;
-					myreport.getReportList();
+					index.pageNo = pageNo;
+					index.getReportList();
 				});
 			});
 		},
@@ -84,9 +84,9 @@ define(function(require, exports, module)
 
 	var api =
 	{
-		init : myreport.init,
+		init : index.init,
 	};
 
-	exports.myreport = api;
-	T.myreport = api;
+	exports.index = api;
+	T.index = api;
 });
