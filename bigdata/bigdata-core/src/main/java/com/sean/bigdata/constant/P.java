@@ -25,4 +25,22 @@ public class P
 
 	@ParameterConfig(dataType = DataType.Long, type = ParameterType.Batch, descr = "用户ID列表")
 	public static final String userList = "userList";
+
+	@ParameterConfig(dataType = DataType.String, descr = "报表名称")
+	public static final String reportName = "reportName";
+
+	@ParameterConfig(dataType = DataType.String, descr = "x轴说明")
+	public static final String xAxis = "xAxis";
+
+	@ParameterConfig(dataType = DataType.String, descr = "y轴说明")
+	public static final String yAxis = "yAxis";
+
+	@ParameterConfig(dataType = DataType.String, descr = "条件分组, 只用于列表报表, 多个用;隔开")
+	public static final String conditions = "conditions";
+
+	@ParameterConfig(dataType = DataType.Enum, enumVals = { "1", "2", "3" }, descr = "报表类型:1-单值, 2-数值, 3-列表")
+	public static final String type = "type";
+
+	@ParameterConfig(dataType = DataType.Enum, enumVals = { "1", "2" }, descr = "统计类型:1-日统计, 2-月统计")
+	public static final String countType = "countType";
 }

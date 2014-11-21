@@ -7,6 +7,7 @@ import com.sean.bigdata.entity.AclEntity;
 import com.sean.bigdata.entity.ExecuteEntity;
 import com.sean.bigdata.entity.ReportEntity;
 import com.sean.common.ioc.BeanConfig;
+import com.sean.common.util.TimeUtil;
 import com.sean.persist.core.Dao;
 import com.sean.persist.core.PageData;
 import com.sean.persist.enums.OrderEnum;
@@ -16,6 +17,14 @@ import com.sean.persist.ext.Order;
 @BeanConfig("")
 public class ReportBean
 {
+	public long createReport(ReportEntity report, long userId)
+	{
+		report.createTime = TimeUtil.getYYYYMMDDHHMMSSTime();
+		report.creater = userId;
+		Dao.persist(ReportEntity.class, report);
+		return report.reportId;
+	}
+
 	public List<ReportEntity> getReportList(List<AclEntity> aclList)
 	{
 		List<Object> ids = new ArrayList<>(aclList.size());
