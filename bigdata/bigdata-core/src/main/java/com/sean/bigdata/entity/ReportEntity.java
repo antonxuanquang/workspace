@@ -24,12 +24,14 @@ public class ReportEntity extends Entity implements Serializable
 	public String yAxis;
 	@ColumnConfig(descr = "条件分组, 只用于列表报表, 多个用;隔开")
 	public String conditions;
+	@ColumnConfig(descr = "列标签说明, 只用于多值报表, 多个用;隔开")
+	public String columnTags;
 
-	@ColumnConfig(descr = "报表类型:1-单值, 2-数值, 3-列表")
+	@ColumnConfig(descr = "报表类型:1-单值, 2-数值, 3-列表, 4-多值")
 	public byte type;
 	@ColumnConfig(descr = "统计类型:1-日统计, 2-月统计")
 	public byte countType;
-	
+
 	@ColumnConfig(descr = "创建时间")
 	public long createTime;
 	@ColumnConfig(descr = "创建人")
@@ -50,12 +52,13 @@ public class ReportEntity extends Entity implements Serializable
 	@Override
 	public Map<String, Object> getValues()
 	{
-		Map<String, Object> map = new HashMap<>(9);
+		Map<String, Object> map = new HashMap<>(10);
 		map.put("reportId", reportId);
 		map.put("reportName", reportName);
 		map.put("xAxis", xAxis);
 		map.put("yAxis", yAxis);
 		map.put("conditions", conditions);
+		map.put("columnTags", columnTags);
 		map.put("type", type);
 		map.put("countType", countType);
 		map.put("createTime", createTime);
@@ -71,6 +74,7 @@ public class ReportEntity extends Entity implements Serializable
 		this.xAxis = vals.getString("xAxis");
 		this.yAxis = vals.getString("yAxis");
 		this.conditions = vals.getString("conditions");
+		this.columnTags = vals.getString("columnTags");
 		this.type = vals.getByte("type");
 		this.countType = vals.getByte("countType");
 		this.createTime = vals.getLong("createTime");

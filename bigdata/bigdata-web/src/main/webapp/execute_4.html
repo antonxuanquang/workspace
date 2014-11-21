@@ -16,12 +16,12 @@
 		</div>
 		
 		<!-- 上边 -->
-		<div style="position: fixed; left: 0px; top: 50px; right: 250px; bottom: 200px; border-bottom: solid 1px #c1c1c1">
-			<div id="report"></div>
+		<div style="position: fixed; left: 0px; top: 50px; right: 250px; bottom: 400px; border-bottom: solid 1px #c1c1c1">
+			<div id="report" style="height: 320px;"></div>
 		</div>
 		
 		<!-- 下边 -->
-		<div id="bottom" style="position: fixed;left:0px; right: 250px; bottom: 0px; height: 200px; border-left: solid 1px #c1c1c1; overflow-y: auto">
+		<div id="bottom" style="position: fixed;left:0px; right: 250px; bottom: 0px; height: 400px; border-left: solid 1px #c1c1c1; overflow-y: auto">
 		</div>
 	</body>
 </html>
@@ -73,7 +73,7 @@
 <script id="tpl_executeList" type="text/template">
 	{@each executeList as it,index}
 	{@if index<=9}
-		<tr result="${it.result}" style="cursor: pointer">
+		<tr result="${it.result}" executeTime="${it.executeTime}" style="cursor: pointer">
 			<td>
 				<input type="checkbox" checked="true"/>
 			</td>
@@ -96,31 +96,25 @@
 	{@/each}
 </script>
 
-<script id="tpl_condList" type="text/template">
+<script id="tpl_columnList" type="text/template">
 	<table class="table table-hover">
 		<thead>
 			<tr id="thread">
-				<th>&nbsp;</th>
-				{@each condAxis as it,index}
-					<th>${it.axis}</th>
+				<th>日期</th>
+				{@each columnTags as it,index}
+					<th>
+						<input index="${index}" name="column" id="column_${index}" type="radio" />
+						<label for="column_${index}">${it.tag}</label>
+					</th>
 				{@/each}
 			</tr>
 		</thead>
-		<tbody id="cond_tbody">
-			{@each condList as it,index}
-			{@if index==0}
-				<tr result="${it.v}" style="cursor: pointer">
-					<td>
-						<input type="checkbox" checked="true"/>
-					</td>
-			{@else}
-				<tr result="${it.v}" style="cursor: pointer">
-					<td>
-						<input type="checkbox"/>
-					</td>
-			{@/if}
-					{@each it.c as it1,index1}
-						<td>${it1.c}</td>
+		<tbody id="column_tbody">
+			{@each columnList as it,index}
+				<tr>
+					<td>${it.executeTime}</td>
+					{@each it.value as it1,index1}
+						<td>${it1}</td>
 					{@/each}
 				</tr>
 			{@/each}
@@ -149,8 +143,8 @@
 		}
     }
     
-	seajs.use("./script/execute_3", function()
+	seajs.use("./script/execute_4", function()
 	{
-		T.execute_3.init();
+		T.execute_4.init();
 	});
 </script>

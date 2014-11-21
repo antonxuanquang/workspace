@@ -37,6 +37,9 @@ public class P
 
 	@ParameterConfig(dataType = DataType.String, descr = "条件分组, 只用于列表报表, 多个用;隔开")
 	public static final String conditions = "conditions";
+	
+	@ParameterConfig(dataType = DataType.String, descr = "列标签说明, 只用于多值报表, 多个用;隔开")
+	public static final String columnTags = "columnTags";
 
 	@ParameterConfig(dataType = DataType.Enum, enumVals = { "1", "2", "3" }, descr = "报表类型:1-单值, 2-数值, 3-列表")
 	public static final String type = "type";

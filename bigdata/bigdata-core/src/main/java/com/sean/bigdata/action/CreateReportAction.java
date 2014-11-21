@@ -15,7 +15,7 @@ import com.sean.service.core.Session;
 
 @ActionConfig(module = M.class, permission = A.Admin)
 @MustParamsConfig({ P.reportName, P.xAxis, P.yAxis, P.type, P.countType })
-@OptionalParamsConfig({ P.conditions })
+@OptionalParamsConfig({ P.conditions, P.columnTags })
 @DescriptConfig("创建报表")
 public class CreateReportAction extends Action
 {

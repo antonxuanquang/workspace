@@ -31,7 +31,7 @@ define(function(require, exports, module)
 			};
 			T.common.ajax.requestBlock("InquireMyReportListAction", params, false, function(jsonstr, data, code, msg)
 			{
-				var type = ["", "单值报表", "数值报表", "列表报表"];
+				var type = ["", "单值报表", "数值报表", "列表报表", "多值报表"];
 				var countType = ["", "日统计", "月统计"];
 				for (var i = 0; i < data.reportList.length; i++)
 				{
