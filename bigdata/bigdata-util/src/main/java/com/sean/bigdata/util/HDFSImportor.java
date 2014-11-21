@@ -92,6 +92,13 @@ public class HDFSImportor
 		// String json3 = checkData(report3, data3, "\t");
 		// System.out.println(json3);
 		// insert(report3, json3, 20141101000000L);
+		//
+		// ReportEntity report4 = checkReport(7);
+		// List<String> data4 = getHdfsData("hdfs://master:8020",
+		// "/tmp/viewlog/count/value_4");
+		// String json4 = checkData(report4, data4, "\t");
+		// System.out.println(json4);
+		// insert(report4, json4, 20141101000000L);
 	}
 
 	private static ReportEntity checkReport(long reportId)
@@ -211,6 +218,39 @@ public class HDFSImportor
 				return ja.toJSONString();
 			}
 			throw new RuntimeException("列表报表数据格式错误, 请参考格式: (输出文件格式: 多行, 每行多列, 具体根据报表定义限定列数, 前几列为分组条件, 最后一列为value, value必须为数值)");
+		}
+		// 多值
+		else if (report.type == 4)
+		{
+			int columnSize = report.columnTags.split(";").length;
+			if (data.size() == 1)
+			{
+				String[] columns = data.get(0).split(split, Integer.MAX_VALUE);
+				// [123,123,123]
+				if (columns.length == columnSize)
+				{
+					try
+					{
+						StringBuilder json = new StringBuilder("[");
+						for (String it : columns)
+						{
+							json.append(Double.parseDouble(it)).append(", ");
+						}
+						json.setLength(json.length() - 1);
+						json.setCharAt(json.length() - 1, ']');
+						return json.toString();
+					}
+					catch (Exception e)
+					{
+						throw new RuntimeException("多值报表数据格式错误, 请参考格式: (输出文件格式: 单行多列, 所有列为数值, 列数预报表定义一致)");
+					}
+				}
+				else
+				{
+					throw new RuntimeException("多值报表数据格式错误, 请参考格式: (输出文件格式: 单行多列, 所有列为数值, 列数预报表定义一致)");
+				}
+			}
+			throw new RuntimeException("多值报表数据格式错误, 请参考格式: (输出文件格式: 单行多列, 所有列为数值, 列数预报表定义一致)");
 		}
 		return null;
 	}

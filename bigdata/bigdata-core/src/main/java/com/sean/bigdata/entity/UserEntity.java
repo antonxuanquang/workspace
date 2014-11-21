@@ -9,7 +9,7 @@ import com.sean.persist.annotation.EntityConfig;
 import com.sean.persist.core.Entity;
 import com.sean.persist.core.EntityValue;
 
-@EntityConfig(tableName = "t_user", dataSource = "bigdata", descr = "用户实体", cache = true)
+@EntityConfig(tableName = "t_user", dataSource = "bigdata", descr = "用户实体", cache = false)
 public class UserEntity extends Entity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
