@@ -74,7 +74,8 @@
 				<th>报表名称</th>
 				<th>报表类型</th>
 				<th>统计类型</th>
-				<th>创建人</th>
+				<th>创建人姓名</th>
+				<th>创建人帐号</th>
 				<th>创建时间</th>
 				<th>操作</th>
 			</tr>
@@ -84,9 +85,10 @@
 			<tr>
 				<td>${it.reportId}</td>
 				<td>${it.reportName}</td>
-				<td>${it.type}</td>
+				<td>${it.typeStr}</td>
 				<td>${it.countType}</td>
-				<td>${it.creater}</td>
+				<td>${it.name}</td>
+				<td>${it.username}</td>
 				<td>${it.createTime}</td>
 				<td>
 					<button reportId="${it.reportId}" reportType="${it.type}" type="button" class="btn btn-primary btn-xs">查看</button>

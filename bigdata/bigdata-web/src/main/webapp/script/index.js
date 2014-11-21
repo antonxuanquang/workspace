@@ -31,6 +31,15 @@ define(function(require, exports, module)
 			};
 			T.common.ajax.requestBlock("InquireMyReportListAction", params, false, function(jsonstr, data, code, msg)
 			{
+				var type = ["", "单值报表", "数值报表", "列表报表"];
+				var countType = ["", "日统计", "月统计"];
+				for (var i = 0; i < data.reportList.length; i++)
+				{
+					var it = data.reportList[i];
+					it.typeStr = type[it.type];
+					it.countType = countType[it.countType];
+					it.createTime = T.common.util.time.getYYYYMMDDHHMMSS(it.createTime);
+				}
 				var tplData =
 				{
 					reportList : data.reportList
@@ -38,12 +47,12 @@ define(function(require, exports, module)
 				var tpl = $('#tpl_reportList').html();
 				var html = juicer(tpl, tplData);
 				$('#listwrap').html(html);
-				
+
 				$('#listwrap button').bind('click', function()
 				{
 					var reportId = $(this).attr("reportId");
 					var btn = $(this).html();
-					if(btn == "查看")
+					if (btn == "查看")
 					{
 						var type = $(this).attr('reportType');
 						window.open("./execute_" + type + ".html?reportId=" + reportId);

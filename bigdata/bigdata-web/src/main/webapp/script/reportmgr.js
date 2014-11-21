@@ -31,6 +31,15 @@ define(function(require, exports, module)
 			};
 			T.common.ajax.requestBlock("InquireReportListAction", params, false, function(jsonstr, data, code, msg)
 			{
+				var type = ["", "单值报表", "数值报表", "列表报表"];
+				var countType = ["", "日统计", "月统计"];
+				for (var i = 0; i < data.reportList.length; i++)
+				{
+					var it = data.reportList[i];
+					it.typeStr = type[it.type];
+					it.countType = countType[it.countType];
+					it.createTime = T.common.util.time.getYYYYMMDDHHMMSS(it.createTime);
+				}
 				var tplData =
 				{
 					reportList : data.reportList
@@ -52,7 +61,7 @@ define(function(require, exports, module)
 					{
 						if (confirm("确认要删除?"))
 						{
-							var p = 
+							var p =
 							{
 								reportId : reportId,
 							};
@@ -75,35 +84,38 @@ define(function(require, exports, module)
 							var html = juicer(tpl, tplData);
 							$('#userList_table').html(html);
 							$('#userlist_modal').modal();
-							
+
 							// 读取访问权限列表
-							T.common.ajax.requestBlock("InquireAclListAction", {reportId : reportId}, false, function(jsonstr, data, code, msg)
+							T.common.ajax.requestBlock("InquireAclListAction",
 							{
-								for(var i = 0; i < data.aclList.length; i++)
+								reportId : reportId
+							}, false, function(jsonstr, data, code, msg)
+							{
+								for (var i = 0; i < data.aclList.length; i++)
 								{
 									var it = data.aclList[i];
-									$('#userList_table input[userId='+ it.userId +']').prop('checked', true);
+									$('#userList_table input[userId=' + it.userId + ']').prop('checked', true);
 								}
-								
+
 								$('#auth_select_all').bind('click', function()
 								{
 									$('#auth_user_list input[type=checkbox]').prop('checked', $(this).prop('checked'));
 								});
-								
+
 								$('#btn_save_auth').bind('click', function()
 								{
 									var input = $('#auth_user_list input[type=checkbox]');
 									var userList = new Array();
-									for(var i = 0; i < input.length; i++)
+									for (var i = 0; i < input.length; i++)
 									{
 										var ck = $(input[i]);
-										if(ck.prop('checked'))
+										if (ck.prop('checked'))
 										{
 											userList[userList.length] = $(input[i]).attr('userId');
 										}
 									}
-									
-									var p = 
+
+									var p =
 									{
 										reportId : reportId,
 										userList : userList,

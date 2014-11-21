@@ -1,5 +1,6 @@
 package com.sean.bigdata.constant;
 
+import com.sean.bigdata.dic.UserDic;
 import com.sean.bigdata.entity.AclEntity;
 import com.sean.bigdata.entity.ExecuteEntity;
 import com.sean.bigdata.entity.ReportEntity;
@@ -7,6 +8,7 @@ import com.sean.bigdata.entity.UserEntity;
 import com.sean.service.annotation.FieldsConfig;
 import com.sean.service.annotation.ReturnParameterConfig;
 import com.sean.service.annotation.ReturnParameterProviderConfig;
+import com.sean.service.annotation.UseDicConfig;
 import com.sean.service.enums.Format;
 
 @ReturnParameterProviderConfig(module = M.class, descr = "")
@@ -26,6 +28,7 @@ public class R
 
 	@ReturnParameterConfig(descr = "报表列表", format = Format.EntityList, entity = ReportEntity.class)
 	@FieldsConfig("*")
+	@UseDicConfig(field = "creater", dic = UserDic.class)
 	public static final String reportList = "reportList";
 
 	@ReturnParameterConfig(descr = "报表", format = Format.Entity, entity = ReportEntity.class)

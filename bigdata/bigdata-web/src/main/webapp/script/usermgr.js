@@ -24,6 +24,12 @@ define(function(require, exports, module)
 			// 读取报表列表
 			T.common.ajax.requestBlock("InquireUserListAction", null, false, function(jsonstr, data, code, msg)
 			{
+				var role = ["", "管理员", "普通用户"];
+				for (var i = 0; i < data.userList.length; i++)
+				{
+					var it = data.userList[i];
+					it.roleStr = role[it.role];
+				}
 				var tplData =
 				{
 					userList : data.userList
