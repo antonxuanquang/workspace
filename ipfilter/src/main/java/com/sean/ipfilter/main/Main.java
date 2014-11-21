@@ -1,5 +1,6 @@
 package com.sean.ipfilter.main;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -8,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -22,7 +24,7 @@ public class Main extends JFrame implements ActionListener
 	public static JTextArea valid, invalid;
 	private JScrollPane jsp1, jsp2;
 	private JLabel label1, label2;
-	private JTextField thread;
+	private JTextField thread, timeout;
 
 	private File file;
 
@@ -43,28 +45,32 @@ public class Main extends JFrame implements ActionListener
 		{
 			e.printStackTrace();
 		}
+		
+		JPanel toolbar = new JPanel();
+		toolbar.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
+		toolbar.setBounds(0, 0, 800, 50);
+		this.add(toolbar);
 
 		selectFile = new JButton("选择提取文件");
-		selectFile.setBounds(10, 10, 80, 24);
-		this.add(selectFile);
+		toolbar.add(selectFile);
 		selectFile.addActionListener(this);
 
 		label2 = new JLabel("并发线程数");
-		label2.setBounds(100, 10, 100, 20);
-		this.add(label2);
+		toolbar.add(label2);
 
 		thread = new JTextField("1024");
-		thread.setBounds(180, 10, 80, 24);
-		this.add(thread);
+		toolbar.add(thread);
+		
+		toolbar.add(new JLabel("超时时间"));
+		timeout = new JTextField("2000");
+		toolbar.add(timeout);
 
 		start = new JButton("开始过滤");
-		start.setBounds(300, 10, 80, 24);
-		this.add(start);
+		toolbar.add(start);
 		start.addActionListener(this);
 
 		clear = new JButton("清除");
-		clear.setBounds(400, 10, 80, 24);
-		this.add(clear);
+		toolbar.add(clear);
 		clear.addActionListener(this);
 
 		label1 = new JLabel("左边为有效代理, 右边为无效代理");
@@ -105,8 +111,9 @@ public class Main extends JFrame implements ActionListener
 			if (file != null)
 			{
 				int threadCount = Integer.parseInt(thread.getText().trim());
+				int timeoutCount = Integer.parseInt(timeout.getText().trim());
 				IpChecker checker = new IpChecker(file);
-				checker.start(threadCount);
+				checker.start(threadCount, timeoutCount);
 			}
 		}
 		else if (e.getSource() == clear)

@@ -3,6 +3,8 @@ package com.sean.ipfilter.main;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -20,6 +22,7 @@ public class IpChecker
 {
 	private List<String> list;
 	private int count, over = 0;
+	private static final Pattern ptn = Pattern.compile("<title>(.*?)</title>");
 
 	public IpChecker(File file)
 	{
@@ -45,7 +48,7 @@ public class IpChecker
 		}
 	}
 
-	public void start(int threads)
+	public void start(int threads, final int timeout)
 	{
 		this.count = threads;
 		over = 0;
@@ -67,7 +70,7 @@ public class IpChecker
 						String[] tmp = line.replaceAll("#.*", "").split(":");
 						try
 						{
-							boolean rs = check(tmp[0], Integer.parseInt(tmp[1]), 3000);
+							boolean rs = check(tmp[0], Integer.parseInt(tmp[1]), timeout);
 							if (rs)
 							{
 								setIP(true, line);
@@ -106,19 +109,33 @@ public class IpChecker
 		RequestConfig cfg = RequestConfig.custom().setProxy(proxy).setConnectTimeout(timeout).setConnectionRequestTimeout(timeout)
 				.setRedirectsEnabled(true).setSocketTimeout(timeout).build();
 
-		HttpGet get = new HttpGet("http://seanzwx.github.io/test.html");
+		HttpGet get = new HttpGet("http://www.baidu.com");
 		get.setConfig(cfg);
 
 		HttpResponse response = client.execute(get);
 		String html = EntityUtils.toString(response.getEntity());
 		html = html.replace("\n", "");
 		html = html.replace("\t", "");
-		html = html.replace(" ", "");
-		if (html.equals("success"))
+
+		Matcher m = ptn.matcher(html);
+		if (m.find())
 		{
-			System.out.println(html);
-			return true;
+			String title = m.group(1);
+			if (title.contains("百度"))
+			{
+				return true;
+			}
 		}
 		return false;
+	}
+
+	public static void main(String[] args) throws Exception
+	{
+		CloseableHttpClient client = HttpClients.createDefault();
+		HttpGet get = new HttpGet("http://www.baidu.com");
+
+		HttpResponse response = client.execute(get);
+		String html = EntityUtils.toString(response.getEntity());
+		System.out.println(html);
 	}
 }
