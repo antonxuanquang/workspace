@@ -6,12 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 import org.apache.commons.io.FileUtils;
 
 import android.annotation.SuppressLint;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Environment;
 
@@ -25,13 +27,15 @@ public class UserHouse
 	 * part3.剩余用户库
 	 */
 	public static List<User> part1, part2, part3;
-	public static List<String> ipList;
+	public static List<String> ipList = new LinkedList<String>();
 	public static final Random random = new Random();
 
 	public static final String RootDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/97igo/";
 	public static final File file_part1 = new File(RootDir + "part1");
 	public static final File file_part2 = new File(RootDir + "part2");
 	public static final File file_part3 = new File(RootDir + "part3");
+
+	public static String currIP;
 
 	/**
 	 * 从序列化文件中读取用户信息
@@ -69,6 +73,11 @@ public class UserHouse
 			}
 		}
 
+		initIpDB(context);
+	}
+
+	public static void initIpDB(Context context) throws IOException
+	{
 		// 读取IP列表
 		ipList = FileUtils.readLines(new File(RootDir + "ip.txt"), "utf-8");
 	}
@@ -141,7 +150,9 @@ public class UserHouse
 		return part1.get(random.nextInt(part1.size()));
 	}
 
-	public static String getIP()
+	@SuppressWarnings("deprecation")
+	@SuppressLint("NewApi")
+	public static String nextIp(final Context context)
 	{
 		if (!ipList.isEmpty())
 		{
@@ -159,6 +170,14 @@ public class UserHouse
 			catch (IOException e)
 			{
 				e.printStackTrace();
+			}
+			currIP = ip;
+
+			if (ip != null)
+			{
+				ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+				String[] tmp = ip.split(":");
+				clipboard.setText(tmp[0]);
 			}
 			return ip;
 		}

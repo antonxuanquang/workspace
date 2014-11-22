@@ -13,7 +13,20 @@
             android:text="赚钱" />
     </LinearLayout>
 
+    <LinearLayout style="@style/line_dark_gray" />
+
     <LinearLayout style="@style/activity_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="用户库管理" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -27,7 +40,7 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_blue_selector"
-                android:text="初始化用户" />
+                android:text="读取用户库" />
 
             <TextView
                 android:id="@+id/btn_change_user"
@@ -36,7 +49,112 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_blue_selector"
-                android:text="更换用户" />
+                android:text="更换当前用户" />
+
+            <TextView
+                android:id="@+id/btn_daily_clear"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="每天重置用户" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/line_gray"
+            android:layout_margin="8dip" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="系统管理" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/btn_clear"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="清理缓存" />
+
+            <TextView
+                android:id="@+id/btn_init_ip"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="读取IP库" />
+
+            <TextView
+                android:id="@+id/btn_change_ip"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="更换IP" />
+
+            <TextView
+                android:id="@+id/btn_test_netspeed"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="测网速" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/line_gray"
+            android:layout_margin="8dip" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="平台管理" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/btn_switch_platform"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="选择平台(万普)" />
+
+            <TextView
+                android:id="@+id/btn_check_points"
+                style="@style/common_btn"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue_selector"
+                android:text="查看用户积分" />
 
             <TextView
                 android:id="@+id/btn_earn"
@@ -54,24 +172,6 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:id="@+id/btn_daily_clear"
-                style="@style/common_btn"
-                android:layout_width="0dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_blue_selector"
-                android:text="每天清除" />
-
-            <TextView
-                android:id="@+id/btn_clear"
-                style="@style/common_btn"
-                android:layout_width="0dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_blue_selector"
-                android:text="清理本地缓存" />
-
-            <TextView
                 android:id="@+id/btn_chengguolv"
                 style="@style/common_btn"
                 android:layout_width="0dp"
@@ -79,69 +179,35 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_blue_selector"
                 android:text="降低成果率" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/btn_duomeng"
-                style="@style/common_btn"
-                android:layout_width="0dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_blue_selector"
-                android:text="多盟平台" />
-
-            <TextView
-                android:id="@+id/btn_duomeng_jifen"
-                style="@style/common_btn"
-                android:layout_width="0dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_blue_selector"
-                android:text="查看多盟积分" />
-
-            <TextView
-                android:id="@+id/btn_change_ip"
-                style="@style/common_btn"
-                android:layout_width="0dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_blue_selector"
-                android:text="更换IP" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
 
             <EditText
                 android:id="@+id/btn_times"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:hint="降低循环次数/默认20"
+                android:hint="次数/默认20"
                 android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/btn_time"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:hint="间隔/默认5秒"
                 android:textSize="13sp" />
         </LinearLayout>
 
+        <LinearLayout
+            style="@style/line_gray"
+            android:layout_margin="8dip" />
+
         <TextView
             android:id="@+id/tv_net"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dip"
             android:layout_marginTop="4dp"
             android:gravity="center_vertical"
             android:text="网络信息:"
@@ -151,6 +217,7 @@
             android:id="@+id/tv_userhouse"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dip"
             android:layout_marginTop="4dp"
             android:gravity="center_vertical"
             android:text="用户库信息:"
@@ -163,15 +230,6 @@
             android:layout_marginTop="4dp"
             android:gravity="center_vertical"
             android:text="当前用户:"
-            android:textColor="@color/red_btn" />
-
-        <TextView
-            android:id="@+id/tv_sdk"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:gravity="center_vertical"
-            android:text="注入sdk信息:"
             android:textColor="@color/red_btn" />
     </LinearLayout>
 
