@@ -1,7 +1,6 @@
 package com.sean.brush;
 
 import android.content.Context;
-import cn.waps.User;
 
 public abstract class Platform
 {

@@ -9,7 +9,6 @@ import android.util.Log;
 import cn.waps.AppConnect;
 import cn.waps.AppConnectUtil;
 import cn.waps.SDKUtils;
-import cn.waps.User;
 
 public class WanpuPlatform extends Platform
 {

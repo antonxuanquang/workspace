@@ -8,8 +8,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import cn.waps.WanpuActivity;
 
+import com.sean.brush.WanpuActivity;
 import com.sean.igou.R;
 
 /**

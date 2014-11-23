@@ -25,6 +25,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.sean.brush.User;
+
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;

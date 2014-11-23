@@ -13,7 +13,6 @@ import cn.domob.data.OErrorInfo;
 import cn.domob.data.OManager;
 import cn.domob.data.SqlLiteUtil;
 import cn.domob.data.n;
-import cn.waps.User;
 
 public class DuomengPlatform extends Platform
 {
