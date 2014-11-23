@@ -109,7 +109,7 @@ public class IpChecker
 		RequestConfig cfg = RequestConfig.custom().setProxy(proxy).setConnectTimeout(timeout).setConnectionRequestTimeout(timeout)
 				.setRedirectsEnabled(true).setSocketTimeout(timeout).build();
 
-		HttpGet get = new HttpGet("http://www.baidu.com");
+		HttpGet get = new HttpGet("http://www.waps.cn/");
 		get.setConfig(cfg);
 
 		HttpResponse response = client.execute(get);
@@ -121,7 +121,7 @@ public class IpChecker
 		if (m.find())
 		{
 			String title = m.group(1);
-			if (title.contains("百度"))
+			if (title.contains("万普"))
 			{
 				return true;
 			}
@@ -132,7 +132,7 @@ public class IpChecker
 	public static void main(String[] args) throws Exception
 	{
 		CloseableHttpClient client = HttpClients.createDefault();
-		HttpGet get = new HttpGet("http://www.baidu.com");
+		HttpGet get = new HttpGet("http://www.waps.cn/");
 
 		HttpResponse response = client.execute(get);
 		String html = EntityUtils.toString(response.getEntity());
