@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.sean.brush.WanpuActivity;
+import com.sean.brush.EarnActivity;
 import com.sean.igou.R;
 
 /**
@@ -68,7 +68,7 @@ public class MeTabPanel extends TabPanel implements OnClickListener
 		else if (v == me_earn)
 		{
 			Intent intent = new Intent();
-			intent.setClass(main, WanpuActivity.class);
+			intent.setClass(main, EarnActivity.class);
 			main.startActivity(intent);
 			
 //			Intent intent = new Intent();

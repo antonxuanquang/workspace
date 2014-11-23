@@ -27,7 +27,7 @@ import com.sean.igou.R;
  * 积分墙
  * @author sean
  */
-public class WanpuActivity extends FragmentActivity implements OnClickListener
+public class EarnActivity extends FragmentActivity implements OnClickListener
 {
 	private ImageView btnBack;
 	private TextView btnEarn, btnInit, btnClear, btnChangeUser, btnChengguolv, btnDailyClear, btnSwitchPlat,
@@ -49,26 +49,26 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 			{
 				try
 				{
-					plat.closeOfferwall(WanpuActivity.this);
+					plat.closeOfferwall(EarnActivity.this);
 					changeUser(false);
 				}
 				catch (Exception e)
 				{
 					e.printStackTrace();
 				}
-				plat.openOfferwall(WanpuActivity.this);
+				plat.openOfferwall(EarnActivity.this);
 			}
 			else if (msg.arg1 == 1)
 			{
 				try
 				{
-					plat.closeOfferwall(WanpuActivity.this);
+					plat.closeOfferwall(EarnActivity.this);
 				}
 				catch (Exception e)
 				{
 					e.printStackTrace();
 				}
-				Toast.makeText(WanpuActivity.this, "执行10次完成", Toast.LENGTH_SHORT);
+				Toast.makeText(EarnActivity.this, "执行10次完成", Toast.LENGTH_SHORT);
 
 				// TODO 播放完成提示音
 			}
@@ -172,7 +172,7 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 		// 返回
 		if (v == btnBack)
 		{
-			WanpuActivity.this.finish();
+			EarnActivity.this.finish();
 		}
 		// 初始化
 		if (v == btnInit)
@@ -357,7 +357,7 @@ public class WanpuActivity extends FragmentActivity implements OnClickListener
 					final int time = (times[0] + times[1] + times[2]) / 3;
 					Log.d("debug", "测试完成,网络延迟:" + time);
 
-					((Activity) WanpuActivity.this).runOnUiThread(new Runnable()
+					((Activity) EarnActivity.this).runOnUiThread(new Runnable()
 					{
 						@Override
 						public void run()

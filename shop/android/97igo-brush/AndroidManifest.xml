@@ -33,7 +33,7 @@
         <activity android:name="com.sean.igo.activity.SettingActivity" />
         <activity android:name="com.sean.igo.activity.BindActivity" />
         <activity android:name="com.sean.igo.activity.OfferwallActivity" />
-        <activity android:name="com.sean.brush.WanpuActivity" />
+        <activity android:name="com.sean.brush.EarnActivity" />
         <activity
             android:name="com.sean.igo.activity.MainActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
