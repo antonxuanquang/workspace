@@ -1,10 +1,14 @@
 package com.sean.brush;
 
+import java.io.File;
 import java.lang.reflect.Field;
+
+import org.apache.commons.io.FileUtils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Environment;
 import android.util.Log;
 import cn.waps.AppConnect;
 import cn.waps.AppConnectUtil;
@@ -25,7 +29,7 @@ public class WanpuPlatform extends Platform
 			Editor editor = props.edit();
 			editor.clear();
 			editor.commit();
-			
+
 			Log.d("debug", "万普:删除SharedPreferences " + cache[i]);
 		}
 	}
@@ -34,7 +38,20 @@ public class WanpuPlatform extends Platform
 	public void onUserChanged(Context context, User user) throws Exception
 	{
 		this.closeOfferwall(context);
-		
+
+		// 删除已经下载的apk文件
+		String root = Environment.getExternalStorageDirectory().getAbsolutePath();
+		String[] dir = new String[] { "download", "Download" };
+		for (String it : dir)
+		{
+			File download = new File(root + "/" + it);
+			if (download.exists())
+			{
+				FileUtils.deleteDirectory(download);
+				Log.d("debug", "万普删除" + download.getAbsolutePath() + "目录");
+			}
+		}
+
 		// 初始化统计器，并通过代码设置APP_ID, APP_PID
 		if (app == null)
 		{
@@ -77,16 +94,16 @@ public class WanpuPlatform extends Platform
 		this.clearCache(context);
 		app = AppConnect.getInstance("b04222c03b0afea639a9ff345d73ee27", "waps", context);
 		app.cleanCache();
-		
+
 		Log.d("debug", "万普初始化完毕");
 	}
 
 	@Override
 	public void openOfferwall(Context context)
-	{	
+	{
 		if (app != null)
 		{
-			app.showAppOffers(context);	
+			app.showAppOffers(context);
 		}
 	}
 
