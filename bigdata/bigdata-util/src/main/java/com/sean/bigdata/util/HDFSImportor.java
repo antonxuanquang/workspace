@@ -42,6 +42,7 @@ public class HDFSImportor
 		options.addOption("reportId", true, "导入报表系统的报表ID");
 		options.addOption("userKey", true, "报表归属用户的key");
 		options.addOption("time", true, "执行时间, 格式: yyyyMMddHHmmss");
+		options.addOption("check", true, "是否检查数据, 不写入数据库, true/false");
 
 		CommandLineParser parser = new PosixParser();
 		CommandLine cmd = parser.parse(options, args);
@@ -52,6 +53,7 @@ public class HDFSImportor
 		long reportId = Long.parseLong(cmd.getOptionValue("reportId"));
 		long time = Long.parseLong(cmd.getOptionValue("time"));
 		String userKey = cmd.getOptionValue("userKey");
+		boolean check = Boolean.parseBoolean(cmd.getOptionValue("check"));
 
 		Map<String, String> params = new HashMap<>();
 		params.put("hdfs", hdfs);
@@ -60,6 +62,7 @@ public class HDFSImportor
 		params.put("reportId", reportId + "");
 		params.put("time", time + "");
 		params.put("userKey", userKey);
+		params.put("check", String.valueOf(check));
 		logger.info("参数列表: " + params);
 
 		// 启动持久层框架
@@ -69,8 +72,11 @@ public class HDFSImportor
 		ReportEntity report = checkReport(reportId);
 		List<String> data = getHdfsData(hdfs, file);
 		String json = checkData(report, data, split);
-		logger.info("生成json: " + json);
-		insert(report, json, time);
+		logger.info("通过验证, 数据合法, 生成json: " + json);
+		if (!check)
+		{
+			insert(report, json, time);
+		}
 
 		// ReportEntity report1 = checkReport(1);
 		// List<String> data1 = getHdfsData("hdfs://master:8020",

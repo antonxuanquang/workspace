@@ -26,4 +26,5 @@ ${JAVA_HOME}/bin/java ${JAVA_OPTS} \
 	-split '\t' \
 	-reportId 1 \
 	-userKey sean \
-	-time 20041101000000
+	-time 20041101000000 \
+	-check true
