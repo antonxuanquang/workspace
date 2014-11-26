@@ -422,9 +422,9 @@ public class EarnActivity extends FragmentActivity implements OnClickListener
 	@Override
 	public Object getSystemService(String name)
 	{
-		if (name.equals("window"))
+		// 自定义服务
+		if (name.equals("android"))
 		{
-			
 			return new SDKUtils(this);
 		}
 		else

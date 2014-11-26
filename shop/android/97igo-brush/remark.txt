@@ -1,3 +1,4 @@
+ldc "android"
 invokevirtual android/content/Context/getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 checkcast cn/waps/SDKUtils
 astore 10
