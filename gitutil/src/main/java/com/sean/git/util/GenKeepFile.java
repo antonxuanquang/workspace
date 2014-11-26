@@ -6,7 +6,7 @@ public class GenKeepFile
 {
 	public static void main(String[] args) throws Exception
 	{
-		File file = new File("/home/sean/Desktop/github/workspace2/trunk");
+		File file = new File("/home/sean/Desktop/github/bigcode/trunk/android/bigcode-publish");
 		gen(file);
 		System.out.println("over");
 	}

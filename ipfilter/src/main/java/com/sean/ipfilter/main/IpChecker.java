@@ -132,7 +132,7 @@ public class IpChecker
 	public static void main(String[] args) throws Exception
 	{
 		CloseableHttpClient client = HttpClients.createDefault();
-		HttpGet get = new HttpGet("http://www.waps.cn/");
+		HttpGet get = new HttpGet("http://www.baidu.com/");
 
 		HttpResponse response = client.execute(get);
 		String html = EntityUtils.toString(response.getEntity());
