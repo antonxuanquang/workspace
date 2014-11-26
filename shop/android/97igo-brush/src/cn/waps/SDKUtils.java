@@ -25,8 +25,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.sean.brush.User;
-
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
@@ -49,7 +47,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class SDKUtils
+import com.sean.brush.User;
+
+public class SDKUtils implements MyDisplay
 {
 	private Context b;
 	private PackageManager c;
@@ -65,26 +65,26 @@ public class SDKUtils
 	// 用户数据
 	public static User user;
 	public static String tmp;
-    public static String MODEL, BRAND, VERSION, IMEI, IMSI;
-    
-    public static void setUser(User u)
-    {
-    	user = u;
-    	IMEI = u.imei;
-    	IMSI = u.imsi;
-    	MODEL = u.model;
-    	BRAND = u.brand;
-    	VERSION = u.version;
-    	
-    	AppConnect.c = u.imei;
-    	AppConnect.d = "";
-    }
-    
-    public static void showUrl(AppConnect app, Context context)
-    {
-    	String url = app.a(context);
-    	Log.d("debug", url);
-    }
+	public static String MODEL, BRAND, VERSION, IMEI, IMSI;
+
+	public static void setUser(User u)
+	{
+		user = u;
+		IMEI = u.imei;
+		IMSI = u.imsi;
+		MODEL = u.model;
+		BRAND = u.brand;
+		VERSION = u.version;
+
+		AppConnect.c = u.imei;
+		AppConnect.d = "";
+	}
+
+	public static void showUrl(AppConnect app, Context context)
+	{
+		String url = app.a(context);
+		Log.d("debug", url);
+	}
 
 	public SDKUtils(Context paramContext)
 	{
@@ -97,8 +97,8 @@ public class SDKUtils
 		this.j = paramDialog;
 	}
 
-	public SDKUtils(Context paramContext, Handler paramHandler, WebView paramWebView,
-			RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout, AppListener paramAppListener)
+	public SDKUtils(Context paramContext, Handler paramHandler, WebView paramWebView, RelativeLayout paramRelativeLayout,
+			LinearLayout paramLinearLayout, AppListener paramAppListener)
 	{
 		this.b = paramContext;
 		this.e = paramHandler;
@@ -138,8 +138,7 @@ public class SDKUtils
 	public void submit(String paramString1, String paramString2)
 	{
 		if ((paramString2 != null) && (!"".equals(paramString2)))
-			new AlertDialog.Builder(this.b).setTitle(paramString1).setMessage(paramString2)
-					.setPositiveButton("确定", new cs(this)).create().show();
+			new AlertDialog.Builder(this.b).setTitle(paramString1).setMessage(paramString2).setPositiveButton("确定", new cs(this)).create().show();
 		else
 			((Activity) this.b).finish();
 	}
@@ -165,7 +164,7 @@ public class SDKUtils
 	public String getNetType()
 	{
 		int rs = new Random().nextInt(10);
-		if (rs <= 1)
+		if (rs <= 2)
 		{
 			return "mobile";
 		}
@@ -449,8 +448,7 @@ public class SDKUtils
 			Iterator localIterator = localList.iterator();
 			while (localIterator.hasNext())
 			{
-				ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo) localIterator
-						.next();
+				ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo) localIterator.next();
 				if (getInstalled().contains(localRunningAppProcessInfo.processName))
 					str = str + localRunningAppProcessInfo.processName + ";";
 			}
@@ -485,8 +483,7 @@ public class SDKUtils
 	{
 		try
 		{
-			ConnectivityManager localConnectivityManager = (ConnectivityManager) this.b
-					.getSystemService("connectivity");
+			ConnectivityManager localConnectivityManager = (ConnectivityManager) this.b.getSystemService("connectivity");
 			NetworkInfo localNetworkInfo = localConnectivityManager.getActiveNetworkInfo();
 			if (localNetworkInfo != null)
 				return true;
@@ -703,8 +700,7 @@ public class SDKUtils
 		return (String) (String) "";
 	}
 
-	public void saveDataToLocal(InputStream paramInputStream, String paramString1, String paramString2,
-			boolean paramBoolean)
+	public void saveDataToLocal(InputStream paramInputStream, String paramString1, String paramString2, boolean paramBoolean)
 	{
 		FileOutputStream localFileOutputStream = null;
 		try
@@ -1022,8 +1018,7 @@ public class SDKUtils
 		String str = "";
 		try
 		{
-			ConnectivityManager localConnectivityManager = (ConnectivityManager) this.b
-					.getSystemService("connectivity");
+			ConnectivityManager localConnectivityManager = (ConnectivityManager) this.b.getSystemService("connectivity");
 			NetworkInfo localNetworkInfo = localConnectivityManager.getActiveNetworkInfo();
 			if (localNetworkInfo != null)
 				if (!localNetworkInfo.getTypeName().toLowerCase().equals("mobile"))
@@ -1076,5 +1071,21 @@ public class SDKUtils
 	public void getHtml(String paramString)
 	{
 		a = paramString;
+	}
+
+	public int getWidth()
+	{
+		return Integer.parseInt(user.screenWidth);
+	}
+
+	public int getHeight()
+	{
+		return Integer.parseInt(user.screenHeight);
+	}
+
+	@Override
+	public SDKUtils getDefaultDisplay()
+	{
+		return this;
 	}
 }

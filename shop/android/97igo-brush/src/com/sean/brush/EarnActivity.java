@@ -18,7 +18,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import cn.waps.SDKUtils;
 
 import com.sean.igou.R;
@@ -419,4 +418,20 @@ public class EarnActivity extends FragmentActivity implements OnClickListener
 			tvNet.setText(sb.toString());
 		}
 	}
+
+	@Override
+	public Object getSystemService(String name)
+	{
+		if (name.equals("window"))
+		{
+			
+			return new SDKUtils(this);
+		}
+		else
+		{
+			return super.getSystemService(name);	
+		}
+	}
+	
+	
 }

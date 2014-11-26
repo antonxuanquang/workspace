@@ -1,0 +1,13 @@
+invokevirtual android/content/Context/getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+checkcast cn/waps/SDKUtils
+astore 10
+aload_0
+aload 10
+invokeinterface cn/waps/SDKUtils/getDefaultDisplay()Lcn/waps/SDKUtils; 1
+invokevirtual cn/waps/SDKUtils/getWidth()I
+putfield cn/waps/AppConnect/I I
+aload_0
+aload 10
+invokeinterface cn/waps/SDKUtils/getDefaultDisplay()Lcn/waps/SDKUtils; 1
+invokevirtual cn/waps/SDKUtils/getHeight()I
+putfield cn/waps/AppConnect/J I
