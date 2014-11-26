@@ -12,3 +12,12 @@ aload 10
 invokeinterface cn/waps/SDKUtils/getDefaultDisplay()Lcn/waps/SDKUtils; 1
 invokevirtual cn/waps/SDKUtils/getHeight()I
 putfield cn/waps/AppConnect/J I
+
+
+
+
+IMSI 国际移动用户识别码 定义规则
+MCC+MNC+MSIN
+MCC：Mobile Country Code，移动国家码，MCC的资源由国际电联（ITU）统一分配和管理，唯一识别移动用户所属的国家，共3位，中国为460;
+MNC:Mobile Network Code，移动网络码，2~3位，中国移动系统使用00、02、07，中国联通GSM系统使用01、06，中国电信CDMA系统使用03、05，中国铁通系统使用20，一个典型的IMSI号码为460030912121001;
+460 03 0958371054

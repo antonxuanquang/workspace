@@ -39,18 +39,18 @@ public class WanpuPlatform extends Platform
 	{
 		this.closeOfferwall(context);
 
-		// 删除已经下载的apk文件
-		String root = Environment.getExternalStorageDirectory().getAbsolutePath();
-		String[] dir = new String[] { "download", "Download" };
-		for (String it : dir)
-		{
-			File download = new File(root + "/" + it);
-			if (download.exists())
-			{
-				FileUtils.deleteDirectory(download);
-				Log.d("debug", "万普删除" + download.getAbsolutePath() + "目录");
-			}
-		}
+//		// 删除已经下载的apk文件
+//		String root = Environment.getExternalStorageDirectory().getAbsolutePath();
+//		String[] dir = new String[] { "download", "Download" };
+//		for (String it : dir)
+//		{
+//			File download = new File(root + "/" + it);
+//			if (download.exists())
+//			{
+//				FileUtils.deleteDirectory(download);
+//				Log.d("debug", "万普删除" + download.getAbsolutePath() + "目录");
+//			}
+//		}
 
 		// 初始化统计器，并通过代码设置APP_ID, APP_PID
 		if (app == null)
