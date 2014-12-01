@@ -21,6 +21,7 @@ create table t_good
 	saleCount                 int                  not null comment "30天售出的件数",
 	commissionRate            float                not null comment "佣金比率",
 	commissionCount           float                not null comment "30天支出的佣金总数",
+	isFree                    int                  not null comment "是否免费, 积分兑换",
 	constraint t_good_pk primary key (goodId)
 ) engine=myisam comment "商品";
 create index index_goodName on t_good (goodName);
@@ -93,3 +94,15 @@ create table t_cash
 	createTime                bigint               not null comment "创建时间",
 	constraint t_cash_pk primary key (cashId)
 ) engine=myisam comment "提现实体";
+
+create table t_order
+(
+    orderId                  bigint                auto_increment comment "订单ID",
+    goodId                   bigint                not null comment "商品ID",
+    tel                      varchar(255)          not null comment "手机号码",
+    imei                     varchar(255)          not null comment "imei",
+    address                  varchar(255)          not null comment "address",
+    remark                   varchar(255)          null comment "备注",
+    createTime               bigint                not null comment "创建时间",
+    constraint t_order_pk primary key (orderId)
+) engine=myisam comment "订单实体";

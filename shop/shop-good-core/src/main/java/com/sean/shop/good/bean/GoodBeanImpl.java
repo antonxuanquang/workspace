@@ -59,6 +59,20 @@ public class GoodBeanImpl implements GoodBean
 	}
 
 	/**
+	 * 设置商品免费
+	 * @param goodId
+	 */
+	public void setGoodFree(long goodId)
+	{
+		GoodEntity good = Dao.loadById(GoodEntity.class, goodId);
+		if (good != null)
+		{
+			good.isFree = good.isFree == 1 ? 0 : 1;
+			Dao.update(GoodEntity.class, good);
+		}
+	}
+
+	/**
 	 * 删除商品反馈
 	 * @param feedbackId
 	 * @throws  
