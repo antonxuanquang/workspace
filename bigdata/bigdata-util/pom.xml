@@ -166,4 +166,80 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<!-- the build profile for dev -->
+		<profile>
+			<id>dev</id>
+			<activation>
+				<property>
+					<name>env.type</name>
+					<value>dev</value>
+				</property>
+			</activation>
+			<properties>
+				<target>dev</target>
+			</properties>
+			<build>
+				<finalName>bigdata-util-dev</finalName>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.1.1</version>
+						<configuration>
+							<failOnMissingWebXml>false</failOnMissingWebXml>
+							<webResources>
+								<webResource>
+									<directory>src/main/resources</directory>
+									<includes>
+										<include>config.properties</include>
+									</includes>
+									<filtering>true</filtering>
+									<targetPath>conf</targetPath>
+								</webResource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- the build profile for server -->
+		<profile>
+			<id>server</id>
+			<activation>
+				<property>
+					<name>env.type</name>
+					<value>server</value>
+				</property>
+			</activation>
+			<properties>
+				<target>server</target>
+			</properties>
+			<build>
+				<finalName>bigdata-util-server</finalName>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.1.1</version>
+						<configuration>
+							<failOnMissingWebXml>false</failOnMissingWebXml>
+							<webResources>
+								<webResource>
+									<directory>src/main/resources</directory>
+									<includes>
+										<include>config.properties</include>
+									</includes>
+									<filtering>true</filtering>
+									<targetPath>conf</targetPath>
+								</webResource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
