@@ -23,7 +23,7 @@ create table t_execute
     executeId   bigint   comment "报表ID" auto_increment,
     reportId   bigint   comment "报表名称",
     executeTime   bigint   comment "执行时间",
-    result   varchar(255)   comment "执行结果json",
+    result   text   comment "执行结果json",
     constraint t_execute_pk primary key (executeId)
 ) engine=myisam comment "执行实体";
 
