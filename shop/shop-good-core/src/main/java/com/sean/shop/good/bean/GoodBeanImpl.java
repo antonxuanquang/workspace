@@ -194,6 +194,15 @@ public class GoodBeanImpl implements GoodBean
 	}
 
 	/**
+	 * 读取免费商品列表
+	 * @return
+	 */
+	public List<GoodEntity> getFreeGoodList()
+	{
+		return Dao.getListByColumn(GoodEntity.class, "isFree", 1, new Order("goodId", OrderEnum.Desc));
+	}
+
+	/**
 	 * 反馈商品
 	 * @param goodId
 	 */
