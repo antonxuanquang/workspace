@@ -20,7 +20,7 @@ import com.sean.shop.search.api.SearchBean;
 
 @ActionConfig(module = M.class, authenticate = false)
 @MustParamsConfig({ P.pageNo })
-@OptionalParamsConfig({ P.keyword, P.channel, P.categoryId, P.priceStart, P.priceEnd, P.status })
+@OptionalParamsConfig({ P.keyword, P.channel, P.categoryId, P.priceStart, P.priceEnd, P.status, P.isFree })
 @ReturnParamsConfig({ R.goodList4Console, R.totalrecord })
 @DescriptConfig("搜索商品")
 public class SearchGood4ConsoleAction extends Action
@@ -56,6 +56,10 @@ public class SearchGood4ConsoleAction extends Action
 			if (session.getParameter(P.status) != null)
 			{
 				query.status = session.getIntParameter(P.status);
+			}
+			if (session.getParameter(P.isFree) != null)
+			{
+				query.isFree = session.getIntParameter(P.isFree);
 			}
 
 			List<Object> goodIdList = searchBean.search(query);

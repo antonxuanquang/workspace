@@ -61,14 +61,27 @@ public class GoodBeanImpl implements GoodBean
 	/**
 	 * 设置商品免费
 	 * @param goodId
+	 * @throws BusinessException 
 	 */
-	public void setGoodFree(long goodId)
+	public void setGoodFree(long goodId) throws BusinessException
 	{
 		GoodEntity good = Dao.loadById(GoodEntity.class, goodId);
 		if (good != null)
 		{
 			good.isFree = good.isFree == 1 ? 0 : 1;
-			Dao.update(GoodEntity.class, good);
+			Dao.update(GoodEntity.class, goodId, new Value("isFree", good.isFree));
+			
+			// 更新索引
+			Good idxGood = this.good2IndexItem(good);
+			try
+			{
+				searchBean.updateGood(idxGood);
+			}
+			catch (IOException e)
+			{
+				logger.error("更新索引异常", e);
+				throw new BusinessException("更新索引异常", 1);
+			}
 		}
 	}
 
@@ -252,6 +265,7 @@ public class GoodBeanImpl implements GoodBean
 		g.boost = good.boost;
 		g.status = good.status;
 		g.saleCount = good.saleCount;
+		g.isFree = good.isFree;
 		return g;
 	}
 

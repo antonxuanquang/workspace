@@ -12,9 +12,9 @@ define(function(require, exports, module)
 	{
 		currChannel : -1, // 当前渠道
 		currPageNo : 1, // 当前页码
-		currCategory : -1, // 当前分类
 		currQuery : "", // 当前搜索条件
 		currStatus : -1, // 当前商品状态
+		currIsFree : -1, // 是否免费
 
 		categoryMap : new Object(),
 
@@ -43,11 +43,12 @@ define(function(require, exports, module)
 		{
 			GoodManager.currPageNo = 1;
 			GoodManager.currChannel = $('#channel').val();
-			GoodManager.currCategory = $('#category').val();
 			GoodManager.currQuery = $('#keyword').val();
 			GoodManager.currStatus = $('#status').val();
+			GoodManager.currIsFree = $('#isFree').val();
 
 			GoodManager.getGoodList();
+			return false;
 		},
 
 		// 读取商品列表
@@ -68,13 +69,13 @@ define(function(require, exports, module)
 			{
 				params.channel = GoodManager.currChannel;
 			}
-			if (GoodManager.currCategory != -1)
-			{
-				params.categoryId = GoodManager.currCategory;
-			}
 			if (GoodManager.currStatus != -1)
 			{
 				params.status = GoodManager.currStatus;
+			}
+			if (GoodManager.currIsFree != -1)
+			{
+				params.isFree = GoodManager.currIsFree;
 			}
 
 			T.common.ajax.requestBlock("SearchGood4ConsoleAction", params, false, function(jsonstr, data, code, msg)
@@ -83,8 +84,7 @@ define(function(require, exports, module)
 				for (var i = 0; i < goodList.length; i++)
 				{
 					var it = goodList[i];
-					it.name = it.goodName.substring(0, 10);
-					it.category = GoodManager.categoryMap[it.categoryId].categoryName;
+					it.name = it.goodName.substring(0, 16);
 				}
 
 				var tplData =
@@ -126,9 +126,17 @@ define(function(require, exports, module)
 							});
 						}
 					}
-					if (btn.html() == "修改")
+					if (btn.html() == "免费")
 					{
-
+						var params =
+						{
+							goodId : btn.attr('goodId')
+						};
+						T.common.ajax.requestBlock('SetGoodFreeAction', params, false, function()
+						{
+							alert("设置成功成功");
+							GoodManager.getGoodList();
+						});
 					}
 					if (btn.html() == "删除")
 					{

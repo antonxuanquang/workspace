@@ -12,6 +12,7 @@ public class Query
 	public int priceEnd = -1;
 	
 	public int status = 1;
+	public int isFree = -1;
 
 	public int pageNo = 1;
 	public int pageSize = 24;

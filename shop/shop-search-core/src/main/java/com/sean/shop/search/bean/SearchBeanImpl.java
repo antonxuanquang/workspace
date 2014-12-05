@@ -3,7 +3,6 @@ package com.sean.shop.search.bean;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field.Store;
 import org.apache.lucene.document.FloatField;
 import org.apache.lucene.document.IntField;
-import org.apache.lucene.document.LongField;
 import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexWriter;
@@ -374,6 +372,12 @@ public class SearchBeanImpl implements SearchBean
 				mulQuery.add(new TermQuery(new Term("categoryId", String.valueOf(query.categoryId))), Occur.MUST);
 			}
 
+			// 是否免费
+			if (query.isFree != -1)
+			{
+				mulQuery.add(new TermQuery(new Term("isFree", String.valueOf(query.isFree))), Occur.MUST);
+			}
+
 			// 价格
 			float priceStart = query.priceStart == -1 ? 0 : query.priceStart;
 			float priceEnd = query.priceEnd == -1 ? Integer.MAX_VALUE : query.priceEnd;
@@ -425,7 +429,7 @@ public class SearchBeanImpl implements SearchBean
 				td = searcher.search(mulQuery, query.pageSize * query.pageNo, sort);
 			}
 			ScoreDoc[] sd = td.scoreDocs;
-			logger.debug("搜索结果:" + Arrays.toString(sd));
+			showSearchResult(sd);
 
 			for (int i = start; i < sd.length; i++)
 			{
@@ -454,10 +458,22 @@ public class SearchBeanImpl implements SearchBean
 		writer.commit();
 	}
 
+	private void showSearchResult(ScoreDoc[] sd)
+	{
+		StringBuilder buf = new StringBuilder(1024);
+		buf.append("[");
+		for (ScoreDoc it : sd)
+		{
+			buf.append(it.doc).append(',');
+		}
+		buf.setCharAt(buf.length() - 1, ']');
+		logger.debug("搜索结果:" + buf.toString());
+	}
+
 	private Document good2Doc(Good good)
 	{
 		Document doc = new Document();
-		doc.add(new LongField("goodId", good.goodId, Store.YES));
+		doc.add(new StringField("goodId", String.valueOf(good.goodId), Store.YES));
 
 		// 计算加权因子 = (log(max(10,月销售量)) + sqrt(log(max(10, 展示量)))) * docBoost
 		float saleScore = (float) Math.log(Math.max(10, good.saleCount));
@@ -469,6 +485,7 @@ public class SearchBeanImpl implements SearchBean
 		doc.add(new StringField("channel", String.valueOf(good.channel), Store.NO));
 		doc.add(new StringField("categoryId", String.valueOf(good.categoryId), Store.NO));
 		doc.add(new StringField("status", String.valueOf(good.status), Store.NO));
+		doc.add(new StringField("isFree", String.valueOf(good.isFree), Store.NO));
 		doc.add(new FloatField("price", good.price, Store.YES));
 		doc.add(new IntField("saleCount", good.saleCount, Store.YES));
 		doc.add(new IntField("showTimes", (int) good.showTimes, Store.YES));
@@ -483,6 +500,8 @@ public class SearchBeanImpl implements SearchBean
 
 		// 删除
 		writer.deleteDocuments(new Term("goodId", String.valueOf(good.goodId)));
+		writer.forceMergeDeletes();
+
 		// 新增
 		this.addGood(good);
 	}
@@ -494,6 +513,7 @@ public class SearchBeanImpl implements SearchBean
 
 		// 删除
 		writer.deleteDocuments(new Term("goodId", String.valueOf(goodId)));
+		writer.forceMergeDeletes();
 		writer.commit();
 	}
 
