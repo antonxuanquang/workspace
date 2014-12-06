@@ -372,12 +372,6 @@ public class SearchBeanImpl implements SearchBean
 				mulQuery.add(new TermQuery(new Term("categoryId", String.valueOf(query.categoryId))), Occur.MUST);
 			}
 
-			// 是否免费
-			if (query.isFree != -1)
-			{
-				mulQuery.add(new TermQuery(new Term("isFree", String.valueOf(query.isFree))), Occur.MUST);
-			}
-
 			// 价格
 			float priceStart = query.priceStart == -1 ? 0 : query.priceStart;
 			float priceEnd = query.priceEnd == -1 ? Integer.MAX_VALUE : query.priceEnd;
@@ -485,7 +479,6 @@ public class SearchBeanImpl implements SearchBean
 		doc.add(new StringField("channel", String.valueOf(good.channel), Store.NO));
 		doc.add(new StringField("categoryId", String.valueOf(good.categoryId), Store.NO));
 		doc.add(new StringField("status", String.valueOf(good.status), Store.NO));
-		doc.add(new StringField("isFree", String.valueOf(good.isFree), Store.NO));
 		doc.add(new FloatField("price", good.price, Store.YES));
 		doc.add(new IntField("saleCount", good.saleCount, Store.YES));
 		doc.add(new IntField("showTimes", (int) good.showTimes, Store.YES));

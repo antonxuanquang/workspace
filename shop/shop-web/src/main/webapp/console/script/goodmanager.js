@@ -14,7 +14,6 @@ define(function(require, exports, module)
 		currPageNo : 1, // 当前页码
 		currQuery : "", // 当前搜索条件
 		currStatus : -1, // 当前商品状态
-		currIsFree : -1, // 是否免费
 
 		categoryMap : new Object(),
 
@@ -45,7 +44,6 @@ define(function(require, exports, module)
 			GoodManager.currChannel = $('#channel').val();
 			GoodManager.currQuery = $('#keyword').val();
 			GoodManager.currStatus = $('#status').val();
-			GoodManager.currIsFree = $('#isFree').val();
 
 			GoodManager.getGoodList();
 			return false;
@@ -72,10 +70,6 @@ define(function(require, exports, module)
 			if (GoodManager.currStatus != -1)
 			{
 				params.status = GoodManager.currStatus;
-			}
-			if (GoodManager.currIsFree != -1)
-			{
-				params.isFree = GoodManager.currIsFree;
 			}
 
 			T.common.ajax.requestBlock("SearchGood4ConsoleAction", params, false, function(jsonstr, data, code, msg)
@@ -125,18 +119,6 @@ define(function(require, exports, module)
 								GoodManager.getGoodList();
 							});
 						}
-					}
-					if (btn.html() == "免费")
-					{
-						var params =
-						{
-							goodId : btn.attr('goodId')
-						};
-						T.common.ajax.requestBlock('SetGoodFreeAction', params, false, function()
-						{
-							alert("设置成功成功");
-							GoodManager.getGoodList();
-						});
 					}
 					if (btn.html() == "删除")
 					{

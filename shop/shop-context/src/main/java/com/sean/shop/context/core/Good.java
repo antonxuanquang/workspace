@@ -15,7 +15,6 @@ public class Good
 	// 权重
 	public float boost;
 	public int status;
-	public int isFree;
 	public long showTimes;
 	public int saleCount;
 }

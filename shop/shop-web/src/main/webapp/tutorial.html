@@ -23,13 +23,12 @@
                 position: absolute;
                 color: white;
                 background-color: #FF4400;
-                opacity: 0.8;
+                opacity: 0.7;
                 display: none;
                 text-align: center;
                 top: 188px;
                 font-size: 14px;
                 padding-top: 5px;
-                text-align: center;
             }
 		</style>
 		
@@ -100,16 +99,6 @@
 			<div style="width: 1210px;">
 				<div class="clearfix">
 					<div class="pull-left" style="background:white; width: 900px; margin-right: 8px;">
-						
-						<!-- 搜索排名 -->
-						<div class="row" align="left" style="width: 900px;">
-							<div id="ranking" class="btn-group btn-group-sm">
-								<button ranking="1" type="button" class="btn btn-default active">综合排序</button>
-							  	<button ranking="2" type="button" class="btn btn-default">销量从高到低</button>
-							  	<button ranking="3" type="button" class="btn btn-default">价格从低到高</button>
-							  	<button ranking="4" type="button" class="btn btn-default">人气从高到低</button>
-							</div>
-						</div>
 
 						<!--商品列表-->
 						<div id="goodListWrap" class="row" align="left" style="width: 900px;"></div>
@@ -156,9 +145,9 @@
 		}
     }
 
-	seajs.use("./script/market", function()
+	seajs.use("./script/free", function()
 	{
-		T.market.init();
+		T.free.init();
 	});
 </script>
 
@@ -193,31 +182,8 @@
 						<p style="font-size: 13px; margin-top: -4px;">${it.shortName}</p>
 					</div>
 				</a>
-				<div class="exception">
-					<div goodId="${it.goodId}" style="float: left;width: 108px; text-align: center;">免费购物</div>
-					<div goodId="${it.goodId}" style="float: left;width: 108px; text-align: center;">反馈淘宝已下架</div>
-				</div>
+				<div goodId="${it.goodId}" class="exception">反馈淘宝已下架</div>
 			</div>
 		{@/each}
 	</div>
-	<!--分页控件-->
-	<div class="row" style="width: 884px;" align="center">
-		<ul id="pages" class="pagination">
-		</ul>
-	</div>	
-</script>
-
-<!-- 分页 -->	
-<script id="tpl_page" type="text/template">
-	<li pageNo="1" title="首页"><a href="javascript:void(0)"><</a></li>
-	<li pageNo="${previous}" title="上一页"><a href="javascript:void(0)"><<</a></li>
-	{@each pages as it,index}
-	    {@if index%10000000===0}
-			<li pageNo="${it.pageNo}" class="active"><a href="javascript:void(0)">${it.pageNo}</a></li>
-		{@else}
-			<li pageNo="${it.pageNo}"><a href="javascript:void(0)">${it.pageNo}</a></li>
-		{@/if}
-	{@/each}
-	<li pageNo="${next}" title="下一页"><a href="javascript:void(0)">>></a></li>
-	<li pageNo="${last}" title="尾页"><a href="javascript:void(0)">></a></li>
 </script>

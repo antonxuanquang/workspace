@@ -30,9 +30,6 @@ public class P
 
 	@ParameterConfig(dataType = DataType.Enum, enumVals = { "1", "2" }, descr = "商品来源渠道: 1-天天9块九, 2-精品推荐")
 	public static final String channel = "channel";
-	
-	@ParameterConfig(dataType = DataType.Enum, enumVals = { "1", "0" }, descr = "是否免费")
-	public static final String isFree = "isFree";
 
 	@ParameterConfig(dataType = DataType.String, length = 255, descr = "搜索引擎索引关键字")
 	public static final String keyword = "keyword";

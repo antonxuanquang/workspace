@@ -265,7 +265,6 @@ public class GoodBeanImpl implements GoodBean
 		g.boost = good.boost;
 		g.status = good.status;
 		g.saleCount = good.saleCount;
-		g.isFree = good.isFree;
 		return g;
 	}
 

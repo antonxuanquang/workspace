@@ -25,13 +25,6 @@
 							<option value="2">下架</option>
 						</select>
 					</div>
-					<div class="form-group">
-						<select id="isFree" class="form-control">
-							<option value="-1">全部</option>
-							<option value="1">免费</option>
-							<option value="0">付费</option>
-						</select>
-					</div>
 					<button id="search" class="btn btn-default">搜索</button>
 				</form>
 			</div>
@@ -45,7 +38,6 @@
 						<th>展示次数</th>
 						<th>30天销量</th>
 						<th>状态</th>
-						<th>免费</th>
 						<th>操作</th>
 					</tr>
 				</thead>
@@ -86,11 +78,6 @@
 		{@else}
 			<td>下架</td>
 		{@/if}
-		{@if it.isFree==1}
-			<td>是</td>
-		{@else}
-			<td>否</td>
-		{@/if}
 		<td>
 			<button url=${it.goodUrl} type="button" class="btn btn-info btn-xs">查看</button>
 			{@if it.status==1}
@@ -98,7 +85,6 @@
 			{@else}
 				<button goodId=${it.goodId} type="button" class="btn btn-warning btn-xs">上架</button>
 			{@/if}
-			<button goodId=${it.goodId} type="button" class="btn btn-success btn-xs">免费</button>
 			<button goodId=${it.goodId} type="button" class="btn btn-danger btn-xs">删除</button>
 		</td>
 	</tr>

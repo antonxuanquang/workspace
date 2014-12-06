@@ -11,6 +11,8 @@
                 background-color: #D9534F;
                 font-size: 16px;
                 font-weight: bold;
+                height: 50px;
+                width: 100px;
             }
             a{
             	text-decoration: none;
@@ -28,12 +30,12 @@
     	<![endif]-->
 	</head>
 
-	<body>
+	<body onload="toggle()">
 		<div style="position: fixed; left: 0px; top: 0px; width:100%;background-color: #D9534F;z-index: 100000" align="center">
 			<div style="width: 1210px;">
-				<ul class="nav navbar-nav">
+				<ul id="items" class="nav navbar-nav" style="height: 50px;">
 					<li>
-						<a href="index.html" class="nav_li" target="_parent" style="background-color: #D9534F">轻松易购</a>
+						<a href="index.html" class="nav_li" target="_parent" style="background-color: #D9534F">首页</a>
 					</li>
 					<li>
 						<a href="market.html?channel=1" class="nav_li" target="_parent" style="background-color: #D9534F">9.9包邮</a>
@@ -42,10 +44,7 @@
 						<a href="market.html?channel=2" class="nav_li" target="_parent" style="background-color: #D9534F">精品服饰</a>
 					</li>
 					<li>
-						<a href="market.html?channel=2" class="nav_li" target="_parent" style="background-color: #D9534F">免费专区</a>
-					</li>
-					<li>
-						<a href="http://www.bigcodebang.com" target="_blank" class="nav_li" style="background-color: #D9534F">搞笑娱乐</a>
+						<a href="tutorial.html" class="nav_li" target="_parent" style="background-color: #D9534F">免费购物</a>
 					</li>
 					<li>
 						<a href="download.html" target="_parent" class="nav_li" style="background-color: #D9534F">手机爱购</a>
@@ -55,3 +54,22 @@
 		</div>
 	</body>
 </html>
+
+<script>
+function toggle()
+{
+	var href = parent.location.href;
+	var items = ["index.html", "market.html?channel=1", "market.html?channel=2", "tutorial.html", "download.html"];
+	for(var i = 0 ; i < items.length ;i++)
+	{
+		if(href.indexOf(items[i]) > 0)
+		{
+			document.getElementById('items').children[i].children[0].style.borderBottom = "solid 4px #F7FF70";
+		}
+		else
+		{
+			document.getElementById('items').children[i].children[0].style.borderBottom = "none";
+		}
+	}
+}
+</script>

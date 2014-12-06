@@ -21,7 +21,6 @@ create table t_good
 	saleCount                 int                  not null comment "30天售出的件数",
 	commissionRate            float                not null comment "佣金比率",
 	commissionCount           float                not null comment "30天支出的佣金总数",
-	isFree                    int                  not null comment "是否免费, 积分兑换",
 	constraint t_good_pk primary key (goodId)
 ) engine=myisam comment "商品";
 create index index_goodName on t_good (goodName);
