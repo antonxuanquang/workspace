@@ -13,7 +13,7 @@ define(function(require, exports, module)
 		config :
 		{
 			// 请求地址
-			requestUrl : ["http://localhost:8080/shop-web/api/v1/", "http://seanzwx.github.io/97igo/json/"],
+			requestUrl : ["http://localhost:8080/shop-web/api/v1/", "http://seanzwx.github.io/97igo/json/", "http://localhost/"],
 
 			// 用户开放接口
 			api :
@@ -187,18 +187,16 @@ define(function(require, exports, module)
 
 			_loadRes : function(serverIndex, action, callback)
 			{
-				alert(11);
 				$.ajax(
 				{
 					url : common.config.api.getRequestUrl(serverIndex) + action,
 
 					type : 'get',
-					dataType : 'json',
+					dataType : 'html',
 					jsonp : "callback",
 					cache : 'false',
 					success : function(jsonstr)
 					{
-						alert(jsonstr);
 						if (callback != null)
 						{
 							callback(jsonstr);

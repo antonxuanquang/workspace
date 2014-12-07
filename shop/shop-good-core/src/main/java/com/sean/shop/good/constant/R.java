@@ -25,6 +25,10 @@ public class R
 	@ReturnParameterConfig(descr = "商品列表", format = Format.EntityList, entity = GoodEntity.class)
 	@FieldsConfig({ "goodId", "goodName", "price", "imageUrl", "goodUrl", "channel", "saleCount" })
 	public static final String goodList = "goodList";
+	
+	@ReturnParameterConfig(descr = "商品", format = Format.Entity, entity = GoodEntity.class)
+	@FieldsConfig({ "goodId", "goodName", "price", "imageUrl", "goodUrl", "saleCount" })
+	public static final String goodDetail = "goodDetail";
 
 	@ReturnParameterConfig(descr = "商品反馈", format = Format.EntityList, entity = GoodFeedbackEntity.class)
 	@FieldsConfig("*")

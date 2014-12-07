@@ -34,6 +34,11 @@ public class GoodBeanImpl implements GoodBean
 
 	private static final Logger logger = LogFactory.getLogger(GoodBeanImpl.class);
 
+	public GoodEntity getGood(long goodId)
+	{
+		return Dao.loadById(GoodEntity.class, goodId);
+	}
+	
 	/**
 	 * 删除商品
 	 * @param goodId
@@ -56,33 +61,6 @@ public class GoodBeanImpl implements GoodBean
 			throw new BusinessException("删除索引异常", 1);
 		}
 
-	}
-
-	/**
-	 * 设置商品免费
-	 * @param goodId
-	 * @throws BusinessException 
-	 */
-	public void setGoodFree(long goodId) throws BusinessException
-	{
-		GoodEntity good = Dao.loadById(GoodEntity.class, goodId);
-		if (good != null)
-		{
-			good.isFree = good.isFree == 1 ? 0 : 1;
-			Dao.update(GoodEntity.class, goodId, new Value("isFree", good.isFree));
-			
-			// 更新索引
-			Good idxGood = this.good2IndexItem(good);
-			try
-			{
-				searchBean.updateGood(idxGood);
-			}
-			catch (IOException e)
-			{
-				logger.error("更新索引异常", e);
-				throw new BusinessException("更新索引异常", 1);
-			}
-		}
 	}
 
 	/**

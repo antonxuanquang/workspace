@@ -75,68 +75,86 @@ define(function(require, exports, module)
 		// 初始化相关控件
 		initUI : function()
 		{
-			// 读取搜索热词
-			T.common.ajax.requestBlock("InquireHotwordAction", null, false, function(jsonstr, data, code, msg)
+			T.common.ajax.loadRes(2, "/tpl/headpanel.tpl", function(res)
 			{
-				var color = ["label-default", "label-primary", "label-success", "label-info", "label-warning", "label-danger"];
-				for (var i = 0; i < data.hotwordList.length; i++)
+				// 读取搜索热词
+				T.common.ajax.requestBlock("InquireHotwordAction", null, false, function(jsonstr, data, code, msg)
 				{
-					data.hotwordList[i].color = color[i % color.length];
-				}
-				var tplData =
-				{
-					hotwordList : data.hotwordList
-				};
-				var tpl = $('#tpl_hotword').html();
-				var html = juicer(tpl, tplData);
-				$('#hotword').append(html);
-
-				$('#hotword span').bind('click', function()
-				{
-					var query = $(this).html();
-					$('#query').val(query);
-					index.search();
+					var color = ["label-default", "label-primary", "label-success", "label-info", "label-warning", "label-danger"];
+					for (var i = 0; i < data.hotwordList.length; i++)
+					{
+						data.hotwordList[i].color = color[i % color.length];
+					}
+					var tplData =
+					{
+						hotwordList : data.hotwordList
+					};
+					var tpl = res;
+					var html = juicer(tpl, tplData);
+					$('#headpanel').append(html);
+	
+					$('#hotword span').bind('click', function()
+					{
+						var query = $(this).html();
+						$('#query').val(query);
+						index.search();
+					});
+					
+					// 搜索事件
+					$('#channel_dropbox li').bind('click', function()
+					{
+						var channel = $(this).attr('channel');
+						$('#channel_dropbox_btn').html($(this).children('a').html() + '<span class="caret"></span>').attr('channel', channel);
+					});
+					$('#search').bind('click', index.search);
+					$('#query').keydown(function(e)
+					{
+						if (e.keyCode == 13)
+						{
+							index.search();
+							return false;
+						}
+					});
+		
+					// 火箭
+					$('#rocket').click(function()
+					{
+						$('html,body').animate(
+						{
+							scrollTop : 0
+						}, 300);
+						return false;
+					});
+					
+					// 自动补全
+					$('#query').typeahead(
+					{
+						source : [
+						{
+							id : 1,
+							name : 'Toronto'
+						},
+						{
+							id : 2,
+							name : 'Montreal'
+						}]
+					});
+					
+					// 导航UI
+					var href = location.href;
+					var items = ["index.html", "market.html?channel=1", "market.html?channel=2", "tutorial.html", "download.html"];
+					for(var i = 0 ; i < items.length ;i++)
+					{
+						if(href.indexOf(items[i]) > 0)
+						{
+							document.getElementById('items').children[i].children[0].style.borderBottom = "solid 4px #F7FF70";
+						}
+						else
+						{
+							document.getElementById('items').children[i].children[0].style.borderBottom = "none";
+						}
+					}
 				});
-			});
-			
-			// 搜索事件
-			$('#channel_dropbox li').bind('click', function()
-			{
-				var channel = $(this).attr('channel');
-				$('#channel_dropbox_btn').html($(this).children('a').html() + '<span class="caret"></span>').attr('channel', channel);
-			});
-			$('#search').bind('click', index.search);
-			$('#query').keydown(function(e)
-			{
-				if (e.keyCode == 13)
-				{
-					index.search();
-					return false;
-				}
-			});
-
-			// 火箭
-			$('#rocket').click(function()
-			{
-				$('html,body').animate(
-				{
-					scrollTop : 0
-				}, 300);
-				return false;
-			});
-			
-			// 自动补全
-			$('#query').typeahead(
-			{
-				source : [
-				{
-					id : 1,
-					name : 'Toronto'
-				},
-				{
-					id : 2,
-					name : 'Montreal'
-				}]
 			});
 		},
 

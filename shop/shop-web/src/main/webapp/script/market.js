@@ -109,22 +109,9 @@ define(function(require, exports, module)
 				$('#goodList>div').bind('mouseover', function()
 				{
 					$(this).css('border-color', '#FF4400');
-					$(this).find('div[class=exception]').show();
 				}).bind('mouseout', function()
 				{
 					$(this).css('border-color', '#dcdcdc');
-					$(this).find('div[class=exception]').hide();
-				});
-				$('#goodList div[class=exception]').bind('click', function()
-				{
-					var params =
-					{
-						goodId : $(this).attr('goodId')
-					}
-					T.common.ajax.requestBlock('FeedbackGoodAction', params, false, function()
-					{
-						alert("非常感谢您的反馈, 我们会做的更好^-^");
-					});
 				});
 
 				// 计算分页

@@ -71,60 +71,8 @@
 	</head>
 
 	<body>
-		<!-- header -->
-		<iframe frameborder="0" src="header.html" style="width: 100%; height: 50px; overflow: hidden"></iframe>
-
-		<!-- 搜索栏目 -->
-		<div align="center">
-			<div align="left" style="width: 1210px; height: 78px;">
-				<!-- logo -->
-				<div style="width: 200px; float: left;">
-					<div style="font-family: sans-serif; font-size: 34px;color: red;text-align: center">97爱购网</div>
-					<div style="text-align: center; color:red">www.97igo.com</div>
-				</div>		
-				<!-- 搜索框 -->		
-				<div style="width: 800px; float: left;">
-					<!-- 搜索框 -->
-					<div class="row">
-						<form class="bs-example bs-example-form" role="form">
-							<div class="col-lg-6" style="padding: 0px;">
-								<div class="input-group">
-									<div class="input-group-btn">
-										<button id="channel_dropbox_btn" channel="-1" type="button" class="btn btn-default dropdown-toggle" style="height: 44px;" data-toggle="dropdown">全部 <span class="caret"></span></button>
-										<ul id="channel_dropbox" class="dropdown-menu">
-											<li channel="-1">
-												<a href="javascript:void(0)">全部 </a>
-											</li>
-											<li channel="1">
-												<a href="javascript:void(0)">9.9包邮 </a>
-											</li>
-											<li channel="2">
-												<a href="javascript:void(0)">精品服饰 </a>
-											</li>
-										</ul>
-									</div>
-									<input id="query" type="text" class="form-control typeahead" style="width: 650px;height: 44px;" placeholder="输入商品关键字,50万商品任你搜">
-									<span class="input-group-btn">
-										<button id="search" class="btn btn-default" type="button" style="height: 44px;">搜索商品</button> 
-									</span>
-								</div>
-							</div>
-						</form>						
-					</div>
-					<!-- 热门搜索词 -->
-					<div class="row">
-						<h4 id="hotword" style="width: 800px;"></h4>
-					</div>
-				</div>
-				<!-- 二维码 -->
-				<div style="float: right">
-					<a href="download.html" target="_blank">
-						<img src="http://seanzwx.github.io/97igo/image/app.png" width="60" height="60" />
-						<div style="text-align: center; color:#D9534F; font-size: 12px;">手机爱购</div>
-					</a>
-				</div>
-			</div>
-		</div>
+		<!-- 头部栏目 -->
+		<div id="headpanel"></div>
 
 		<!--内容-->
 		<div align="center" style="margin-top: 4px;">
@@ -154,51 +102,18 @@
 			</div>
 		</div>
 		
-		<!-- 火箭 -->
-		<div style="z-index: 1000; position: fixed; right: 10px; bottom: 10px;" title="回顶部">
-			<a id="rocket" href="javascript:void(0)">
-				<img src="http://seanzwx.github.io/97igo/image/rocket.png" />
-			</a>
-		</div>
-		
 		<!-- footer -->
 		<iframe frameborder="0" src="footer.html" style="width: 100%; height: 130px; overflow: hidden; margin-top: 8px;"></iframe>
 	</body>
 </html>
 
+<script src="script/broswer.js"></script>
 <script src="http://seanzwx.github.io/97igo/script/lib.js" id="seajsnode"></script>
 <script>
-    var Sys = {};
-    var ua = navigator.userAgent.toLowerCase();
-    var s;
-    (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
-    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
-    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
-    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
-    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
-    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
-    
-    var version = parseFloat(Sys.ie);
-    if (Sys.ie <= 8.0) 
-    {
-		var r = confirm("亲, 您怎么还在用石器时代的浏览器? 下载现代浏览器吗?")
-		if (r == true)
-		{
-			location = "http://112.90.6.247/tech.down.sina.com.cn/20141008/7bc27741/40.0.2181.0_chrome_installer.exe?fn=&ssig=ecZM4ttCZj&Expires=1412938167&KID=sae,230kw3wk15&ip=1412858967,220.250.21.82&corp=1";
-		}
-    }
-
 	seajs.use("./script/index", function()
 	{
 		T.index.init();
 	});
-</script>
-
-<!-- 热词 -->
-<script id="tpl_hotword" type="text/template">
-	{@each hotwordList as it,index}
-		<span class="label ${it.color}" style="cursor: pointer">${it.hotword}</span>
-	{@/each}
 </script>
 
 <!-- 顶级分类 -->
