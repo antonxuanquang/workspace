@@ -13,14 +13,19 @@ define(function(require, exports, module)
 		config :
 		{
 			// 请求地址
-			requestUrl : ["http://localhost:8080/shop-web/api/v1/", "http://seanzwx.github.io/97igo/json/", "http://localhost/"],
+			requestUrl : ["http://${build.hostname}:8080/shop-web/api/v1/", "http://seanzwx.github.io/97igo/json/", "http://${build.hostname}/"],
 
 			// 用户开放接口
 			api :
 			{
 				getRequestUrl : function(index)
 				{
-					return common.config.requestUrl[index];
+					var url = common.config.requestUrl[index];
+					if (url.indexOf("build.hostname") >= 0)
+					{
+						url = url.replace("${build.hostname}", "localhost");
+					}
+					return url;
 				},
 			},
 		},

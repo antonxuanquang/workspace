@@ -74,7 +74,7 @@ define(function(require, exports, module)
 
 		// 初始化相关控件
 		initUI : function()
-		{
+		{	
 			// headpanel
 			T.common.ajax.loadRes(2, "/tpl/headpanel.tpl", function(res)
 			{
@@ -149,6 +149,10 @@ define(function(require, exports, module)
 					
 					// 导航UI
 					var href = location.href;
+					if(href == 'http://localhost/' || href == 'http://www.97igo.com/')
+					{
+						href = href + "/index.html"
+					}
 					var items = ["index.html", "market.html?channel=1", "market.html?channel=2", "tutorial.html", "download.html", "profile.html"];
 					for(var i = 0 ; i < items.length ;i++)
 					{

@@ -96,7 +96,7 @@
 		</div>
 		<!-- 二维码 -->
 		<div style="float: right">
-			<a href="download.html" target="_blank">
+			<a href="download.html">
 				<img src="http://seanzwx.github.io/97igo/image/app.png" width="60" height="60" />
 				<div style="text-align: center; color:#D9534F; font-size: 12px;">手机爱购</div>
 			</a>

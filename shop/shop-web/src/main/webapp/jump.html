@@ -39,9 +39,16 @@
 		var goodId = getParameter("g");
 		var link = getParameter('l');
 		var searchKey = getParameter('q') == null ? "" : getParameter('q') ;
+		
+		var url = "http://${build.hostname}:8080/shop-web/api/v1/ShowGoodAction?goodId=" + goodId;
+		if (url.indexOf("build.hostname") >= 0)
+		{
+			url = url.replace("${build.hostname}", "localhost");
+		}
+					
 		$.ajax(
 		{
-			url : "http://localhost:8080/shop-web/api/v1/ShowGoodAction?goodId=" + goodId,
+			url : url,
 			type : 'get',
 			dataType : 'jsonp',
 			jsonp : "callback",
