@@ -9,6 +9,7 @@ import com.sean.shop.good.api.GoodDic;
 import com.sean.shop.good.entity.ActiveEntity;
 import com.sean.shop.good.entity.GoodEntity;
 import com.sean.shop.good.entity.GoodFeedbackEntity;
+import com.sean.shop.good.entity.UserEntity;
 
 @ReturnParameterProviderConfig(module = M.class, descr = "")
 public class R
@@ -25,7 +26,7 @@ public class R
 	@ReturnParameterConfig(descr = "商品列表", format = Format.EntityList, entity = GoodEntity.class)
 	@FieldsConfig({ "goodId", "goodName", "price", "imageUrl", "goodUrl", "channel", "saleCount" })
 	public static final String goodList = "goodList";
-	
+
 	@ReturnParameterConfig(descr = "商品", format = Format.Entity, entity = GoodEntity.class)
 	@FieldsConfig({ "goodId", "goodName", "price", "imageUrl", "goodUrl", "saleCount" })
 	public static final String goodDetail = "goodDetail";
@@ -51,4 +52,8 @@ public class R
 	@ReturnParameterConfig(descr = "活动列表", format = Format.EntityList, entity = ActiveEntity.class)
 	@FieldsConfig("*")
 	public static final String activeList = "activeList";
+
+	@ReturnParameterConfig(descr = "用户信息", format = Format.Entity, entity = UserEntity.class)
+	@FieldsConfig({ "username", "integration", "registTime" })
+	public static final String userinfo = "userinfo";
 }

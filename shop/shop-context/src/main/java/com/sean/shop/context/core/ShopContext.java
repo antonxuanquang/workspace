@@ -15,6 +15,7 @@ import com.sean.shop.context.constant.L;
 public class ShopContext extends FrameworkSpi
 {
 	private static final Logger logger = LogFactory.getLogger(L.Context);
+	public static final String encryptKey = "27e40961-457d-4871-9e07-d72ad1147e8c";
 
 	@Override
 	public void exceptionHandle(Session session, ActionEntity action, Exception e)
@@ -28,7 +29,7 @@ public class ShopContext extends FrameworkSpi
 		// 管理员权限
 		if (permissionId == A.Admin)
 		{
-			return session.getUserId() == 1;
+			return session.getUserId() == 0;
 		}
 		return true;
 	}
@@ -36,7 +37,7 @@ public class ShopContext extends FrameworkSpi
 	@Override
 	public String getEncryptKey(String sid)
 	{
-		return "97igo";
+		return encryptKey;
 	}
 
 	@Override

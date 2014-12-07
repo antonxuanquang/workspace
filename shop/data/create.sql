@@ -105,3 +105,14 @@ create table t_order
     createTime               bigint                not null comment "创建时间",
     constraint t_order_pk primary key (orderId)
 ) engine=myisam comment "订单实体";
+
+create table t_user
+(
+    userId                   bigint               auto_increment comment "用户Id",
+    username                 varchar(255)         not null comment "用户帐号",
+    password                 char(32)             not null comment "用户密码",
+    integration              int                  not null comment "积分",
+    registTime               bigint               not null comment "注册时间",
+    constraint t_user_pk primary key (userId)
+) engine=myisam comment "用户信息实体";
+create index index_username on t_user (username);

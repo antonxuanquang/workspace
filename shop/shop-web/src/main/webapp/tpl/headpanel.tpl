@@ -8,13 +8,17 @@
         width: 100px;
     	text-decoration: none;
     }
-    .nav_li:hover{
+    .nav_li:hover {
+    	text-decoration: none;
+    	color: white;
+    }
+    .nav_li:after {
     	text-decoration: none;
     	color: white;
     }
 </style>
             
-<div style="position: fixed; left: 0px; top: 0px; width:100%;background-color: #D9534F;z-index: 100000;height:50px;" align="center">
+<div style="position: fixed; left: 0px; top: 0px; width:100%;background-color: #D9534F;z-index: 10;height:50px;" align="center">
 	<div style="width: 1210px;">
 		<ul id="items" class="nav navbar-nav" style="height: 50px;">
 			<li>
@@ -31,6 +35,15 @@
 			</li>
 			<li>
 				<a href="download.html" class="nav_li" style="background-color: #D9534F">手机爱购</a>
+			</li>
+			<li class="logined" style="display:none">
+				<a href="profile.html" class="nav_li" style="background-color: #D9534F">我的资料</a>
+			</li>
+			<li class="logined" style="display:none">
+				<a id="signout" href="javascript:void(0)" class="nav_li" style="background-color: #D9534F">注销</a>
+			</li>
+			<li class="unlogin">
+				<a href="javascript:void(0)" class="nav_li" style="background-color: #D9534F" data-toggle="modal" data-target="#signinModal">登录|注册</a>
 			</li>
 		</ul>
 	</div>
@@ -96,4 +109,31 @@
 	<a id="rocket" href="javascript:void(0)">
 		<img src="http://seanzwx.github.io/97igo/image/rocket.png" />
 	</a>
+</div>
+
+<!-- 登录（Modal） -->
+<div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="signinModalLabel" aria-hidden="true">
+   <div class="modal-dialog" style="width:300px;">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="signinModalLabel">登录 | 快速注册</h4>
+         </div>
+         <div class="modal-body">
+			<form role="form">
+			   <div class="form-group">
+			      <label for="name">帐号:</label>
+			      <input type="text" class="form-control" id="username" placeholder="请输入帐号" value="sean_zwx">
+			   </div>
+			   <div class="form-group">
+			      <label for="name">密码:</label>
+			      <input type="text" class="form-control" id="password" placeholder="请输入密码" value="xuxu">
+			   </div>
+			</form>
+         </div>
+         <div class="modal-footer">
+            <button id="signin" type="button" class="btn btn-primary btn-block">登 录</button>
+            <button id="signup" type="button" class="btn btn-danger btn-block">快速注册</button>
+         </div>
+      </div>
 </div>

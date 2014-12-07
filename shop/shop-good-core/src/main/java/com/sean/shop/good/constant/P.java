@@ -60,6 +60,9 @@ public class P
 
 	@ParameterConfig(dataType = DataType.String, descr = "密码")
 	public static final String password = "password";
+	
+	@ParameterConfig(dataType = DataType.String, descr = "密码")
+	public static final String oldpassword = "oldpassword";
 
 	@ParameterConfig(dataType = DataType.Long, descr = "商品反馈id")
 	public static final String feedbackId = "feedbackId";

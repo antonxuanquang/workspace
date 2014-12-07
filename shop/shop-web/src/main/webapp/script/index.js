@@ -75,6 +75,7 @@ define(function(require, exports, module)
 		// 初始化相关控件
 		initUI : function()
 		{
+			// headpanel
 			T.common.ajax.loadRes(2, "/tpl/headpanel.tpl", function(res)
 			{
 				// 读取搜索热词
@@ -92,6 +93,12 @@ define(function(require, exports, module)
 					var tpl = res;
 					var html = juicer(tpl, tplData);
 					$('#headpanel').append(html);
+					
+					var query = T.common.util.getParameter("q");
+					if(query != null)
+					{
+						$('#query').val(query);
+					}
 	
 					$('#hotword span').bind('click', function()
 					{
@@ -142,7 +149,7 @@ define(function(require, exports, module)
 					
 					// 导航UI
 					var href = location.href;
-					var items = ["index.html", "market.html?channel=1", "market.html?channel=2", "tutorial.html", "download.html"];
+					var items = ["index.html", "market.html?channel=1", "market.html?channel=2", "tutorial.html", "download.html", "profile.html"];
 					for(var i = 0 ; i < items.length ;i++)
 					{
 						if(href.indexOf(items[i]) > 0)
@@ -154,7 +161,67 @@ define(function(require, exports, module)
 							document.getElementById('items').children[i].children[0].style.borderBottom = "none";
 						}
 					}
+					
+					// 检查登录
+					var sid = T.common.user.getSid();
+					if(sid != null)
+					{
+						$('#items li[class=unlogin]').hide();
+						$('#items li[class=logined]').show();
+					}
+					else
+					{
+						$('#items li[class=logined]').hide();
+						$('#items li[class=unlogin]').show();
+					}
+
+					// 注销
+					$('#signout').bind('click', function()
+					{
+						if(confirm("确定要注销吗?"))
+						{
+							localStorage.clear();
+							location = location;
+						}
+					});
+					// 登录
+					$('#signin').bind('click', function()
+					{
+						var param = 
+						{
+							username : $('#username').val(),
+							password : T.common.util.md5($('#password').val())
+						};
+						T.common.ajax.requestBlock('SigninAction', param, false , function(jsonstr, data, msg, code)
+						{
+							localStorage.setItem("sid", data.sid);
+							localStorage.setItem("encryptKey", data.encryptKey);
+							location = location;
+						});
+					});
+					// 注册
+					$('#signup').bind('click', function()
+					{
+						var param = 
+						{
+							username : $('#username').val(),
+							password : T.common.util.md5($('#password').val())
+						};
+						T.common.ajax.requestBlock('SignupAction', param, false , function(jsonstr, data, msg, code)
+						{
+							localStorage.setItem("sid", data.sid);
+							localStorage.setItem("encryptKey", data.encryptKey);
+							alert("注册成功, 已经为您自动登录");
+							location = location;
+						});
+					});
 				});
+			});
+			
+			// rightpanel
+			T.common.ajax.loadRes(2, "/tpl/rightpanel.tpl", function(res)
+			{
+				$('#rightpanel').append(res);
 			});
 		},
 

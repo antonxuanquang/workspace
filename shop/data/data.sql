@@ -1,3 +1,5 @@
+insert into t_user values(1, 'sean_zwx', 'b96b03c3d38dac7ad0a0a0df2ddd8c7d', 10000, 20140101000000);
+
 insert into t_hotword values(1, '大码女装', 1, 20140917);
 insert into t_hotword values(2, '新款套装', 2, 20140917);
 insert into t_hotword values(3, '毛衣', 3, 20140917);
