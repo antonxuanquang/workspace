@@ -45,8 +45,6 @@ public class GoodEntity extends Entity implements Serializable
 	public float commissionCount;
 	@ColumnConfig(descr = "搜索排名得分调整参数, 默认为1")
 	public float boost;
-	@ColumnConfig(descr = "是否免费, 积分兑换")
-	public int isFree;
 
 	@Override
 	public Object getKey()
@@ -79,7 +77,6 @@ public class GoodEntity extends Entity implements Serializable
 		map.put("commissionRate", commissionRate);
 		map.put("commissionCount", commissionCount);
 		map.put("boost", boost);
-		map.put("isFree", isFree);
 		return map;
 	}
 
@@ -101,7 +98,6 @@ public class GoodEntity extends Entity implements Serializable
 		this.commissionRate = vals.getFloat("commissionRate");
 		this.commissionCount = vals.getFloat("commissionCount");
 		this.boost = vals.getFloat("boost");
-		this.isFree = vals.getInt("isFree");
 	}
 
 	public static void main(String[] args)
