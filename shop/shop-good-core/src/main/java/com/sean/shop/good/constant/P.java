@@ -60,7 +60,7 @@ public class P
 
 	@ParameterConfig(dataType = DataType.String, descr = "密码")
 	public static final String password = "password";
-	
+
 	@ParameterConfig(dataType = DataType.String, descr = "密码")
 	public static final String oldpassword = "oldpassword";
 
@@ -88,6 +88,15 @@ public class P
 	@ParameterConfig(dataType = DataType.Enum, enumVals = { "1", "0" }, descr = "是否正在进行")
 	public static final String activing = "activing";
 
-	@ParameterConfig(dataType = DataType.String, descr = "支付宝帐号")
-	public static final String zfbUsername = "zfbUsername";
+	@ParameterConfig(dataType = DataType.String, length = 16, descr = "手机号码")
+	public static final String tel = "tel";
+
+	@ParameterConfig(dataType = DataType.String, length = 16, descr = "qq号码")
+	public static final String qq = "qq";
+
+	@ParameterConfig(dataType = DataType.String, length = 512, descr = "收货地址")
+	public static final String address = "address";
+
+	@ParameterConfig(dataType = DataType.String, length = 512, descr = "订单备注")
+	public static final String remark = "remark";
 }

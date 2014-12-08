@@ -18,16 +18,22 @@ public class OrderEntity extends Entity implements Serializable
 	public long orderId;
 	@ColumnConfig(descr = "商品ID")
 	public long goodId;
+	@ColumnConfig(descr = "用户ID")
+	public long userId;
+	@ColumnConfig(descr = "积分")
+	public int integration;
 	@ColumnConfig(descr = "手机号码")
 	public String tel;
-	@ColumnConfig(descr = "imei")
-	public String imei;
+	@ColumnConfig(descr = "qq号码")
+	public String qq;
 	@ColumnConfig(descr = "address")
 	public String address;
 	@ColumnConfig(descr = "备注")
 	public String remark;
 	@ColumnConfig(descr = "创建时间")
 	public long createTime;
+	@ColumnConfig(descr = "订单状态, 1-未处理, 2-已经处理, 3-退单")
+	public int status;
 
 	@Override
 	public Object getKey()
@@ -44,14 +50,17 @@ public class OrderEntity extends Entity implements Serializable
 	@Override
 	public Map<String, Object> getValues()
 	{
-		Map<String, Object> map = new HashMap<>(7);
+		Map<String, Object> map = new HashMap<>(10);
 		map.put("orderId", orderId);
 		map.put("goodId", goodId);
+		map.put("userId", userId);
+		map.put("integration", integration);
 		map.put("tel", tel);
-		map.put("imei", imei);
+		map.put("qq", qq);
 		map.put("address", address);
 		map.put("remark", remark);
 		map.put("createTime", createTime);
+		map.put("status", status);
 		return map;
 	}
 
@@ -60,11 +69,14 @@ public class OrderEntity extends Entity implements Serializable
 	{
 		this.orderId = vals.getLong("orderId");
 		this.goodId = vals.getLong("goodId");
+		this.userId = vals.getLong("userId");
+		this.integration = vals.getInt("integration");
 		this.tel = vals.getString("tel");
-		this.imei = vals.getString("imei");
+		this.qq = vals.getString("qq");
 		this.address = vals.getString("address");
 		this.remark = vals.getString("remark");
 		this.createTime = vals.getLong("createTime");
+		this.status = vals.getInt("status");
 	}
 
 	public static void main(String[] args)

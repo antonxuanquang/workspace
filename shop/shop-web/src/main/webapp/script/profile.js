@@ -22,9 +22,19 @@ define(function(require, exports, module)
 			T.common.ajax.requestBlock("InquireProfileAction", null, false, function(jsonstr, data, code, msg)
 			{
 				data.userinfo.registTime = T.common.util.time.getYYYYMMDDHHMMSS(data.userinfo.registTime);
+				for(var i = 0; i < data.orderList.length; i++)
+				{
+					var it = data.orderList[i];
+					it.createTime = T.common.util.time.getYYYYMMDDHHMMSS(it.createTime);
+					if(it.goodName.length > 20)
+					{
+						it.goodName = it.goodName.substring(0, 20);
+					}
+				}
 				var tplData =
 				{
-					user : data.userinfo
+					user : data.userinfo,
+					orderList : data.orderList,
 				};
 				var tpl = $('#tpl_userinfo').html();
 				var html = juicer(tpl, tplData);

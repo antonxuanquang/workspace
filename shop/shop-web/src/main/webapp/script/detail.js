@@ -9,6 +9,8 @@ define(function(require, exports, module)
 
 	var detail =
 	{
+		goodId : 0,
+		
 		// 初始化
 		init : function()
 		{
@@ -20,10 +22,11 @@ define(function(require, exports, module)
 		// 读取商品列表
 		getGood : function()
 		{
+			detail.goodId = T.common.util.getParameter("id");
 			// 读取商品列表
 			var params =
 			{
-				goodId : T.common.util.getParameter("id")
+				goodId : detail.goodId
 			};
 			T.common.ajax.requestBlock("InquireGoodDetailAction", params, false, function(jsonstr, data, code, msg)
 			{
@@ -41,6 +44,22 @@ define(function(require, exports, module)
 					T.common.ajax.requestBlock('FeedbackGoodAction', params, false, function()
 					{
 						alert("非常感谢您的反馈, 我们会做的更好^-^");
+					});
+				});
+				
+				$('#summitOrder').bind('click', function()
+				{
+					var params =
+					{
+						goodId : detail.goodId,
+						tel : $('#tel').val(),
+						qq : $('#qq').val(),
+						address : $('#address').val(),
+						remark : $('#remark').val(),
+					};
+					T.common.ajax.requestBlock('CreateOrderAction', params, false, function()
+					{
+						alert("成功下订单, 请等待后台处理, 我们会和您联系, 祝您购物愉快^_^");
 					});
 				});
 			});

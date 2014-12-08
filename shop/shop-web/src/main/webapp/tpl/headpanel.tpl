@@ -43,7 +43,7 @@
 				<a id="signout" href="javascript:void(0)" class="nav_li" style="background-color: #D9534F">注销</a>
 			</li>
 			<li class="unlogin">
-				<a href="javascript:void(0)" class="nav_li" style="background-color: #D9534F" data-toggle="modal" data-target="#signinModal">登录|注册</a>
+				<a href="javascript:void(0)" class="nav_li" style="background-color: #D9534F" data-toggle="modal" data-target="#signinModal">登录注册</a>
 			</li>
 		</ul>
 	</div>
