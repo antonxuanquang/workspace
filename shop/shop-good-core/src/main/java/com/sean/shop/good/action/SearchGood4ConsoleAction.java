@@ -11,6 +11,7 @@ import com.sean.service.annotation.OptionalParamsConfig;
 import com.sean.service.annotation.ReturnParamsConfig;
 import com.sean.service.core.Action;
 import com.sean.service.core.Session;
+import com.sean.shop.context.constant.A;
 import com.sean.shop.good.constant.M;
 import com.sean.shop.good.constant.P;
 import com.sean.shop.good.constant.R;
@@ -18,7 +19,7 @@ import com.sean.shop.good.entity.GoodEntity;
 import com.sean.shop.search.api.Query;
 import com.sean.shop.search.api.SearchBean;
 
-@ActionConfig(module = M.class, authenticate = false)
+@ActionConfig(module = M.class, permission = A.Admin)
 @MustParamsConfig({ P.pageNo })
 @OptionalParamsConfig({ P.keyword, P.channel, P.categoryId, P.priceStart, P.priceEnd, P.status })
 @ReturnParamsConfig({ R.goodList4Console, R.totalrecord })
