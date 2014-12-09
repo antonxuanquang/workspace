@@ -1,0 +1,3 @@
+@relation gender_predict
+
+@attribute sepallength numeric

@@ -8,7 +8,7 @@ public class CleanIDEConfig
 {
 	public static void main(String[] args) throws Exception
 	{
-		File file = new File("/home/sean/Desktop/github/workspace2/trunk");
+		File file = new File("/home/sean/Desktop/github/workspace/trunk/data_mine");
 		clean(file);
 		System.out.println("over");
 	}
