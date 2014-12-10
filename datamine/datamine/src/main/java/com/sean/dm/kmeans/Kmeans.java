@@ -1,4 +1,4 @@
-package com.sean.dm.svm;
+package com.sean.dm.kmeans;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +10,8 @@ import java.util.Random;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
-import weka.classifiers.functions.LibSVM;
+import weka.clusterers.ClusterEvaluation;
+import weka.clusterers.SimpleKMeans;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
@@ -18,10 +19,10 @@ import weka.core.converters.ArffLoader;
 import weka.core.converters.ConverterUtils.DataSource;
 
 /**
- * weka svm工具
+ * weka k-means工具
  * @author sean
  */
-public class Wlsvm
+public class Kmeans
 {
 	private static final String Train = "/home/sean/Desktop/train.arff";
 	private static final String Model = "/home/sean/Desktop/model";
@@ -36,13 +37,9 @@ public class Wlsvm
 		// 读取训练数据
 		DataSource dataSource = new DataSource(new FileInputStream(Train));
 		Instances dataset = dataSource.getDataSet();
-		dataset.setClassIndex(dataset.numAttributes() - 1);
 
-		// 导入svm训练模型
-		LibSVM libsvm = (LibSVM) SerializationHelper.read(new FileInputStream(Model));
-		String options = "-S 0 -K 2 -D 3 -G 0.0 -R 0.0 -N 0.5 -M 40.0 -C 1.0 -E 0.001 -P 0.1 -seed 1 -B";
-		String[] optSVM = weka.core.Utils.splitOptions(options);
-		libsvm.setOptions(optSVM);
+		// 导入kmeans训练模型
+		SimpleKMeans kmeans = (SimpleKMeans) SerializationHelper.read(new FileInputStream(Model));
 
 		// 开始预测
 		double[] vector = new double[dataset.numAttributes() - 1];
@@ -50,22 +47,25 @@ public class Wlsvm
 		{
 			vector[i] = -1;
 		}
-		
+
 		vector[0] = 1;
 		vector[1] = 1;
+		vector[12] = 1;
+		vector[22] = 1;
+		vector[13] = 1;
 		vector[50] = 1;
 
 		Instance inst = new Instance(1, vector);
 		inst.setDataset(dataset);
 
 		// 分类
-		double classId = libsvm.classifyInstance(inst);
-		String[] title = new String[] { "女", "男" };
+		double classId = kmeans.clusterInstance(inst);
+		String[] title = new String[] { "男", "女" };
 		System.out.println("预测概率: " + classId);
 		System.out.println("目标分类: " + title[(int) classId]);
 
 		// 查看整体分布
-		double[] distribution = libsvm.distributionForInstance(inst);
+		double[] distribution = kmeans.distributionForInstance(inst);
 		System.out.println("概率分布: " + Arrays.toString(distribution));
 	}
 
@@ -78,22 +78,27 @@ public class Wlsvm
 		long curr = System.currentTimeMillis();
 
 		Instances ins = null;
-		LibSVM libsvm = null;
+		SimpleKMeans kmeans = null;
 
 		ArffLoader loader = new ArffLoader();
 		loader.setFile(new File(Train));
 		ins = loader.getDataSet();
-		ins.setClassIndex(ins.numAttributes() - 1);
 
-		libsvm = new LibSVM();
-		String options = "-S 0 -K 2 -D 3 -G 0.0 -R 0.0 -N 0.5 -M 40.0 -C 1.0 -E 0.001 -P 0.1 -seed 1 -B";
-		String[] optSVM = weka.core.Utils.splitOptions(options);
-		libsvm.setOptions(optSVM);
-		
-		libsvm.buildClassifier(ins);
+		kmeans = new SimpleKMeans();
+		String options = "-N 2 -A weka.core.EuclideanDistance -R first-last -I 500 -S 10 -B";
+		String[] optKmeans = weka.core.Utils.splitOptions(options);
+		kmeans.setOptions(optKmeans);
+
+		ClusterEvaluation eval = new ClusterEvaluation();
+		eval.setClusterer(kmeans);
+
+		kmeans.buildClusterer(ins);
+
+		eval.evaluateClusterer(ins);
+		System.out.println(eval.clusterResultsToString());
 
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Model));
-		oos.writeObject(libsvm);
+		oos.writeObject(kmeans);
 		oos.flush();
 		oos.close();
 
@@ -113,7 +118,7 @@ public class Wlsvm
 			train.delete();
 		}
 
-		File file = new File(Wlsvm.class.getResource("/feature").getFile());
+		File file = new File(Kmeans.class.getResource("/feature").getFile());
 		String str = FileUtils.readFileToString(file);
 
 		FileUtils.writeStringToFile(train, "@relation gender_predict\n", true);
@@ -122,8 +127,6 @@ public class Wlsvm
 		{
 			FileUtils.writeStringToFile(train, "@attribute " + it + " integer\n", true);
 		}
-
-		FileUtils.writeStringToFile(train, "@attribute gender {0,1}\n", true);
 		FileUtils.writeStringToFile(train, "@data\n", true);
 
 		Random random = new Random();
@@ -149,11 +152,8 @@ public class Wlsvm
 			}
 
 			String data = showVector(vector);
-			data += ",1";
 			FileUtils.writeStringToFile(train, data + "\n", true);
 		}
-
-		System.out.println("");
 
 		// 生成女性训练数据
 		for (int i = 0; i < 500; i++)
@@ -176,7 +176,6 @@ public class Wlsvm
 			}
 
 			String data = showVector(vector);
-			data += ",0";
 			FileUtils.writeStringToFile(train, data + "\n", true);
 		}
 	}
